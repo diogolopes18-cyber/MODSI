@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS USERS;
+
+CREATE TABLE IF NOT EXISTS
+USERS
+(
+    ID int PRIMARY KEY NOT NULL,
+    Student_Number varchar(255) UNIQUE NOT NULL,
+    Course varchar(50) DEFAULT NULL
+);
+
