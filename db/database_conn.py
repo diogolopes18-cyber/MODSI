@@ -8,7 +8,7 @@ import configparser
 
 config = configparser.ConfigParser()
 config.read(
-    '/home/diogo/Mestrado/MODSI/information_system/database_info.ini', encoding='utf-8')
+    '/home/diogo/Mestrado/MODSI/information_system/db/database_info.ini', encoding='utf-8')
 
 
 def connection_db(data_for_db):
