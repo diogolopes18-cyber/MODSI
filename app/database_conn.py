@@ -7,21 +7,20 @@ import configparser
 
 
 config = configparser.ConfigParser()
-config.read(
-    '/home/diogo/Mestrado/MODSI/information_system/db/database_info.ini', encoding='utf-8')
+config.read('db/database_info.ini', encoding='utf-8')
 
 
 def connection_db(data_for_db):
 
+    ######################
+    # Connection details
+    ######################
+    connection = psycopg2.connect(user=config['db']['user'],
+                                  password=config['db']['password'],
+                                  host=config['db']['host'],
+                                  port=config['db']['port'],
+                                  database=config['db']['database'])
     try:
-        connection = psycopg2.connect(user=config['db']['user'],
-                                      password=config['db']['password'],
-                                      host=config['db']['host'],
-                                      port=config['db']['port'],
-                                      database=config['db']['database'])
-        ######################
-        # Connection details
-        ######################
         cursor = connection.cursor()
         print(connection.get_dsn_parameters(), "\n")
 
