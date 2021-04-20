@@ -26,3 +26,11 @@ INFO_PROJETOS
     departamento varchar(50),
     FOREIGN KEY (sigla_resp) REFERENCES DIRETOR (sigla)
 );
+
+CREATE TABLE IF NOT EXISTS
+LOGIN_DETAILS
+(
+    username int PRIMARY KEY NOT NULL,
+    pass varchar(50) NOT NULL,
+    FOREIGN KEY (username) REFERENCES ALUNOS_MODSI(mec_aluno)
+);
