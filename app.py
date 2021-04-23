@@ -1,7 +1,9 @@
+#!/usr/bin/env python3
+
 import os
 import json
 import psycopg2
-from flask import Flask
+from flask import Flask, render_template, flash, request, redirect, url_for
 import database_conn as db
 
 app = Flask(__name__)
@@ -19,17 +21,20 @@ random_list = [1170503, 'Diogo']
 
 @app.route('/')
 def main_page():
-
-    text = '<a href="%s">Yolo bitches</a>'
-    return text % connect()
+    return render_template("home.html")
 
 
 @app.route('/login')
+def form():
+    return render_template("login.html")
+
+
+@app.route('/connection')
 def connect():
     db.connection_db(random_list)
 
-    return "Data inserted"
+    return redirect(url_for("main_page"))
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=65200)
+    app.run(debug=True, port=5000)
