@@ -24,7 +24,7 @@ def main_page():
     return render_template("home.html")
 
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def form():
     return render_template("login.html")
 
