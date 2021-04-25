@@ -10,7 +10,9 @@ config = configparser.ConfigParser()
 config.read('db/database_info.ini', encoding='utf-8')
 
 
-def connection_db(data_for_db):
+def connection_db(data_for_db, *args, **kwargs):
+
+    query = kwargs.get('query', None)
 
     ######################
     # Connection details
@@ -27,10 +29,20 @@ def connection_db(data_for_db):
         #####################
         # Data insertion
         #####################
-        insert_query = "INSERT INTO alunos_modsi (mec_aluno, nome) VALUES %s"
-        cursor.execute(
-            insert_query, [(data_for_db[0], data_for_db[1])])
+        if(query == "insert"):
+            insert_query = "INSERT INTO alunos_modsi (mec_aluno, nome) VALUES %s"
+            cursor.execute(
+                insert_query, [(data_for_db[0], data_for_db[1])])
 
+        if(query == "search"):
+            print("search")
+
+        if(query == "delete"):
+            print("delete")
+
+        #####################
+        # Data commit
+        #####################
         connection.commit()
         print("Data inserted")
 
