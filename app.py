@@ -20,13 +20,20 @@ random_list = [1170503, 'Diogo']
 # 3. Se existir informação na DB - login
 
 @app.route('/')
-def main_page():
+def homepage():
     return render_template("home.html")
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def form():
-    return render_template("login.html")
+    error = None
+    if(request.method == 'POST'):
+        if(request.form['username'] != "test" or request.form['password'] != "test"):
+            error = 'Invalid Credentials. Please try again.'
+        else:
+            return redirect(url_for('homepage'))
+
+    return render_template("login.html", error=error)
 
 
 @app.route('/connection')
