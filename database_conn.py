@@ -13,7 +13,6 @@ config.read('db/database_info.ini', encoding='utf-8')
 def connection_db(data_for_db, *args, **kwargs):
 
     query = kwargs.get('query', None)
-
     ######################
     # Connection details
     ######################
@@ -22,6 +21,7 @@ def connection_db(data_for_db, *args, **kwargs):
                                   host=config['db']['host'],
                                   port=config['db']['port'],
                                   database=config['db']['database'])
+
     try:
         cursor = connection.cursor()
         print(connection.get_dsn_parameters(), "\n")
@@ -31,14 +31,10 @@ def connection_db(data_for_db, *args, **kwargs):
         #####################
         if(query == "insert"):
             insert_query = "INSERT INTO alunos_modsi (mec_aluno, nome) VALUES %s"
-            cursor.execute(
-                insert_query, [(data_for_db[0], data_for_db[1])])
+            cursor.execute(insert_query, [(data_for_db[0], data_for_db[1])])
 
-        if(query == "search"):
-            print("search")
-
-        if(query == "delete"):
-            print("delete")
+        elif(query == "search"):
+            print("Test")
 
         #####################
         # Data commit
