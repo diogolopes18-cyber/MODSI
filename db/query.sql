@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS
 ALUNOS_MODSI
 (
-    mec_aluno int PRIMARY KEY NOT NULL,
+    mec_aluno int PRIMARY KEY UNIQUE NOT NULL,
     nome varchar(255) NOT NULL
 );
 
