@@ -8,7 +8,7 @@ import database_conn as db
 
 app = Flask(__name__)
 
-random_list = [1170503, 'Diogo']
+random_list = [1170654, 'Carolina']
 
 
 ####################
@@ -25,15 +25,23 @@ def homepage():
 
 
 @app.route('/login', methods=['GET', 'POST'])
-def form():
+def login():
     error = None
     if(request.method == 'POST'):
         if(request.form['username'] != "test" or request.form['password'] != "test"):
             error = 'Invalid Credentials. Please try again.'
         else:
+            db.connection_db(random_list, query="insert")
             return redirect(url_for('homepage'))
 
     return render_template("login.html", error=error)
+
+
+# @app.route('/register', method=['GET', 'POST'])
+# def sign_in():
+#     if(request.method == 'POST'):
+#         if(request.form['username_sign_in'] != "" or request.form['password_sign_in'] != ""):
+#             print("yolo")
 
 
 @app.route('/connection')
