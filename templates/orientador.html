@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Página Pessoal</title>
+</head>
+
+
+<div class="orientador">
+    <header class="orientador__header">
+       
+        <h1 class="orientador__title">Projetos académicos</h1>
+    </header>
+
+    <form class="menu">
+        <button class="menu__btn" type="button">Projetos submetidos</button>
+        <button class="menu__btn" type="button">Projetos disponíveis</button>
+        <button class="menu__btn" type="button">Escalonamento</button>
+    </form>
+</div>
+
+<style>
+    $font-family: {
+        "Roboto";
+    }
+
+    $font-size: {
+        14px;
+    }
+
+    $color-primary: #092756;
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: $font-family;
+        font-size: $font-size;
+        background-size: 200% 100% !important;
+        animation: move 10s ease infinite;
+        transform: translate3d(0, 0, 0);
+        background: #092756;
+        background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -moz-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -moz-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+        background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -webkit-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -webkit-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+        background: -o-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -o-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -o-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+        background: -ms-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -ms-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -ms-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+        background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), linear-gradient(to bottom, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), linear-gradient(135deg, #670d10 0%, #092756 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3E1D6D', endColorstr='#092756', GradientType=1);
+        height: 100vh
+    }
+
+    .orientador {
+        width: 90%;
+        max-width: 340px;
+        margin: 10vh auto;
+    }
+
+    .orientador__header {
+        text-align: center;
+        opacity: 0;
+        transform: translate3d(0, 500px, 0);
+        animation: arrive 500ms ease-in-out 0.7s forwards;
+    }
+
+    .orientador__title {
+        text-align: center;
+        font-size: $font-size;
+        margin-bottom: -10px;
+        font-weight: 500;
+        color: white;
+    }
+
+    .menu {
+        margin-top: 40px;
+        border-radius: 6px;
+        overflow: hidden;
+        opacity: 0;
+        transform: translate3d(0, 500px, 0);
+        animation: arrive 500ms ease-in-out 0.9s forwards;
+    }
+
+    .form--no {
+        animation: NO 1s ease-in-out;
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+
+    .form__input {
+        display: block;
+        width: 100%;
+        padding: 20px;
+        font-family: $font-family;
+        -webkit-appearance: none;
+        border: 0;
+        outline: 0;
+        transition: 0.3s;
+
+        &:focus {
+            background: darken(#fff, 3%);
+        }
+    }
+
+    .menu__btn {
+        display: block;
+        width: 100%;
+        padding: 20px;
+        font-family: $font-family;
+        -webkit-appearance: none;
+        outline: 0;
+        border: 0;
+        color: $color-primary;
+        background: $color-primary;
+        transition: 0.3s;
+
+        &:hover {
+            background: darken($color-primary, 5%);
+        }
+    }
+
+    @keyframes NO {
+
+        from,
+        to {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+
+        10%,
+        30%,
+        50%,
+        70%,
+        90% {
+            -webkit-transform: translate3d(-10px, 0, 0);
+            transform: translate3d(-10px, 0, 0);
+        }
+
+        20%,
+        40%,
+        60%,
+        80% {
+            -webkit-transform: translate3d(10px, 0, 0);
+            transform: translate3d(10px, 0, 0);
+        }
+    }
+
+    @keyframes arrive {
+        0% {
+            opacity: 0;
+            transform: translate3d(0, 50px, 0);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    @keyframes move {
+        0% {
+            background-position: 0 0
+        }
+
+        50% {
+            background-position: 100% 0
+        }
+
+        100% {
+            background-position: 0 0
+        }
+    }
+    .hamburger-icon {
+        position: absolute;
+        z-index: 1;
+        top: 5vh;
+        left: 5vw;
+        padding-bottom: 2vh;
+    }
+
+    .hamburger-icon span {
+        height: 5px;
+        width: 40px;
+        background-color: white;
+        display: block;
+        margin: 5px 0px 5px 0px;
+        transition: 0.7s ease-in-out;
+        transform: none;
+    }
+
+    #openmenu:checked~.menu-pane {
+        left: -5vw;
+        transform: translateX(-5vw);
+    }
+
+    #openmenu:checked~.hamburger-icon span:nth-of-type(2) {
+        transform: translate(0%, 175%) rotate(-45deg);
+        background-color: white;
+    }
+
+    #openmenu:checked~.hamburger-icon span:nth-of-type(3) {
+        transform: rotate(45deg);
+        background-color: white;
+    }
+
+    #openmenu:checked~.hamburger-icon span:nth-of-type(1) {
+        opacity: 0;
+    }
+
+    #openmenu:checked~.hamburger-icon span:nth-of-type(4) {
+        opacity: 0;
+    }
+
+    div.menu-pane {
+        background-color: #000;
+        position: absolute;
+        transform: translateX(-105vw);
+        transform-origin: (0, 0);
+        width: 50vw;
+        height: 100%;
+        transition: 0.6s ease-in-out;
+    }
+
+    .menu-pane p {
+        color: black;
+        font-size: 0.6em;
+    }
+
+    .menu-pane nav {
+        padding: 20%;
+    }
+
+    .menu-links li,
+    a,
+    span {
+        transition: 0.5s ease-in-out;
+    }
+
+    .menu-pane ul {
+        padding: 10%;
+        display: inline-block;
+    }
+
+    .menu-pane li {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin-left: 10px;
+        font-size: 1em;
+    }
+
+
+    .menu-pane li:first-child {
+        font-size: 1.3em;
+        margin-left: -10px;
+    }
+
+
+    .menu-links li a {
+        color: white;
+        text-decoration: none;
+    }
+
+
+    .menu-links li:hover a {
+        color: #FFAB91;
+    }
+
+    .menu-links li:first-child:hover a {
+        color: black;
+        background-color: #FFAB91;
+    }
+
+    #QC-info {
+        background-color: #FFAB91;
+        border: 2px solid;
+        border-color: #FFAB91;
+        display: block;
+        opacity: 0;
+
+    }
+
+    .menu-links li:first-child:hover #QC-info {
+        opacity: 1;
+    }
+
+    .menu-links li:first-child:hover #DC-info {
+        opacity: 1;
+    }
+
+    #DC-info {
+        background-color: #FFAB91;
+        border: 2px solid;
+        border-color: #FFAB91;
+        display: block;
+        opacity: 0;
+    }
+
+
+    .menu-links li:first-child a {
+        padding: 5px;
+    }
+
+
+
+    input.hamburger-checkbox {
+        position: absolute;
+        z-index: 3;
+        top: 5vh;
+        left: 5vw;
+        width: 10vw;
+        opacity: 0;
+        height: 6vh;
+    }
+
+</style>
+
+<script>
+    const button = document.querySelector('.menu__btn')
+    const form = document.querySelector('.menu')
+
+    button.addEventListener('click', function () {
+        form.classList.add('form--no')
+    });
+</script>
+
+</style>
+</html>
