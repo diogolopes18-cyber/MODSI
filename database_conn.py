@@ -36,6 +36,8 @@ def connection_db(data_for_db, *args, **kwargs):
         elif(query == "search"):
             print("Test")
 
+        elif(query == "update"):
+            print("Test")
         #####################
         # Data commit
         #####################
