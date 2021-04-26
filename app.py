@@ -7,8 +7,10 @@ from flask import Flask, render_template, flash, request, redirect, url_for
 import database_conn as db
 
 app = Flask(__name__)
+error = None
+authorize = 0
 
-random_list = [1170654, 'Carolina']
+random_list = [1170655, 'Carolina1']
 
 
 ####################
@@ -26,10 +28,12 @@ def homepage():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    error = None
+    global error
     if(request.method == 'POST'):
         if(request.form['username'] != "test" or request.form['password'] != "test"):
             error = 'Invalid Credentials. Please try again.'
+        if(request.form['create'] == "true"):
+            return redirect(url_for('sign_in'))
         else:
             db.connection_db(random_list, query="insert")
             return redirect(url_for('homepage'))
@@ -37,11 +41,30 @@ def login():
     return render_template("login.html", error=error)
 
 
-# @app.route('/register', method=['GET', 'POST'])
-# def sign_in():
-#     if(request.method == 'POST'):
-#         if(request.form['username_sign_in'] != "" or request.form['password_sign_in'] != ""):
-#             print("yolo")
+@app.route('/register', methods=['GET', 'POST'])
+def sign_in():
+    # global error
+    # if(request.method == 'POST'):
+    #     if(request.form['username'] != "" or request.form['password'] != ""):
+    #         error = 'Please provide some sign up information'
+    #     else:
+    #         #db.connection_db(random_list, query="insert")
+    #         return redirect(url_for('login'))
+
+    return render_template("registo.html", error=error)
+
+
+@app.route('/get_back', methods=['GET', 'POST'])
+def forgot_password():
+    # # Resets password
+    # if(request.method == 'GET'):
+    #     if(request.form['forgot_password'] == "Forgot Password"):
+    #         # Insert update method
+    #         return render_template("forgot_password.html")
+    #     else:
+    #         error = 'Must provide a username for password recovery'
+
+    return render_template("forgot_password.html")
 
 
 @app.route('/connection')
