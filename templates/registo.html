@@ -6,8 +6,8 @@
 </head>
 <div class="user">
     <header class="user__header">
-        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg" alt="" />
-        <h1 class="user__title">Sign Up</h1>
+       
+        <h1 class="user__title">Crie a sua conta</h1>
     </header>
 
     <form class="form">
@@ -26,7 +26,7 @@
             <!--value="{{request.form.username}}"-->
         </div>
 
-        <button class="btn" type="button">Register</button>
+        <button class="btn" type="button">Registo</button>
     </form>
 </div>
 
@@ -39,7 +39,7 @@
         14px;
     }
 
-    $color-primary: #ABA194;
+    $color-primary: #092756;
 
     * {
         margin: 0;
@@ -53,7 +53,13 @@
         background-size: 200% 100% !important;
         animation: move 10s ease infinite;
         transform: translate3d(0, 0, 0);
-        background: linear-gradient(45deg, #49D49D 10%, #A2C7E5 90%);
+        background: #092756;
+        background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -moz-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -moz-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+        background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -webkit-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -webkit-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+        background: -o-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -o-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -o-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+        background: -ms-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -ms-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -ms-linear-gradient(-45deg, #670d10 0%, #092756 100%);
+        background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), linear-gradient(to bottom, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), linear-gradient(135deg, #670d10 0%, #092756 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3E1D6D', endColorstr='#092756', GradientType=1);
         height: 100vh
     }
 
@@ -115,7 +121,7 @@
         -webkit-appearance: none;
         outline: 0;
         border: 0;
-        color: green;
+        color: $color-primary;
         background: $color-primary;
         transition: 0.3s;
 
