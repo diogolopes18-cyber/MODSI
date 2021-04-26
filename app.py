@@ -30,7 +30,7 @@ def homepage():
 def login():
     global error
     if(request.method == 'POST'):
-        if(request.form['username'] == "" or request.form['password'] == ""):
+        if(request.form['username'] != "test" or request.form['password'] != "test"):
             error = 'Invalid Credentials. Please try again.'
         if(request.form['create'] == "true"):
             return redirect(url_for('sign_in'))
