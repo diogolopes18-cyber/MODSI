@@ -50,7 +50,6 @@ def login():
 def sign_in():
     global error
     if(request.method == 'POST'):
-        pass
         if(request.form['username'] == "" or request.form['pass'] == ""):
             error = 'Please provide some sign up information'
         else:
