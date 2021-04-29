@@ -30,10 +30,15 @@ def homepage():
 def login():
     global error
     if(request.method == 'POST'):
+
+        # Check for empty inputs
         if(request.form['username'] == "" or request.form['password'] == ""):
             error = 'Invalid Credentials. Please try again.'
+
+        # If someone wants to create an account
         if(request.form['create'] == "true"):
             return redirect(url_for('sign_in'))
+
         else:
             db.connection_db(random_list, query="insert")
             return redirect(url_for('homepage'))
@@ -43,13 +48,17 @@ def login():
 
 @app.route('/register', methods=['GET', 'POST'])
 def sign_in():
-    # global error
-    # if(request.method == 'POST'):
-    #     if(request.form['username'] != "" or request.form['password'] != ""):
-    #         error = 'Please provide some sign up information'
-    #     else:
-    #         #db.connection_db(random_list, query="insert")
-    #         return redirect(url_for('login'))
+    global error
+    if(request.method == 'POST'):
+        pass
+        if(request.form['username'] == "" or request.form['pass'] == ""):
+            error = 'Please provide some sign up information'
+        else:
+            params_to_insert = [
+                request.form['username'], request.form['pass']
+            ]
+            db.connection_db(params_to_insert, query="insert")
+            return redirect(url_for('login'))
 
     return render_template("registo.html", error=error)
 
