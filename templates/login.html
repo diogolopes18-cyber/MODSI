@@ -49,8 +49,14 @@
         <form action="/register" method="POST">
             <button type="submit" class="btn btn-primary btn-block btn-large" name="create" value="true">Criar
                 Conta</button>
-            <p class="forgot"><a style="color:white" href="#">Forgot Password?</a></p>
-            <p class="forgot"><a style="color:white" href="#">Entrar como convidado</a></p>
+        </form>
+
+        <!--Need to rethink this design-->
+        <form action="forgot_password.html">
+            <a style="color:white" href="#" onclick="{window.open('http://127.0.0.1:5000/get_back');}">Forgot
+                Password?</a>
+            </p>
+            <a style="color:white" href="#" name="guest" value="true">Entrar como convidado</a></p>
         </form>
 
         <!-- {% if error %}
