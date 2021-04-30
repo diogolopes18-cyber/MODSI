@@ -10,16 +10,22 @@
         <h1 class="user__title">Crie a sua conta</h1>
     </header>
 
-    <form class="form" action="" method="POST">
+    <form class="form">
         <div class="form__group">
             <input type="text" placeholder="Username" class="form__input" name="username"
                 value="{{request.form.username}}" />
+            <!--value="{{request.form.username}}"-->
+        </div>
 
+        <div class="form__group">
             <input type="email" placeholder="Email" class="form__input" name="email" value="{{request.form.email}}" />
+            <!--value="{{request.form.email}}"-->
+        </div>
 
+        <div class="form__group">
             <input type="password" placeholder="Password" class="form__input" name="password"
-                value="{{request.form.pass}}" />
-
+                value="{{request.form.username}}" />
+            <!--value="{{request.form.username}}"-->
         </div>
 
         <button class="btn" type="button">Registo</button>
