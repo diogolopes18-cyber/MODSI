@@ -34,11 +34,6 @@ def login():
         # Check for empty inputs
         if(request.form['username'] == "" or request.form['password'] == ""):
             error = 'Invalid Credentials. Please try again.'
-
-        # # If someone wants to create an account
-        # if(request.form['create'] == "true"):
-        #     return redirect(url_for('sign_in'))
-
         else:
             db.connection_db(random_list, query="search")
             return redirect(url_for('homepage'))
@@ -73,13 +68,6 @@ def forgot_password():
     #         error = 'Must provide a username for password recovery'
 
     return render_template("forgot_password.html")
-
-
-@app.route('/connection')
-def connect():
-    db.connection_db(random_list)
-
-    return redirect(url_for("main_page"))
 
 
 if __name__ == "__main__":
