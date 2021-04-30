@@ -5,9 +5,11 @@ import json
 import psycopg2
 import configparser
 
-
+# Parses file
 config = configparser.ConfigParser()
 config.read('db/database_info.ini', encoding='utf-8')
+
+# Importing SQL files
 
 
 def connection_db(data_for_db, *args, **kwargs):
@@ -34,7 +36,8 @@ def connection_db(data_for_db, *args, **kwargs):
             cursor.execute(insert_query, [(data_for_db[0], data_for_db[1])])
 
         elif(query == "search"):
-            print("Test")
+            search_query = "SELECT EXISTS(SELECT mec_aluno FROM alunos_modsi WHERE mec_aluno=%s);"
+            cursor.execute(search_query, [data_for_db[0]])
 
         elif(query == "update"):
             print("Test")
@@ -42,7 +45,7 @@ def connection_db(data_for_db, *args, **kwargs):
         # Data commit
         #####################
         connection.commit()
-        print("Data inserted")
+        print("Query sucessful")
 
     except (Exception, psycopg2.Error) as error:
         print("Error while connecting to PostgreSQL", error)
