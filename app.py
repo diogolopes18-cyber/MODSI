@@ -10,7 +10,7 @@ app = Flask(__name__)
 error = None
 authorize = 0
 
-random_list = [1170655, 'Carolina1']
+random_list = [1170654, 'Carolina']
 
 
 ####################
@@ -35,12 +35,12 @@ def login():
         if(request.form['username'] == "" or request.form['password'] == ""):
             error = 'Invalid Credentials. Please try again.'
 
-        # If someone wants to create an account
-        if(request.form['create'] == "true"):
-            return redirect(url_for('sign_in'))
+        # # If someone wants to create an account
+        # if(request.form['create'] == "true"):
+        #     return redirect(url_for('sign_in'))
 
         else:
-            db.connection_db(random_list, query="insert")
+            db.connection_db(random_list, query="search")
             return redirect(url_for('homepage'))
 
     return render_template("login.html", error=error)
@@ -50,7 +50,7 @@ def login():
 def sign_in():
     global error
     if(request.method == 'POST'):
-        if(request.form['username'] == "" or request.form['pass'] == ""):
+        if(request.form['username'] == '' or request.form['pass'] == ''):
             error = 'Please provide some sign up information'
         else:
             params_to_insert = [
