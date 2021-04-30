@@ -33,6 +33,7 @@ def connection_db(data_for_db, *args, **kwargs):
         #####################
         if(query == "insert"):
             insert_query = "INSERT INTO alunos_modsi (mec_aluno, nome) VALUES %s"
+            assert len(data_for_db) != 0, "No data to insert"
             cursor.execute(insert_query, [(data_for_db[0], data_for_db[1])])
 
         elif(query == "search"):
