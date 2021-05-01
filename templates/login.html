@@ -46,10 +46,9 @@
                 value="{{request.form.password}}" />
             <button type=" submit" class="btn btn-primary btn-block btn-large">Login</button>
         </form>
-        <form action="/register" method="POST">
-            <button type="submit" class="btn btn-primary btn-block btn-large" href="/register">Criar
-                Conta</button>
-        </form>
+        <button type="submit" class="btn btn-primary btn-block btn-large" href="/register"
+            onclick="{window.open('http://127.0.0.1:5000/register');}">Criar
+            Conta</button>
 
         <!--Need to rethink this design-->
         <form action="forgot_password.html">
