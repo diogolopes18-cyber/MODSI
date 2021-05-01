@@ -13,14 +13,6 @@ authorize = 0
 random_list = [1170654, 'Carolina']
 
 
-####################
-##      TODO      ##
-####################
-
-# 1. 1º login guarda na DB (Registo)
-# 2. Procura na base de dados (SQL query)
-# 3. Se existir informação na DB - login
-
 @app.route('/')
 def homepage():
     return render_template("home.html")
@@ -45,7 +37,7 @@ def login():
 def sign_in():
     global error
     if(request.method == 'POST'):
-        if(request.form['username'] == '' or request.form['pass'] == ''):
+        if(request.form['user'] == "" or request.form['pass'] == ""):
             error = 'Please provide some sign up information'
         else:
             params_to_insert = [
@@ -59,13 +51,13 @@ def sign_in():
 
 @app.route('/get_back', methods=['GET', 'POST'])
 def forgot_password():
-    # # Resets password
-    # if(request.method == 'GET'):
-    #     if(request.form['forgot_password'] == "Forgot Password"):
-    #         # Insert update method
-    #         return render_template("forgot_password.html")
-    #     else:
-    #         error = 'Must provide a username for password recovery'
+    # Resets password
+    if(request.method == 'GET'):
+        if(request.form['forgot_password'] == "Forgot Password"):
+            # Insert update method
+            return render_template("forgot_password.html")
+        else:
+            error = 'Must provide a username for password recovery'
 
     return render_template("forgot_password.html")
 
