@@ -4,20 +4,109 @@
     <title>Página Pessoal</title>
 </head>
 
-
+<body>
 <div class="orientador">
     <header class="orientador__header">
        
-        <h1 class="orientador__title">Projetos académicos</h1>
+        <h1 class="orientador__title" id="title">Projetos académicos</h1>
     </header>
 
     <form class="menu">
-        <button class="menu__btn" type="button">Projetos submetidos</button>
-        <button class="menu__btn" type="button">Projetos disponíveis</button>
-        <button class="menu__btn" type="button">Escalonamento</button>
+        <h1 class="orientador__title" id="adicionar" style="display: none;">Adicionar Projetos</h1>
+        <button class="menu__btn" type="button" id="butao1" onclick="button1()">Adicionar Projetos</button>
+        <h1 class="orientador__title" id="data" style="display: none;">Alterar data apresentação</h1>
+        <button class="menu__btn" type="button" id="butao2" onclick="button2()">Alterar data apresentação</button>
+        <h1 class="orientador__title" id="submeter" style="display: none;">Submeter nota final</h1>
+        <button class="menu__btn" type="button" id="butao3" onclick="button3()">Submeter nota final</button>
+        <button class="menu__btn" type="button" id="butao4" onclick="button4()" style="display: none;">Voltar a Menu Principal</button>
+
     </form>
 </div>
 
+<script>
+    function button1(){
+        var add = document.getElementById("adicionar");
+        var b1 = document.getElementById("butao1");
+        var b2 = document.getElementById("butao2");
+        var b3 = document.getElementById("butao3");
+        var b4 = document.getElementById("butao4");
+        var texto = document.getElementById("title");
+
+        if(add.style.display === "none"){
+            add.style.display = "block";
+            b1.style.display = "none";
+            b2.style.display = "none";
+            b3.style.display = "none";
+            b4.style.display = "block";
+            texto.style.display = "none";
+        }
+
+    }
+
+    function button2(){
+        var date = document.getElementById("data");
+        var b1 = document.getElementById("butao1");
+        var b2 = document.getElementById("butao2");
+        var b3 = document.getElementById("butao3");
+        var b4 = document.getElementById("butao4");
+        var texto = document.getElementById("title");
+
+        if(date.style.display === "none"){
+            date.style.display = "block";
+            b1.style.display = "none";
+            b2.style.display = "none";
+            b3.style.display = "none";
+            b4.style.display = "block";
+            texto.style.display = "none";
+        }
+
+    }
+
+    function button3(){
+        var submit = document.getElementById("submeter");
+        var b1 = document.getElementById("butao1");
+        var b2 = document.getElementById("butao2");
+        var b3 = document.getElementById("butao3");
+        var b4 = document.getElementById("butao4");
+        var texto = document.getElementById("title");
+
+        if(submit.style.display === "none"){
+            submit.style.display = "block";
+            b1.style.display = "none";
+            b2.style.display = "none";
+            b3.style.display = "none";
+            b4.style.display = "block";
+            texto.style.display = "none";
+        }
+
+    }
+
+    function button4(){
+        var add = document.getElementById("adicionar");
+        var date = document.getElementById("data");
+        var submit = document.getElementById("submeter");
+        var texto = document.getElementById("title");
+        var b1 = document.getElementById("butao1");
+        var b2 = document.getElementById("butao2");
+        var b3 = document.getElementById("butao3");
+        var b4 = document.getElementById("butao4");
+
+        if(b4.style.display === "block"){
+            b4.style.display = "none";
+            b1.style.display = "block";
+            b2.style.display = "block";
+            b3.style.display = "block";
+            add.style.display = "none";
+            date.style.display = "none";
+            submit.style.display = "none";
+            texto.style.display = "block";
+        }
+
+    }
+
+</script>
+
+</body>
 <style>
     $font-family: {
         "Roboto";
