@@ -5,19 +5,158 @@
 </head>
 
 
-<div class="diretor">
-    <header class="diretor__header">
-       
-        <h1 class="diretor__title">Projetos académicos</h1>
-    </header>
 
-    <form class="menu">
-        <button class="menu__btn" type="button">Projetos a aprovar</button>
-        <button class="menu__btn" type="button">Projetos disponíveis</button>
-        <button class="menu__btn" type="button">Projetos submetidos</button>
-        <button class="menu__btn" type="button">Escalonamento</button>
-    </form>
-</div>
+
+<body>
+   
+    <div class="diretor">
+        <header class="diretor__header">
+           
+            <h1 class="diretor__title" id="title">Projetos académicos</h1>
+        </header>
+    
+    
+        <form class="menu">
+           
+            <h1 class="diretor__title" id="aprovar" style="display: none;">Projetos a aprovar</h1>
+            <button class="menu__btn" type="button" id="butao1" onclick="button1()">Projetos a aprovar</button>
+            <h1 class="diretor__title" id="disponivel" style="display: none;">Projetos disponíveis</h1>
+            <button class="menu__btn" type="button" id="butao2" onclick="button2()">Projetos disponíveis</button>
+            <h1 class="diretor__title" id="submetidos" style="display: none;">Projetos submetidos</h1>
+            <button class="menu__btn" type="button" id="butao3" onclick="button3()">Projetos submetidos</button>
+            <h1 class="diretor__title" id="escalo" style="display: none;">Escalonamento</h1>
+            <button class="menu__btn" type="button" id="butao4" onclick="button4()">Escalonamento</button>
+            <button class="menu__btn" type="button" id="butao5" onclick="button5()" style="display: none;">Voltar a Menu Principal</button>
+        </form>
+    </div>
+
+   
+
+            
+
+     <script>
+
+               function button1(){  
+                    var x = document.getElementById("aprovar");
+                    var texto = document.getElementById("title");
+                    var b = document.getElementById("butao1");
+                    var c = document.getElementById("butao2");
+                    var d = document.getElementById("butao3");
+                    var e = document.getElementById("butao4");
+                    var f = document.getElementById("butao5");
+                    
+                    if(x.style.display === "none"){
+                        x.style.display = "block";
+                        b.style.display = "none";
+                        c.style.display = "none";
+                        d.style.display = "none";
+                        e.style.display = "none";
+                        f.style.display = "block";
+                        texto.style.display = "none";
+                    }
+                
+               }
+
+               function button2(){  
+                    var y = document.getElementById("disponivel");
+                    var texto = document.getElementById("title");
+                    var b = document.getElementById("butao1");
+                    var c = document.getElementById("butao2");
+                    var d = document.getElementById("butao3");
+                    var e = document.getElementById("butao4");
+                    var f = document.getElementById("butao5");
+                    
+                    if(y.style.display === "none"){
+                        y.style.display = "block";
+                        b.style.display = "none";
+                        c.style.display = "none";
+                        d.style.display = "none";
+                        e.style.display = "none";
+                        f.style.display = "block";
+                        texto.style.display = "none";
+                       
+                        
+                    }
+                    
+               }
+
+
+               function button3(){  
+                    var z = document.getElementById("submetidos");
+                    var texto = document.getElementById("title");
+                    var b = document.getElementById("butao1");
+                    var c = document.getElementById("butao2");
+                    var d = document.getElementById("butao3");
+                    var e = document.getElementById("butao4");
+                    var f = document.getElementById("butao5");
+                    
+                    if(z.style.display === "none"){
+                        z.style.display = "block";
+                        b.style.display = "none";
+                        c.style.display = "none";
+                        d.style.display = "none";
+                        e.style.display = "none";
+                        f.style.display = "block";
+                        texto.style.display = "none";
+                        
+                    }
+                    
+               }
+
+
+               function button4(){  
+                    var w = document.getElementById("escalo");
+                    var texto = document.getElementById("title");
+                    var b = document.getElementById("butao1");
+                    var c = document.getElementById("butao2");
+                    var d = document.getElementById("butao3");
+                    var e = document.getElementById("butao4");
+                    var f = document.getElementById("butao5");
+                    
+                    if(w.style.display === "none"){
+                        w.style.display = "block";
+                        b.style.display = "none";
+                        c.style.display = "none";
+                        d.style.display = "none";
+                        e.style.display = "none";
+                        f.style.display = "block";
+                        texto.style.display = "none";
+                        
+                    }
+                    
+               }
+            
+                function button5(){
+                    var b = document.getElementById("butao1");
+                    var c = document.getElementById("butao2");
+                    var d = document.getElementById("butao3");
+                    var e = document.getElementById("butao4");
+                    var f = document.getElementById("butao5");
+                    var x = document.getElementById("aprovar");
+                    var y = document.getElementById("disponivel");
+                    var z = document.getElementById("submetidos");
+                    var w = document.getElementById("escalo");
+                    var texto = document.getElementById("title");
+
+
+                    if(f.style.display === "block"){
+                        b.style.display = "block";
+                        c.style.display = "block";
+                        d.style.display = "block";
+                        e.style.display = "block";
+                        f.style.display = "none";
+                        x.style.display = "none";
+                        y.style.display = "none";
+                        z.style.display = "none";
+                        w.style.display = "none";
+                        texto.style.display = "block";
+                    }
+            }
+       
+</script>
+</body>
+
+
 
 <style>
     $font-family: {
@@ -74,6 +213,8 @@
     }
 
     .menu {
+        color:#fff;
+        text-align: left;
         margin-top: 40px;
         border-radius: 6px;
         overflow: hidden;
@@ -81,6 +222,8 @@
         transform: translate3d(0, 500px, 0);
         animation: arrive 500ms ease-in-out 0.9s forwards;
     }
+
+    
 
     .form--no {
         animation: NO 1s ease-in-out;
