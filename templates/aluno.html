@@ -4,19 +4,119 @@
     <title>Página Pessoal</title>
 </head>
 
-
+<body>
 <div class="aluno">
     <header class="aluno__header">
        
-        <h1 class="aluno__title">Projetos académicos</h1>
+        <h1 class="aluno__title" id="title">Projetos académicos</h1>
     </header>
 
     <form class="menu">
-        <button class="menu__btn" type="button">Projetos submetidos</button>
-        <button class="menu__btn" type="button">Projetos disponíveis</button>
-        <button class="menu__btn" type="button">Submeter Projeto</button>
+        <h1 class="aluno__title" id="aprovar" style="display: none;">Projetos submetidos</h1>
+        <button class="menu__btn" type="button" id="butao1" onclick="button1()">Projetos submetidos</button>
+
+        <h1 class="aluno__title" id="disponivel" style="display: none;">Projetos disponíveis</h1>
+        <button class="menu__btn" type="button" id="butao2" onclick="button2()">Projetos disponíveis</button>
+
+        <h1 class="aluno__title" id="Submeter" style="display: none;">Submeter Projeto</h1>
+        <button class="menu__btn" type="button" id="butao3" onclick="button3()">Submeter Projeto</button>
+        <button class="menu__btn" type="button" id="butao4" onclick="button4()" style="display: none;">Voltar a Menu Principal</button>
     </form>
 </div>
+
+<script>
+        function button1(){
+            var aprovar = document.getElementById("aprovar");
+            var b1 = document.getElementById("butao1");
+            var b2 = document.getElementById("butao2");
+            var b3 = document.getElementById("butao3");
+            var b4 = document.getElementById("butao4");
+            var texto = document.getElementById("title");
+            
+            if (aprovar.style.display === "none"){
+                aprovar.style.display = "block";
+                b1.style.display = "none";
+                b2.style.display = "none";
+                b3.style.display = "none";
+                b4.style.display = "block";
+                texto.style.display = "none"; 
+            }
+            else {
+                aprovar.style.display = "none";
+                b4.style.display = "none";
+            }
+        }
+
+        function button2(){
+            var disponivel = document.getElementById("disponivel");
+            var b1 = document.getElementById("butao1");
+            var b2 = document.getElementById("butao2");
+            var b3 = document.getElementById("butao3");
+            var b4 = document.getElementById("butao4");
+            var texto = document.getElementById("title");
+
+            if(disponivel.style.display === "none"){
+                disponivel.style.display = "block";
+                b1.style.display = "none";
+                b2.style.display = "none";
+                b3.style.display = "none";
+                b4.style.display = "block";
+                texto.style.display = "none";  
+            }
+            else {
+                disponivel.style.display = "none";
+                b4.style.display = "none";
+            }
+            
+        }
+    
+        function button3(){
+            var submeter = document.getElementById("Submeter");
+            var b1 = document.getElementById("butao1");
+            var b2 = document.getElementById("butao2");
+            var b3 = document.getElementById("butao3");
+            var b4 = document.getElementById("butao4");
+            var texto = document.getElementById("title");
+
+            if(submeter.style.display === "none"){
+                submeter.style.display = "block";
+                b1.style.display = "none";
+                b2.style.display = "none";
+                b3.style.display = "none";
+                b4.style.display = "block";
+                texto.style.display = "none";  
+            }
+            else {
+                submeter.style.display = "none";
+                b4.style.display = "none";
+            }
+            
+        }
+
+        function button4(){
+            var aprovar = document.getElementById("aprovar");
+            var disponivel = document.getElementById("disponivel");
+            var submeter = document.getElementById("Submeter");
+            var b1 = document.getElementById("butao1");
+            var b2 = document.getElementById("butao2");
+            var b3 = document.getElementById("butao3");
+            var b4 = document.getElementById("butao4");
+            var texto = document.getElementById("title");
+
+            if(b4.style.display === "block"){
+                b4.style.display = "none";
+                aprovar.style.display = "none";
+                disponivel.style.display = "none";
+                submeter.style.display = "none";
+                b1.style.display = "block";
+                b2.style.display = "block";
+                b3.style.display = "block";
+                texto.style.display = "block";
+            }
+            
+        }
+</script>
+</body>
 
 <style>
     $font-family: {
