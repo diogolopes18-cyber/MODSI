@@ -37,11 +37,11 @@ def login():
 def sign_in():
     global error
     if(request.method == 'POST'):
-        if(request.form['user'] == "" or request.form['pass'] == ""):
+        if(request.form['username'] == "" or request.form['password'] == ""):
             error = 'Please provide some sign up information'
         else:
             params_to_insert = [
-                request.form['username'], request.form['pass']
+                request.form['username'], request.form['password']
             ]
             db.connection_db(params_to_insert, query="insert")
             return redirect(url_for('login'))
