@@ -2,7 +2,8 @@ CREATE TABLE IF NOT EXISTS
 ALUNOS_MODSI
 (
     mec_aluno int PRIMARY KEY UNIQUE NOT NULL,
-    nome varchar(255) NOT NULL
+    pass varchar(255) NOT NULL,
+    email varchar(50) UNIQUE NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS
@@ -25,12 +26,4 @@ INFO_PROJETOS
     sigla_resp varchar(5) UNIQUE NOT NULL,
     departamento varchar(50),
     FOREIGN KEY (sigla_resp) REFERENCES DIRETOR (sigla)
-);
-
-CREATE TABLE IF NOT EXISTS
-LOGIN_DETAILS
-(
-    username int PRIMARY KEY NOT NULL,
-    pass varchar(50) NOT NULL,
-    FOREIGN KEY (username) REFERENCES ALUNOS_MODSI(mec_aluno)
 );
