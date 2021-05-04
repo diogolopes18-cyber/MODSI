@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 <head>
     <title>Página Pessoal</title>
@@ -13,26 +14,30 @@
         <header class="diretor__header">
            
             <h1 class="diretor__title" id="title">Projetos académicos</h1>
-        </header>
-    
-    
-        <form class="menu">
-           
+        </header>    
+            <br/>
             <h1 class="diretor__title" id="aprovar" style="display: none;">Projetos a aprovar</h1>
             <button class="menu__btn" type="button" id="butao1" onclick="button1()">Projetos a aprovar</button>
             <h1 class="diretor__title" id="disponivel" style="display: none;">Projetos disponíveis</h1>
+            
+            <input type="button" id="mais" value="+" style="display: none;" onclick="adicionar()"/>
+            <textarea id="descricao" cols="80" rows="10" style="display: none;">
+            Descrição do projeto.
+            </textarea>
+            <textarea id="data" cols="30" rows="1" style="display: none;">Data apresentação</textarea>
+            <input type="file" id="ficheiro" accept=".pdf" value="Escolher ficheiro" style="display: none;">
             <button class="menu__btn" type="button" id="butao2" onclick="button2()">Projetos disponíveis</button>
             <h1 class="diretor__title" id="submetidos" style="display: none;">Projetos submetidos</h1>
             <button class="menu__btn" type="button" id="butao3" onclick="button3()">Projetos submetidos</button>
             <h1 class="diretor__title" id="escalo" style="display: none;">Escalonamento</h1>
             <button class="menu__btn" type="button" id="butao4" onclick="button4()">Escalonamento</button>
-            <button class="menu__btn" type="button" id="butao5" onclick="button5()" style="display: none;">Voltar a Menu Principal</button>
-        </form>
+            <br/><button class="menu__btn" type="button" id="butao5" onclick="button5()" style="display: none;">Voltar a Menu Principal</button>
+        
     </div>
 
-   
-
+    
             
+                
 
      <script>
 
@@ -53,6 +58,7 @@
                         e.style.display = "none";
                         f.style.display = "block";
                         texto.style.display = "none";
+                       
                     }
                 
                }
@@ -65,6 +71,8 @@
                     var d = document.getElementById("butao3");
                     var e = document.getElementById("butao4");
                     var f = document.getElementById("butao5");
+                    var plus = document.getElementById("mais");
+                   
                     
                     if(y.style.display === "none"){
                         y.style.display = "block";
@@ -74,8 +82,7 @@
                         e.style.display = "none";
                         f.style.display = "block";
                         texto.style.display = "none";
-                       
-                        
+                        plus.style.display = "block";
                     }
                     
                }
@@ -137,6 +144,10 @@
                     var z = document.getElementById("submetidos");
                     var w = document.getElementById("escalo");
                     var texto = document.getElementById("title");
+                    var plus = document.getElementById("mais");
+                    var box = document.getElementById("descricao");
+                    var file = document.getElementById("ficheiro");
+                    var date = document.getElementById("data");
 
 
                     if(f.style.display === "block"){
@@ -150,7 +161,28 @@
                         z.style.display = "none";
                         w.style.display = "none";
                         texto.style.display = "block";
+                        plus.style.display = "none";
+                        box.style.display = "none";
+                        file.style.display = "none";
+                        date.style.display = "none";
                     }
+            }
+
+            function adicionar(){
+                var plus = document.getElementById("mais");
+                var box = document.getElementById("descricao");
+                var file = document.getElementById("ficheiro");
+                var date = document.getElementById("data");
+                
+
+                if(box.style.display === "none"){
+                    box.style.display = "block";
+                    file.style.display = "block";
+                    date.style.display = "block";
+                    plus.style.display = "none";
+                }
+
+                
             }
        
 </script>
@@ -262,6 +294,10 @@
             background: darken($color-primary, 5%);
         }
     }
+
+   
+
+
 
     @keyframes NO {
 
