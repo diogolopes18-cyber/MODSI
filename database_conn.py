@@ -32,16 +32,19 @@ def connection_db(data_for_db, *args, **kwargs):
         # Data insertion
         #####################
         if(query == "insert"):
-            insert_query = "INSERT INTO alunos_modsi (mec_aluno, nome) VALUES %s"
+            insert_query = "INSERT INTO alunos_modsi (mec_aluno, pass, mail) VALUES %s"
             assert len(data_for_db) != 0, "No data to insert"
-            cursor.execute(insert_query, [(data_for_db[0], data_for_db[1])])
+            cursor.execute(
+                insert_query, [(data_for_db[0], data_for_db[1]), data_for_db[2]])
 
         elif(query == "search"):
             search_query = "SELECT EXISTS(SELECT mec_aluno FROM alunos_modsi WHERE mec_aluno=%s);"
             cursor.execute(search_query, [data_for_db[0]])
 
         elif(query == "update"):
-            print("Test")
+            update_query = "UPDATE alunos_modsi SET pass=%s WHERE username=%s"
+            cursor.execute(update_query, data_for_db[1], data_for_db[0])
+
         #####################
         # Data commit
         #####################
