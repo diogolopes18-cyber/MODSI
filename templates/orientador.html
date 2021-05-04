@@ -11,16 +11,24 @@
         <h1 class="orientador__title" id="title">Projetos académicos</h1>
     </header>
 
-    <form class="menu">
+        <br/>    
         <h1 class="orientador__title" id="adicionar" style="display: none;">Adicionar Projetos</h1>
+        
         <button class="menu__btn" type="button" id="butao1" onclick="button1()">Adicionar Projetos</button>
+
+        <input type="button" id="mais" value="+" style="display: none;" onclick="adicionar()"/>
+        <textarea id="descricao" cols="80" rows="10" style="display: none;">
+            Descrição do projeto.
+        </textarea>
+        <input type="file" id="ficheiro" accept=".pdf" value="Escolher ficheiro" style="display: none;">
+
         <h1 class="orientador__title" id="data" style="display: none;">Alterar data apresentação</h1>
         <button class="menu__btn" type="button" id="butao2" onclick="button2()">Alterar data apresentação</button>
         <h1 class="orientador__title" id="submeter" style="display: none;">Submeter nota final</h1>
         <button class="menu__btn" type="button" id="butao3" onclick="button3()">Submeter nota final</button>
         <button class="menu__btn" type="button" id="butao4" onclick="button4()" style="display: none;">Voltar a Menu Principal</button>
 
-    </form>
+    
 </div>
 
 <script>
@@ -31,6 +39,7 @@
         var b3 = document.getElementById("butao3");
         var b4 = document.getElementById("butao4");
         var texto = document.getElementById("title");
+        var plus = document.getElementById("mais");
 
         if(add.style.display === "none"){
             add.style.display = "block";
@@ -39,6 +48,7 @@
             b3.style.display = "none";
             b4.style.display = "block";
             texto.style.display = "none";
+            plus.style.display = "block";
         }
 
     }
@@ -50,6 +60,7 @@
         var b3 = document.getElementById("butao3");
         var b4 = document.getElementById("butao4");
         var texto = document.getElementById("title");
+        
 
         if(date.style.display === "none"){
             date.style.display = "block";
@@ -58,6 +69,7 @@
             b3.style.display = "none";
             b4.style.display = "block";
             texto.style.display = "none";
+            
         }
 
     }
@@ -90,6 +102,9 @@
         var b2 = document.getElementById("butao2");
         var b3 = document.getElementById("butao3");
         var b4 = document.getElementById("butao4");
+        var plus = document.getElementById("mais");
+        var box = document.getElementById("descricao");
+        var file = document.getElementById("ficheiro");
 
         if(b4.style.display === "block"){
             b4.style.display = "none";
@@ -100,9 +115,24 @@
             date.style.display = "none";
             submit.style.display = "none";
             texto.style.display = "block";
+            plus.style.display = "none";
+            box.style.display = "none";
+            file.style.display = "none";
         }
 
     }
+
+    function adicionar(){
+        var plus = document.getElementById("mais");
+        var box = document.getElementById("descricao");
+        var file = document.getElementById("ficheiro");
+
+        if(box.style.display === "none"){
+            box.style.display = "block";
+            file.style.display = "block";
+            plus.style.display = "none";
+        }
+        }
 
 </script>
 
