@@ -5,145 +5,130 @@
 </head>
 
 <body>
-<div class="aluno">
-    <header class="aluno__header">
+    <div class="menu-container">
+        <input type="checkbox" id="openmenu" class="hamburger-checkbox">
+        <div class="hamburger-icon">
+            <label for="openmenu" id="hamburger-label">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>
+        <div class="menu-pane">
+
+            <nav>
+                <ul class="menu-links">
+                    <li><a href="login.html">LogIn</a></li>
+                    <li><a href="registo.html">Registo</a></li>
+                    
+                </ul>
+
+
+            </nav>
+        </div>
+    </div>
+<div class="publico">
+    <header class="publico__header">
        
-        <h1 class="aluno__title" id="title">Projetos académicos</h1>
+        <h1 class="publico__title" id="title">Projetos académicos</h1>
     </header>
 
-        <br/>
-        <h1 class="aluno__title" id="aprovar" style="display: none;">Projetos submetidos</h1>
-        <button class="menu__btn" type="button" id="butao1" onclick="button1()">Projetos submetidos</button>
-
-       
-        <h1 class="aluno__title" id="disponivel" style="display: none;">Projetos disponíveis</h1>
-        <input type="button" id="mais" value="+" style="display: none;" onclick="adicionar()"/>
-        <textarea id="descricao" cols="80" rows="10" style="display: none;">
-            Descrição do projeto.
-        </textarea>
-        <input type="file" id="ficheiro" accept=".pdf" value="Escolher ficheiro" style="display: none;">
-        <button class="menu__btn" type="button" id="butao2" onclick="button2()">Projetos disponíveis</button>
-
-        <h1 class="aluno__title" id="Submeter" style="display: none;">Submeter Projeto</h1>
-        <button class="menu__btn" type="button" id="butao3" onclick="button3()">Submeter Projeto</button>
+    <form class="menu">
+        <h1 class="publico__title" id="publico" style="display: none;">Projetos públicos</h1>
+        <button class="menu__btn" type="button" id="butao1" onclick="button1()">Projetos públicos</button>
+        <h1 class="publico__title" id="escala" style="display: none;">Escalonamento</h1>
+        <button class="menu__btn" type="button" id="butao2" onclick="button2()">Escalonamento</button>
+        <h1 class="publico__title" id="rela" style="display: none;">Relatórios</h1>
+        <button class="menu__btn" type="button" id="butao3" onclick="button3()">Relatórios</button>
         <button class="menu__btn" type="button" id="butao4" onclick="button4()" style="display: none;">Voltar a Menu Principal</button>
-   
+
+    </form>
 </div>
 
 <script>
-        function button1(){
-            var aprovar = document.getElementById("aprovar");
-            var b1 = document.getElementById("butao1");
-            var b2 = document.getElementById("butao2");
-            var b3 = document.getElementById("butao3");
-            var b4 = document.getElementById("butao4");
-            var texto = document.getElementById("title");
-            
-            if (aprovar.style.display === "none"){
-                aprovar.style.display = "block";
-                b1.style.display = "none";
-                b2.style.display = "none";
-                b3.style.display = "none";
-                b4.style.display = "block";
-                texto.style.display = "none"; 
-            }
-            else {
-                aprovar.style.display = "none";
-                b4.style.display = "none";
-            }
+    function button1(){
+        var pub = document.getElementById("publico");
+        var b1 = document.getElementById("butao1");
+        var b2 = document.getElementById("butao2");
+        var b3 = document.getElementById("butao3");
+        var b4 = document.getElementById("butao4");
+        var texto = document.getElementById("title");
+
+        if(pub.style.display === "none"){
+            pub.style.display = "block";
+            b1.style.display = "none";
+            b2.style.display = "none";
+            b3.style.display = "none";
+            b4.style.display = "block";
+            texto.style.display = "none";
         }
+    }
 
-        function button2(){
-            var disponivel = document.getElementById("disponivel");
-            var b1 = document.getElementById("butao1");
-            var b2 = document.getElementById("butao2");
-            var b3 = document.getElementById("butao3");
-            var b4 = document.getElementById("butao4");
-            var texto = document.getElementById("title");
-            var plus = document.getElementById("mais");
+    function button2(){
+        var esc = document.getElementById("escala");
+        var b1 = document.getElementById("butao1");
+        var b2 = document.getElementById("butao2");
+        var b3 = document.getElementById("butao3");
+        var b4 = document.getElementById("butao4");
+        var texto = document.getElementById("title");
 
-            if(disponivel.style.display === "none"){
-                disponivel.style.display = "block";
-                b1.style.display = "none";
-                b2.style.display = "none";
-                b3.style.display = "none";
-                b4.style.display = "block";
-                texto.style.display = "none";
-                plus.style.display = "block";  
-            }
-            else {
-                disponivel.style.display = "none";
-                b4.style.display = "none";
-            }
-            
+        if(esc.style.display === "none"){
+            esc.style.display = "block";
+            b1.style.display = "none";
+            b2.style.display = "none";
+            b3.style.display = "none";
+            b4.style.display = "block";
+            texto.style.display = "none";
+        }
+    }
+
+    function button3(){
+        var rel = document.getElementById("rela");
+        var b1 = document.getElementById("butao1");
+        var b2 = document.getElementById("butao2");
+        var b3 = document.getElementById("butao3");
+        var b4 = document.getElementById("butao4");
+        var texto = document.getElementById("title");
+
+        if(rel.style.display === "none"){
+            rel.style.display = "block";
+            b1.style.display = "none";
+            b2.style.display = "none";
+            b3.style.display = "none";
+            b4.style.display = "block";
+            texto.style.display = "none";
         }
     
-        function button3(){
-            var submeter = document.getElementById("Submeter");
-            var b1 = document.getElementById("butao1");
-            var b2 = document.getElementById("butao2");
-            var b3 = document.getElementById("butao3");
-            var b4 = document.getElementById("butao4");
-            var texto = document.getElementById("title");
+    }
 
-            if(submeter.style.display === "none"){
-                submeter.style.display = "block";
-                b1.style.display = "none";
-                b2.style.display = "none";
-                b3.style.display = "none";
-                b4.style.display = "block";
-                texto.style.display = "none";  
-            }
-            else {
-                submeter.style.display = "none";
-                b4.style.display = "none";
-            }
-            
+    function button4(){
+        var pub = document.getElementById("publico");
+        var esc = document.getElementById("escala");
+        var rel = document.getElementById("rela");
+        var b1 = document.getElementById("butao1");
+        var b2 = document.getElementById("butao2");
+        var b3 = document.getElementById("butao3");
+        var b4 = document.getElementById("butao4");
+        var texto = document.getElementById("title");
+
+        if(b4.style.display === "block"){
+            b4.style.display = "none";
+            b1.style.display = "block";
+            b2.style.display = "block";
+            b3.style.display = "block";
+            pub.style.display = "none";
+            esc.style.display = "none";
+            rel.style.display = "none";
+            texto.style.display = "block";
         }
 
-        function button4(){
-            var aprovar = document.getElementById("aprovar");
-            var disponivel = document.getElementById("disponivel");
-            var submeter = document.getElementById("Submeter");
-            var b1 = document.getElementById("butao1");
-            var b2 = document.getElementById("butao2");
-            var b3 = document.getElementById("butao3");
-            var b4 = document.getElementById("butao4");
-            var texto = document.getElementById("title");
-            var plus = document.getElementById("mais");
-            var box = document.getElementById("descricao");
-            var file = document.getElementById("ficheiro");
+    }
 
-            if(b4.style.display === "block"){
-                b4.style.display = "none";
-                aprovar.style.display = "none";
-                disponivel.style.display = "none";
-                submeter.style.display = "none";
-                b1.style.display = "block";
-                b2.style.display = "block";
-                b3.style.display = "block";
-                texto.style.display = "block";
-                plus.style.display = "none";
-                box.style.display = "none";
-                file.style.display = "none";
-            }
-            
-        }
-
-        function adicionar(){
-            var plus = document.getElementById("mais");
-            var box = document.getElementById("descricao");
-            var file = document.getElementById("ficheiro");
-
-                if(box.style.display === "none"){
-                    box.style.display = "block";
-                    file.style.display = "block";
-                    plus.style.display = "none";
-                }
-        }
 </script>
-</body>
 
+
+</body>
 <style>
     $font-family: {
         "Roboto";
@@ -177,20 +162,20 @@
         height: 100vh
     }
 
-    .aluno {
+    .publico {
         width: 90%;
         max-width: 340px;
         margin: 10vh auto;
     }
 
-    .aluno__header {
+    .publico__header {
         text-align: center;
         opacity: 0;
         transform: translate3d(0, 500px, 0);
         animation: arrive 500ms ease-in-out 0.7s forwards;
     }
 
-    .aluno__title {
+    .publico__title {
         text-align: center;
         font-size: $font-size;
         margin-bottom: -10px;
@@ -297,7 +282,7 @@
         }
     }
     .hamburger-icon {
-        position: absolute;
+        position:absolute;
         z-index: 1;
         top: 5vh;
         left: 5vw;
