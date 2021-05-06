@@ -37,11 +37,11 @@ def login():
 def sign_in():
     global error
     if(request.method == 'POST'):
-        if(request.form['username'] == "" or request.form['password'] == ""):
+        if(request.form['username'] == "" or request.form['password'] == "" or request.form['email'] == ""):
             error = 'Please provide some sign up information'
         else:
             params_to_insert = [
-                request.form['username'], request.form['password']
+                request.form['username'], request.form['password'], request.form['email']
             ]
             db.connection_db(params_to_insert, query="insert")
             return redirect(url_for('login'))
@@ -51,15 +51,20 @@ def sign_in():
 
 @app.route('/get_back', methods=['GET', 'POST'])
 def forgot_password():
+    global error
     # Resets password
-    if(request.method == 'GET'):
-        if(request.form['forgot_password'] == "Forgot Password"):
+    if(request.method == 'POST'):
+        if(request.form['new_username'] == "" or request.form['new_password']):
             # Insert update method
-            return render_template("forgot_password.html")
+            error = 'Provide new data'
         else:
-            error = 'Must provide a username for password recovery'
+            update = [
+                request.form['new_username'], request.form['new_password']
+            ]
+            db.connection_db(update, query="update")
+            return redirect(url_for('login'))
 
-    return render_template("forgot_password.html")
+    return render_template("forgot_password.html", error=error)
 
 
 if __name__ == "__main__":
