@@ -28,7 +28,7 @@ def login():
             error = 'Invalid Credentials. Please try again.'
         else:
             db.connection_db(random_list, query="search")
-            return redirect(url_for('homepage'))
+            return redirect(url_for('aluno'))
 
     return render_template("login.html", error=error)
 
@@ -55,16 +55,25 @@ def forgot_password():
     # Resets password
     if(request.method == 'POST'):
         if(request.form['new_username'] == "" or request.form['new_password']):
-            # Insert update method
             error = 'Provide new data'
         else:
             update = [
                 request.form['new_username'], request.form['new_password']
             ]
+            print(update)
+            # Updates password on database
             db.connection_db(update, query="update")
             return redirect(url_for('login'))
 
     return render_template("forgot_password.html", error=error)
+
+
+@app.route('/aluno', methods=['GET', 'POST'])
+def submit_paper():
+    # uploaded_file = request.files['input_name']
+    # assert len(uploaded_file) > 0, "File size must be greater than zero"
+
+    return render_template("aluno.html")
 
 
 if __name__ == "__main__":
