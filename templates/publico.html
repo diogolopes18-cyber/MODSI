@@ -1,126 +1,127 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Página Pessoal - Público</title>
 </head>
 
 <body>
-  
+
     <div class="topnav">
-        <img  src="./Isep-logo.png" id="isep_logo" width="180" height="48">
+        <img src="../static/Isep-logo.png" id="isep_logo" width="180" height="48">
         <a class="active" href="home.html">Home</a>
         <a class="active" href="registo.html">Registo</a>
         <a class="active" href="login.html">Login</a>
-      </div>
+    </div>
 
-<div class="publico">
-    <header class="publico__header">
-       
-        <h1 class="publico__title" id="title">Projetos académicos</h1>
-    </header>
+    <div class="publico">
+        <header class="publico__header">
 
-    <form class="menu">
-        <h1 class="publico__title" id="publico" style="display: none;">Projetos públicos</h1>
-        <button class="menu__btn" type="button" id="butao1" onclick="button1()">Projetos públicos</button>
-        <h1 class="publico__title" id="escala" style="display: none;">Escalonamento</h1>
-        <button class="menu__btn" type="button" id="butao2" onclick="button2()">Escalonamento</button>
-        <h1 class="publico__title" id="rela" style="display: none;">Relatórios</h1>
-        <button class="menu__btn" type="button" id="butao3" onclick="button3()">Relatórios</button>
-        <button class="menu__btn" type="button" id="butao4" onclick="button4()" style="display: none;">Voltar a Menu Principal</button>
+            <h1 class="publico__title" id="title">Projetos académicos</h1>
+        </header>
 
-    </form>
-</div>
+        <form class="menu">
+            <h1 class="publico__title" id="publico" style="display: none;">Projetos públicos</h1>
+            <button class="menu__btn" type="button" id="butao1" onclick="button1()">Projetos públicos</button>
+            <h1 class="publico__title" id="escala" style="display: none;">Escalonamento</h1>
+            <button class="menu__btn" type="button" id="butao2" onclick="button2()">Escalonamento</button>
+            <h1 class="publico__title" id="rela" style="display: none;">Relatórios</h1>
+            <button class="menu__btn" type="button" id="butao3" onclick="button3()">Relatórios</button>
+            <button class="menu__btn" type="button" id="butao4" onclick="button4()" style="display: none;">Voltar a Menu
+                Principal</button>
 
-<script>
-    function button1(){
-        var pub = document.getElementById("publico");
-        var b1 = document.getElementById("butao1");
-        var b2 = document.getElementById("butao2");
-        var b3 = document.getElementById("butao3");
-        var b4 = document.getElementById("butao4");
-        var texto = document.getElementById("title");
+        </form>
+    </div>
 
-        if(pub.style.display === "none"){
-            pub.style.display = "block";
-            b1.style.display = "none";
-            b2.style.display = "none";
-            b3.style.display = "none";
-            b4.style.display = "block";
-            texto.style.display = "none";
-        }
-    }
+    <script>
+        function button1() {
+            var pub = document.getElementById("publico");
+            var b1 = document.getElementById("butao1");
+            var b2 = document.getElementById("butao2");
+            var b3 = document.getElementById("butao3");
+            var b4 = document.getElementById("butao4");
+            var texto = document.getElementById("title");
 
-    function button2(){
-        var esc = document.getElementById("escala");
-        var b1 = document.getElementById("butao1");
-        var b2 = document.getElementById("butao2");
-        var b3 = document.getElementById("butao3");
-        var b4 = document.getElementById("butao4");
-        var texto = document.getElementById("title");
-
-        if(esc.style.display === "none"){
-            esc.style.display = "block";
-            b1.style.display = "none";
-            b2.style.display = "none";
-            b3.style.display = "none";
-            b4.style.display = "block";
-            texto.style.display = "none";
-        }
-    }
-
-    function button3(){
-        var rel = document.getElementById("rela");
-        var b1 = document.getElementById("butao1");
-        var b2 = document.getElementById("butao2");
-        var b3 = document.getElementById("butao3");
-        var b4 = document.getElementById("butao4");
-        var texto = document.getElementById("title");
-
-        if(rel.style.display === "none"){
-            rel.style.display = "block";
-            b1.style.display = "none";
-            b2.style.display = "none";
-            b3.style.display = "none";
-            b4.style.display = "block";
-            texto.style.display = "none";
-        }
-    
-    }
-
-    function button4(){
-        var pub = document.getElementById("publico");
-        var esc = document.getElementById("escala");
-        var rel = document.getElementById("rela");
-        var b1 = document.getElementById("butao1");
-        var b2 = document.getElementById("butao2");
-        var b3 = document.getElementById("butao3");
-        var b4 = document.getElementById("butao4");
-        var texto = document.getElementById("title");
-
-        if(b4.style.display === "block"){
-            b4.style.display = "none";
-            b1.style.display = "block";
-            b2.style.display = "block";
-            b3.style.display = "block";
-            pub.style.display = "none";
-            esc.style.display = "none";
-            rel.style.display = "none";
-            texto.style.display = "block";
+            if (pub.style.display === "none") {
+                pub.style.display = "block";
+                b1.style.display = "none";
+                b2.style.display = "none";
+                b3.style.display = "none";
+                b4.style.display = "block";
+                texto.style.display = "none";
+            }
         }
 
-    }
+        function button2() {
+            var esc = document.getElementById("escala");
+            var b1 = document.getElementById("butao1");
+            var b2 = document.getElementById("butao2");
+            var b3 = document.getElementById("butao3");
+            var b4 = document.getElementById("butao4");
+            var texto = document.getElementById("title");
 
-</script>
+            if (esc.style.display === "none") {
+                esc.style.display = "block";
+                b1.style.display = "none";
+                b2.style.display = "none";
+                b3.style.display = "none";
+                b4.style.display = "block";
+                texto.style.display = "none";
+            }
+        }
+
+        function button3() {
+            var rel = document.getElementById("rela");
+            var b1 = document.getElementById("butao1");
+            var b2 = document.getElementById("butao2");
+            var b3 = document.getElementById("butao3");
+            var b4 = document.getElementById("butao4");
+            var texto = document.getElementById("title");
+
+            if (rel.style.display === "none") {
+                rel.style.display = "block";
+                b1.style.display = "none";
+                b2.style.display = "none";
+                b3.style.display = "none";
+                b4.style.display = "block";
+                texto.style.display = "none";
+            }
+
+        }
+
+        function button4() {
+            var pub = document.getElementById("publico");
+            var esc = document.getElementById("escala");
+            var rel = document.getElementById("rela");
+            var b1 = document.getElementById("butao1");
+            var b2 = document.getElementById("butao2");
+            var b3 = document.getElementById("butao3");
+            var b4 = document.getElementById("butao4");
+            var texto = document.getElementById("title");
+
+            if (b4.style.display === "block") {
+                b4.style.display = "none";
+                b1.style.display = "block";
+                b2.style.display = "block";
+                b3.style.display = "block";
+                pub.style.display = "none";
+                esc.style.display = "none";
+                rel.style.display = "none";
+                texto.style.display = "block";
+            }
+
+        }
+
+    </script>
 
 
 </body>
 <style>
-    
     body {
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
-        background-image:url(./isep.jpg);
-        background-size:100% 100vh;
+        background-image: url(./isep.jpg);
+        background-size: 100% 100vh;
         background-repeat: no-repeat;
     }
 
@@ -220,7 +221,7 @@
     }
 
     #isep_logo {
-        float: left ;
+        float: left;
         padding: 14px 16px;
     }
 
@@ -276,7 +277,7 @@
             background-position: 0 0
         }
     }
-    
+
     div.menu-pane {
         background-color: #000;
         position: absolute;
@@ -377,7 +378,6 @@
         opacity: 0;
         height: 6vh;
     }
-
 </style>
 
 <script>
@@ -390,4 +390,5 @@
 </script>
 
 </style>
+
 </html>

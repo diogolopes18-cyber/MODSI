@@ -38,6 +38,9 @@ def connection_db(data_for_db, *args, **kwargs):
                 insert_query, [(data_for_db[0], data_for_db[1]), data_for_db[2]])
 
         elif(query == "search"):
+            # Could also be "IF EXISTS(SELECT mec_aluno FROM alunos_modsi WHERE mec_aluno=%s) THEN
+            #  raise notice 'yes'
+            # END IF"
             search_query = "SELECT EXISTS(SELECT mec_aluno FROM alunos_modsi WHERE mec_aluno=%s);"
             cursor.execute(search_query, [data_for_db[0]])
 
