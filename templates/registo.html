@@ -4,7 +4,20 @@
 <head>
     <title>Registo</title>
 </head>
+
+
+<body>
+
+    <div class="topnav">
+        <img  src="./Isep-logo.png" id="isep_logo" width="180" height="48">
+        <a class="active" href="home.html">Home</a>
+        <a class="active" href="registo.html">Registo</a>
+        <a class="active" href="login.html">Login</a>
+    </div>
+  
+
 <div class="user">
+
     <header class="user__header">
 
         <h1 class="user__title">Crie a sua conta</h1>
@@ -20,44 +33,21 @@
 
             <input type="password" placeholder="Password" class="form__input" id="password" name="password"
                 value="{{request.form.password}}" />
-
         </div>
-
         <button class="btn" type="submit">Registo</button>
     </form>
-</div>
+<div>
+</body>
+
 
 <style>
-    $font-family: {
-        "Roboto";
-    }
-
-    $font-size: {
-        14px;
-    }
-
-    $color-primary: #092756;
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
 
     body {
-        font-family: $font-family;
-        font-size: $font-size;
-        background-size: 200% 100% !important;
-        animation: move 10s ease infinite;
-        transform: translate3d(0, 0, 0);
-        background: #092756;
-        background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -moz-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -moz-linear-gradient(-45deg, #670d10 0%, #092756 100%);
-        background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -webkit-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -webkit-linear-gradient(-45deg, #670d10 0%, #092756 100%);
-        background: -o-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -o-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -o-linear-gradient(-45deg, #670d10 0%, #092756 100%);
-        background: -ms-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -ms-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -ms-linear-gradient(-45deg, #670d10 0%, #092756 100%);
-        background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), linear-gradient(to bottom, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), linear-gradient(135deg, #670d10 0%, #092756 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3E1D6D', endColorstr='#092756', GradientType=1);
-        height: 100vh
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-image:url(./isep.jpg);
+        background-size:100% 100vh;
+        background-repeat: no-repeat;
     }
 
     .user {
@@ -178,6 +168,36 @@
             background-position: 0 0
         }
     }
+
+    .topnav {
+        overflow: hidden;
+        background-color: rgb(117, 115, 115);
+    }
+
+    .topnav a {
+        float: right;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    .topnav a.active {
+        padding: 28px 16px;
+        color: white;
+    }
+
+    #isep_logo {
+        float: left ;
+        padding: 14px 16px;
+    }
+
 </style>
 
 <script>

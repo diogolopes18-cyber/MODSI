@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-
 <html>
 <head>
-    <title>Página Pessoal</title>
+    <title>Página Pessoal - Diretor</title>
 </head>
 
-
-
-
 <body>
-   
+  
+    <div class="topnav">
+      <img  src="./Isep-logo.png" id="isep_logo" width="180" height="48">
+      <a class="active" href="home.html">Home</a>
+      <a class="active" href="registo.html">Registo</a>
+      <a class="active" href="login.html">Login</a>
+    </div>
+
     <div class="diretor">
-        <header class="diretor__header">
+        
            
             <h1 class="diretor__title" id="title">Projetos académicos</h1>
-        </header>    
+         
             <br/>
             <h1 class="diretor__title" id="aprovar" style="display: none;">Projetos a aprovar</h1>
             <button class="menu__btn" type="button" id="butao1" onclick="button1()">Projetos a aprovar</button>
@@ -35,473 +38,245 @@
         
     </div>
 
+
     
+   
+    <script>
+
+        function button1(){  
+             var x = document.getElementById("aprovar");
+             var texto = document.getElementById("title");
+             var b = document.getElementById("butao1");
+             var c = document.getElementById("butao2");
+             var d = document.getElementById("butao3");
+             var e = document.getElementById("butao4");
+             var f = document.getElementById("butao5");
+             
+             if(x.style.display === "none"){
+                 x.style.display = "block";
+                 b.style.display = "none";
+                 c.style.display = "none";
+                 d.style.display = "none";
+                 e.style.display = "none";
+                 f.style.display = "block";
+                 texto.style.display = "none";
+                
+             }
+         
+        }
+
+        function button2(){  
+             var y = document.getElementById("disponivel");
+             var texto = document.getElementById("title");
+             var b = document.getElementById("butao1");
+             var c = document.getElementById("butao2");
+             var d = document.getElementById("butao3");
+             var e = document.getElementById("butao4");
+             var f = document.getElementById("butao5");
+             var plus = document.getElementById("mais");
             
-                
-
-     <script>
-
-               function button1(){  
-                    var x = document.getElementById("aprovar");
-                    var texto = document.getElementById("title");
-                    var b = document.getElementById("butao1");
-                    var c = document.getElementById("butao2");
-                    var d = document.getElementById("butao3");
-                    var e = document.getElementById("butao4");
-                    var f = document.getElementById("butao5");
-                    
-                    if(x.style.display === "none"){
-                        x.style.display = "block";
-                        b.style.display = "none";
-                        c.style.display = "none";
-                        d.style.display = "none";
-                        e.style.display = "none";
-                        f.style.display = "block";
-                        texto.style.display = "none";
-                       
-                    }
-                
-               }
-
-               function button2(){  
-                    var y = document.getElementById("disponivel");
-                    var texto = document.getElementById("title");
-                    var b = document.getElementById("butao1");
-                    var c = document.getElementById("butao2");
-                    var d = document.getElementById("butao3");
-                    var e = document.getElementById("butao4");
-                    var f = document.getElementById("butao5");
-                    var plus = document.getElementById("mais");
-                   
-                    
-                    if(y.style.display === "none"){
-                        y.style.display = "block";
-                        b.style.display = "none";
-                        c.style.display = "none";
-                        d.style.display = "none";
-                        e.style.display = "none";
-                        f.style.display = "block";
-                        texto.style.display = "none";
-                        plus.style.display = "block";
-                    }
-                    
-               }
+             
+             if(y.style.display === "none"){
+                 y.style.display = "block";
+                 b.style.display = "none";
+                 c.style.display = "none";
+                 d.style.display = "none";
+                 e.style.display = "none";
+                 f.style.display = "block";
+                 texto.style.display = "none";
+                 plus.style.display = "block";
+             }
+             
+        }
 
 
-               function button3(){  
-                    var z = document.getElementById("submetidos");
-                    var texto = document.getElementById("title");
-                    var b = document.getElementById("butao1");
-                    var c = document.getElementById("butao2");
-                    var d = document.getElementById("butao3");
-                    var e = document.getElementById("butao4");
-                    var f = document.getElementById("butao5");
-                    
-                    if(z.style.display === "none"){
-                        z.style.display = "block";
-                        b.style.display = "none";
-                        c.style.display = "none";
-                        d.style.display = "none";
-                        e.style.display = "none";
-                        f.style.display = "block";
-                        texto.style.display = "none";
-                        
-                    }
-                    
-               }
+        function button3(){  
+             var z = document.getElementById("submetidos");
+             var texto = document.getElementById("title");
+             var b = document.getElementById("butao1");
+             var c = document.getElementById("butao2");
+             var d = document.getElementById("butao3");
+             var e = document.getElementById("butao4");
+             var f = document.getElementById("butao5");
+             
+             if(z.style.display === "none"){
+                 z.style.display = "block";
+                 b.style.display = "none";
+                 c.style.display = "none";
+                 d.style.display = "none";
+                 e.style.display = "none";
+                 f.style.display = "block";
+                 texto.style.display = "none";
+                 
+             }
+             
+        }
 
 
-               function button4(){  
-                    var w = document.getElementById("escalo");
-                    var texto = document.getElementById("title");
-                    var b = document.getElementById("butao1");
-                    var c = document.getElementById("butao2");
-                    var d = document.getElementById("butao3");
-                    var e = document.getElementById("butao4");
-                    var f = document.getElementById("butao5");
-                    
-                    if(w.style.display === "none"){
-                        w.style.display = "block";
-                        b.style.display = "none";
-                        c.style.display = "none";
-                        d.style.display = "none";
-                        e.style.display = "none";
-                        f.style.display = "block";
-                        texto.style.display = "none";
-                        
-                    }
-                    
-               }
-            
-                function button5(){
-                    var b = document.getElementById("butao1");
-                    var c = document.getElementById("butao2");
-                    var d = document.getElementById("butao3");
-                    var e = document.getElementById("butao4");
-                    var f = document.getElementById("butao5");
-                    var x = document.getElementById("aprovar");
-                    var y = document.getElementById("disponivel");
-                    var z = document.getElementById("submetidos");
-                    var w = document.getElementById("escalo");
-                    var texto = document.getElementById("title");
-                    var plus = document.getElementById("mais");
-                    var box = document.getElementById("descricao");
-                    var file = document.getElementById("ficheiro");
-                    var date = document.getElementById("data");
+        function button4(){  
+             var w = document.getElementById("escalo");
+             var texto = document.getElementById("title");
+             var b = document.getElementById("butao1");
+             var c = document.getElementById("butao2");
+             var d = document.getElementById("butao3");
+             var e = document.getElementById("butao4");
+             var f = document.getElementById("butao5");
+             
+             if(w.style.display === "none"){
+                 w.style.display = "block";
+                 b.style.display = "none";
+                 c.style.display = "none";
+                 d.style.display = "none";
+                 e.style.display = "none";
+                 f.style.display = "block";
+                 texto.style.display = "none";
+                 
+             }
+             
+        }
+     
+         function button5(){
+             var b = document.getElementById("butao1");
+             var c = document.getElementById("butao2");
+             var d = document.getElementById("butao3");
+             var e = document.getElementById("butao4");
+             var f = document.getElementById("butao5");
+             var x = document.getElementById("aprovar");
+             var y = document.getElementById("disponivel");
+             var z = document.getElementById("submetidos");
+             var w = document.getElementById("escalo");
+             var texto = document.getElementById("title");
+             var plus = document.getElementById("mais");
+             var box = document.getElementById("descricao");
+             var file = document.getElementById("ficheiro");
+             var date = document.getElementById("data");
 
 
-                    if(f.style.display === "block"){
-                        b.style.display = "block";
-                        c.style.display = "block";
-                        d.style.display = "block";
-                        e.style.display = "block";
-                        f.style.display = "none";
-                        x.style.display = "none";
-                        y.style.display = "none";
-                        z.style.display = "none";
-                        w.style.display = "none";
-                        texto.style.display = "block";
-                        plus.style.display = "none";
-                        box.style.display = "none";
-                        file.style.display = "none";
-                        date.style.display = "none";
-                    }
-            }
+             if(f.style.display === "block"){
+                 b.style.display = "block";
+                 c.style.display = "block";
+                 d.style.display = "block";
+                 e.style.display = "block";
+                 f.style.display = "none";
+                 x.style.display = "none";
+                 y.style.display = "none";
+                 z.style.display = "none";
+                 w.style.display = "none";
+                 texto.style.display = "block";
+                 plus.style.display = "none";
+                 box.style.display = "none";
+                 file.style.display = "none";
+                 date.style.display = "none";
+             }
+     }
 
-            function adicionar(){
-                var plus = document.getElementById("mais");
-                var box = document.getElementById("descricao");
-                var file = document.getElementById("ficheiro");
-                var date = document.getElementById("data");
-                
+     function adicionar(){
+         var plus = document.getElementById("mais");
+         var box = document.getElementById("descricao");
+         var file = document.getElementById("ficheiro");
+         var date = document.getElementById("data");
+         
 
-                if(box.style.display === "none"){
-                    box.style.display = "block";
-                    file.style.display = "block";
-                    date.style.display = "block";
-                    plus.style.display = "none";
-                }
+         if(box.style.display === "none"){
+             box.style.display = "block";
+             file.style.display = "block";
+             date.style.display = "block";
+             plus.style.display = "none";
+         }
 
-                
-            }
-       
+         
+     }
+
 </script>
+   
+    
 </body>
 
-
-
 <style>
-    $font-family: {
-        "Roboto";
-    }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-image:url(./isep.jpg);
+  background-size:100% 100vh;
+  background-repeat: no-repeat;
+  
+  
 
-    $font-size: {
-        14px;
-    }
+}
+  
 
-    $color-primary: #092756;
+.topnav {
+  overflow: hidden;
+  background-color: rgb(117, 115, 115);
+  
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+}
 
-    body {
-        font-family: $font-family;
-        font-size: $font-size;
-        background-size: 200% 100% !important;
-        animation: move 10s ease infinite;
-        transform: translate3d(0, 0, 0);
-        background: #092756;
-        background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -moz-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -moz-linear-gradient(-45deg, #670d10 0%, #092756 100%);
-        background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -webkit-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -webkit-linear-gradient(-45deg, #670d10 0%, #092756 100%);
-        background: -o-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -o-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -o-linear-gradient(-45deg, #670d10 0%, #092756 100%);
-        background: -ms-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -ms-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -ms-linear-gradient(-45deg, #670d10 0%, #092756 100%);
-        background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), linear-gradient(to bottom, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), linear-gradient(135deg, #670d10 0%, #092756 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3E1D6D', endColorstr='#092756', GradientType=1);
-        height: 100vh
-    }
+.topnav a {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
 
-    .diretor {
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  padding: 28px 16px;
+  color: white;
+}
+
+.diretor {
         width: 90%;
         max-width: 340px;
         margin: 10vh auto;
     }
 
-    .diretor__header {
+.diretor__header {
         text-align: center;
         opacity: 0;
         transform: translate3d(0, 500px, 0);
         animation: arrive 500ms ease-in-out 0.7s forwards;
-    }
+}
 
-    .diretor__title {
+.diretor__title {
         text-align: center;
         font-size: $font-size;
         margin-bottom: -10px;
         font-weight: 500;
         color: white;
-    }
+}
 
-    .menu {
-        color:#fff;
-        text-align: left;
-        margin-top: 40px;
-        border-radius: 6px;
-        overflow: hidden;
-        opacity: 0;
-        transform: translate3d(0, 500px, 0);
-        animation: arrive 500ms ease-in-out 0.9s forwards;
-    }
 
-    
-
-    .form--no {
-        animation: NO 1s ease-in-out;
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
-
-    .form__input {
+.menu__btn {
         display: block;
-        width: 100%;
         padding: 20px;
-        font-family: $font-family;
-        -webkit-appearance: none;
-        border: 0;
-        outline: 0;
-        transition: 0.3s;
-
-        &:focus {
-            background: darken(#fff, 3%);
-        }
-    }
-
-    .menu__btn {
-        display: block;
-        width: 100%;
-        padding: 20px;
-        font-family: $font-family;
+        font-family: Arial, Helvetica, sans-serif;
         -webkit-appearance: none;
         outline: 0;
         border: 0;
         color: $color-primary;
         background: $color-primary;
         transition: 0.3s;
-
-        &:hover {
-            background: darken($color-primary, 5%);
-        }
-    }
-
-   
-
+        width: 90%;
+        max-width: 340px;
+        margin: 5vh auto;
+        border-radius: 6px;      
+        
+}
 
 
-    @keyframes NO {
+#isep_logo {
+  float: left ;
+  padding: 14px 16px;
+}
 
-        from,
-        to {
-            -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-        }
-
-        10%,
-        30%,
-        50%,
-        70%,
-        90% {
-            -webkit-transform: translate3d(-10px, 0, 0);
-            transform: translate3d(-10px, 0, 0);
-        }
-
-        20%,
-        40%,
-        60%,
-        80% {
-            -webkit-transform: translate3d(10px, 0, 0);
-            transform: translate3d(10px, 0, 0);
-        }
-    }
-
-    @keyframes arrive {
-        0% {
-            opacity: 0;
-            transform: translate3d(0, 50px, 0);
-        }
-
-        100% {
-            opacity: 1;
-            transform: translate3d(0, 0, 0);
-        }
-    }
-
-    @keyframes move {
-        0% {
-            background-position: 0 0
-        }
-
-        50% {
-            background-position: 100% 0
-        }
-
-        100% {
-            background-position: 0 0
-        }
-    }
-    .hamburger-icon {
-        position: absolute;
-        z-index: 1;
-        top: 5vh;
-        left: 5vw;
-        padding-bottom: 2vh;
-    }
-
-    .hamburger-icon span {
-        height: 5px;
-        width: 40px;
-        background-color: white;
-        display: block;
-        margin: 5px 0px 5px 0px;
-        transition: 0.7s ease-in-out;
-        transform: none;
-    }
-
-    #openmenu:checked~.menu-pane {
-        left: -5vw;
-        transform: translateX(-5vw);
-    }
-
-    #openmenu:checked~.hamburger-icon span:nth-of-type(2) {
-        transform: translate(0%, 175%) rotate(-45deg);
-        background-color: white;
-    }
-
-    #openmenu:checked~.hamburger-icon span:nth-of-type(3) {
-        transform: rotate(45deg);
-        background-color: white;
-    }
-
-    #openmenu:checked~.hamburger-icon span:nth-of-type(1) {
-        opacity: 0;
-    }
-
-    #openmenu:checked~.hamburger-icon span:nth-of-type(4) {
-        opacity: 0;
-    }
-
-    div.menu-pane {
-        background-color: #000;
-        position: absolute;
-        transform: translateX(-105vw);
-        transform-origin: (0, 0);
-        width: 50vw;
-        height: 100%;
-        transition: 0.6s ease-in-out;
-    }
-
-    .menu-pane p {
-        color: black;
-        font-size: 0.6em;
-    }
-
-    .menu-pane nav {
-        padding: 20%;
-    }
-
-    .menu-links li,
-    a,
-    span {
-        transition: 0.5s ease-in-out;
-    }
-
-    .menu-pane ul {
-        padding: 10%;
-        display: inline-block;
-    }
-
-    .menu-pane li {
-        padding-top: 20px;
-        padding-bottom: 20px;
-        margin-left: 10px;
-        font-size: 1em;
-    }
-
-
-    .menu-pane li:first-child {
-        font-size: 1.3em;
-        margin-left: -10px;
-    }
-
-
-    .menu-links li a {
-        color: white;
-        text-decoration: none;
-    }
-
-
-    .menu-links li:hover a {
-        color: #FFAB91;
-    }
-
-    .menu-links li:first-child:hover a {
-        color: black;
-        background-color: #FFAB91;
-    }
-
-    #QC-info {
-        background-color: #FFAB91;
-        border: 2px solid;
-        border-color: #FFAB91;
-        display: block;
-        opacity: 0;
-
-    }
-
-    .menu-links li:first-child:hover #QC-info {
-        opacity: 1;
-    }
-
-    .menu-links li:first-child:hover #DC-info {
-        opacity: 1;
-    }
-
-    #DC-info {
-        background-color: #FFAB91;
-        border: 2px solid;
-        border-color: #FFAB91;
-        display: block;
-        opacity: 0;
-    }
-
-
-    .menu-links li:first-child a {
-        padding: 5px;
-    }
-
-
-
-    input.hamburger-checkbox {
-        position: absolute;
-        z-index: 3;
-        top: 5vh;
-        left: 5vw;
-        width: 10vw;
-        opacity: 0;
-        height: 6vh;
-    }
 
 </style>
 
-<script>
-    const button = document.querySelector('.menu__btn')
-    const form = document.querySelector('.menu')
-
-    button.addEventListener('click', function () {
-        form.classList.add('form--no')
-    });
-</script>
-
-</style>
 </html>
