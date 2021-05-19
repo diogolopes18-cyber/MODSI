@@ -1,0 +1,32 @@
+version: "3.0"
+services:
+  db:
+    image: postgres:11
+    container_name: postgres_db
+    env_file: 
+      - .env
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    ports:
+      - 5432:5432
+    networks:
+      - db_net
+    volumes:
+      - ./db-data:/var/lib/postgresql/data/
+      - ../database_info/BD.sql:/home/gitlab/BD.sql
+      - ../database_info/db_table_create.sh:/home/gitlab/db_table_create.sh
+
+  gitlab_app:
+    build: ../
+    ports:
+      - 5001:5000
+    networks: 
+      - db_net
+    depends_on: 
+      - db
+
+networks:
+  db_net:
+    driver: bridge
