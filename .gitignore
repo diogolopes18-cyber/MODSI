@@ -3,3 +3,4 @@ __pycache__/
 app/__pycache__/database_conn.cpython-38.pyc
 .vscode/settings.json
 uploads/
+.env
