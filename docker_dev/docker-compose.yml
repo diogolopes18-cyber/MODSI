@@ -15,13 +15,11 @@ services:
       - db_net
     volumes:
       - ./db-data:/var/lib/postgresql/data/
-      - ../database_info/BD.sql:/home/gitlab/BD.sql
-      - ../database_info/db_table_create.sh:/home/gitlab/db_table_create.sh
 
   gitlab_app:
     build: ../
     ports:
-      - 5001:5000
+      - 5000:5000
     networks: 
       - db_net
     depends_on: 
