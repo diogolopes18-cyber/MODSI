@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Página Pessoal - Diretor</title>
+</head>
+
+<body>
+
+  <div class="topnav">
+    <img src="../static/Isep-logo.png" id="isep_logo" width="180" height="48">
+    <a class="active" href="/">Home</a>
+    <a class="active" href="register">Registo</a>
+    <a class="active" href="login">Login</a>
+  </div>
+
+  <div class="diretor">
+
+
+    <h1 class="diretor__title" id="title">Projetos académicos</h1>
+
+    <br />
+    <h1 class="diretor__title" id="aprovar" style="display: none;">Projetos a aprovar</h1>
+    <button class="menu__btn" type="button" id="butao1" onclick="button1()">Projetos a aprovar</button>
+    <h1 class="diretor__title" id="disponivel" style="display: none;">Projetos disponíveis</h1>
+
+    <input type="button" id="mais" value="+" style="display: none;" onclick="adicionar()" />
+    <textarea id="descricao" cols="80" rows="10" style="display: none;">
+            Descrição do projeto.
+            </textarea>
+    <textarea id="data" cols="30" rows="1" style="display: none;">Data apresentação</textarea>
+    <input type="file" id="ficheiro" accept=".pdf" value="Escolher ficheiro" style="display: none;">
+    <button class="menu__btn" type="button" id="butao2" onclick="button2()">Projetos disponíveis</button>
+    <h1 class="diretor__title" id="submetidos" style="display: none;">Projetos submetidos</h1>
+    <button class="menu__btn" type="button" id="butao3" onclick="button3()">Projetos submetidos</button>
+    <h1 class="diretor__title" id="escalo" style="display: none;">Escalonamento</h1>
+    <button class="menu__btn" type="button" id="butao4" onclick="button4()">Escalonamento</button>
+    <br /><button class="menu__btn" type="button" id="butao5" onclick="button5()" style="display: none;">Voltar a Menu
+      Principal</button>
+
+  </div>
+
+
+
+
+  <script>
+
+    function button1() {
+      var x = document.getElementById("aprovar");
+      var texto = document.getElementById("title");
+      var b = document.getElementById("butao1");
+      var c = document.getElementById("butao2");
+      var d = document.getElementById("butao3");
+      var e = document.getElementById("butao4");
+      var f = document.getElementById("butao5");
+
+      if (x.style.display === "none") {
+        x.style.display = "block";
+        b.style.display = "none";
+        c.style.display = "none";
+        d.style.display = "none";
+        e.style.display = "none";
+        f.style.display = "block";
+        texto.style.display = "none";
+
+      }
+
+    }
+
+    function button2() {
+      var y = document.getElementById("disponivel");
+      var texto = document.getElementById("title");
+      var b = document.getElementById("butao1");
+      var c = document.getElementById("butao2");
+      var d = document.getElementById("butao3");
+      var e = document.getElementById("butao4");
+      var f = document.getElementById("butao5");
+      var plus = document.getElementById("mais");
+
+
+      if (y.style.display === "none") {
+        y.style.display = "block";
+        b.style.display = "none";
+        c.style.display = "none";
+        d.style.display = "none";
+        e.style.display = "none";
+        f.style.display = "block";
+        texto.style.display = "none";
+        plus.style.display = "block";
+      }
+
+    }
+
+
+    function button3() {
+      var z = document.getElementById("submetidos");
+      var texto = document.getElementById("title");
+      var b = document.getElementById("butao1");
+      var c = document.getElementById("butao2");
+      var d = document.getElementById("butao3");
+      var e = document.getElementById("butao4");
+      var f = document.getElementById("butao5");
+
+      if (z.style.display === "none") {
+        z.style.display = "block";
+        b.style.display = "none";
+        c.style.display = "none";
+        d.style.display = "none";
+        e.style.display = "none";
+        f.style.display = "block";
+        texto.style.display = "none";
+
+      }
+
+    }
+
+
+    function button4() {
+      var w = document.getElementById("escalo");
+      var texto = document.getElementById("title");
+      var b = document.getElementById("butao1");
+      var c = document.getElementById("butao2");
+      var d = document.getElementById("butao3");
+      var e = document.getElementById("butao4");
+      var f = document.getElementById("butao5");
+
+      if (w.style.display === "none") {
+        w.style.display = "block";
+        b.style.display = "none";
+        c.style.display = "none";
+        d.style.display = "none";
+        e.style.display = "none";
+        f.style.display = "block";
+        texto.style.display = "none";
+
+      }
+
+    }
+
+    function button5() {
+      var b = document.getElementById("butao1");
+      var c = document.getElementById("butao2");
+      var d = document.getElementById("butao3");
+      var e = document.getElementById("butao4");
+      var f = document.getElementById("butao5");
+      var x = document.getElementById("aprovar");
+      var y = document.getElementById("disponivel");
+      var z = document.getElementById("submetidos");
+      var w = document.getElementById("escalo");
+      var texto = document.getElementById("title");
+      var plus = document.getElementById("mais");
+      var box = document.getElementById("descricao");
+      var file = document.getElementById("ficheiro");
+      var date = document.getElementById("data");
+
+
+      if (f.style.display === "block") {
+        b.style.display = "block";
+        c.style.display = "block";
+        d.style.display = "block";
+        e.style.display = "block";
+        f.style.display = "none";
+        x.style.display = "none";
+        y.style.display = "none";
+        z.style.display = "none";
+        w.style.display = "none";
+        texto.style.display = "block";
+        plus.style.display = "none";
+        box.style.display = "none";
+        file.style.display = "none";
+        date.style.display = "none";
+      }
+    }
+
+    function adicionar() {
+      var plus = document.getElementById("mais");
+      var box = document.getElementById("descricao");
+      var file = document.getElementById("ficheiro");
+      var date = document.getElementById("data");
+
+
+      if (box.style.display === "none") {
+        box.style.display = "block";
+        file.style.display = "block";
+        date.style.display = "block";
+        plus.style.display = "none";
+      }
+
+
+    }
+
+  </script>
+
+
+</body>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url(./isep.jpg);
+    background-size: 100% 100vh;
+    background-repeat: no-repeat;
+
+
+
+  }
+
+
+  .topnav {
+    overflow: hidden;
+    background-color: rgb(117, 115, 115);
+
+
+  }
+
+  .topnav a {
+    float: right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .topnav a.active {
+    padding: 28px 16px;
+    color: white;
+  }
+
+  .diretor {
+    width: 90%;
+    max-width: 340px;
+    margin: 10vh auto;
+  }
+
+  .diretor__header {
+    text-align: center;
+    opacity: 0;
+    transform: translate3d(0, 500px, 0);
+    animation: arrive 500ms ease-in-out 0.7s forwards;
+  }
+
+  .diretor__title {
+    text-align: center;
+    font-size: $font-size;
+    margin-bottom: -10px;
+    font-weight: 500;
+    color: white;
+  }
+
+
+  .menu__btn {
+    display: block;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-appearance: none;
+    outline: 0;
+    border: 0;
+    color: $color-primary;
+    background: $color-primary;
+    transition: 0.3s;
+    width: 90%;
+    max-width: 340px;
+    margin: 5vh auto;
+    border-radius: 6px;
+
+  }
+
+
+  #isep_logo {
+    float: left;
+    padding: 14px 16px;
+  }
+</style>
+
+</html>
