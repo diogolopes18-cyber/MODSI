@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 
-echo "Initializing DB creation"
+echo "Initializing Postgres table creation"
+echo "Wish to proceed? [Y/n]"
 read choice
-if [ $choice == "s" ] || [ $choice == "S" ] ; then
-    echo "Starting..."
-    command psql modsi -f query.sql
+if [ $choice = "Y" ] || [ $choice = "y" ] ; then
+    echo "Creating..."
+    command psql --host=db --username=postgres --dbname=modsi -f create_db.sql
+    command psql --host=db --username=postgres --dbname=modsi
+    else
+        echo "Invalid Option"
+        exit
 fi
