@@ -13,4 +13,5 @@ RUN apt-get update && apt-get install -y \
 RUN pip install --upgrade pip
 WORKDIR /home/kpw/
 COPY ./requirements.txt /home/kpw/requirements.txt
+COPY ./db /home/kpw
 RUN pip install -r requirements.txt
