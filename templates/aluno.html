@@ -22,17 +22,19 @@
         <button class="menu__btn" type="button" id="butao1" onclick="button1()">Projetos submetidos</button>
 
         <h1 class="aluno__title" id="disponivel" style="display: none;">Submeter projeto</h1>
-        <input type="button" id="mais" value="+" style="display: none;" onclick="adicionar()" />
+        <input type="button" id="mais" value="+" style="display: none;"
+            onclick="{window.open('http://127.0.0.1:5000/file_upload');}" />
 
         <textarea id="descricao" cols="80" rows="10" style="display: none;">
             Descrição do projeto
         </textarea>
 
-        <form action="" method="POST" enctype="multipart/form-data">
+        <!-- <form action="" method="POST" enctype="multipart/form-data">
             <input type="file" id="ficheiro" accept=".pdf" value="Escolher ficheiro" style="display: none;">
             <input type="submit" placeholder="Submeter" />
-        </form>
-        <button class="menu__btn" type="button" id="butao2" onclick="button2()">Submeter Projeto</button>
+        </form> -->
+        <button class="menu__btn" type="button" id="butao2"
+            onclick="{window.open('http://127.0.0.1:5000/file_upload');}">Submeter Projeto</button>
 
         <h1 class="aluno__title" id="Submeter" style="display: none;">Projetos Disponíveis</h1>
         <button class="menu__btn" type="button" id="butao3" onclick="button3()">Projetos Disponíveis</button>
