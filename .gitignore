@@ -5,3 +5,4 @@ app/__pycache__/database_conn.cpython-38.pyc
 uploads/
 .env
 db/database_info.ini
+database.dump
