@@ -2,3 +2,4 @@ Flask
 uuid
 psycopg2
 configparser
+gunicorn
