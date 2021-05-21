@@ -4,4 +4,4 @@ psycopg2
 configparser
 gunicorn
 python-dotenv
-werkzeug.utils
+Werkzeug
