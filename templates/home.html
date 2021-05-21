@@ -1,50 +1,225 @@
 <!DOCTYPE html>
 <html>
-<title>Gestão de Projetos académicos</title>
 
 <head>
-    <title>Home</title>
+  <title>Homepage</title>
 </head>
 
 <body>
-    <h1 style="font-family:Arial, Helvetica, sans-serif">Homepage</h1>
-    <img src="../images/logo2.png" alt="ISEP Logo">
-    </p>
-    </p>
-    <a style="font-family:Arial, Helvetica, sans-serif" class="button" href="/login">Login</a></p>
+
+  <div class="topnav">
+    <img src="../static/Isep-logo.png" id="isep_logo" width="180" height="48">
+    <a class="active" href="/" onclick="{window.location.href(" http://127.0.0.1:5000/");}">Home</a>
+    <a class=" active" href="register" onclick="{window.location.href(" http://127.0.0.1:5000/register");}">Registo</a>
+    <a class=" active" href="login" onclick="{window.location.href(" http://127.0.0.1:5000/login");}">Login</a>
+  </div>
+
+  <div class=" home">
+    <h1 class="publico__title" id="title">Projetos académicos</h1>
+    <p></p>
+
+    <h1 class="publico__title" id="publico" style="display: none;">Projetos públicos</h1>
+    <button class="menu__btn" type="button" id="butao1" onclick="button1()">Projetos públicos</button>
+    <h1 class="publico__title" id="escala" style="display: none;">Escalonamento</h1>
+    <button class="menu__btn" type="button" id="butao2" onclick="button2()">Escalonamento</button>
+    <h1 class="publico__title" id="rela" style="display: none;">Relatórios</h1>
+    <button class="menu__btn" type="button" id="butao3" onclick="button3()">Relatórios</button>
+    <button class="menu__btn" type="button" id="butao4" onclick="button4()" style="display: none;">Voltar a Menu
+      Principal</button>
+  </div>
+
+
+
+  <script>
+    function button1() {
+      var pub = document.getElementById("publico");
+      var b1 = document.getElementById("butao1");
+      var b2 = document.getElementById("butao2");
+      var b3 = document.getElementById("butao3");
+      var b4 = document.getElementById("butao4");
+      var texto = document.getElementById("title");
+
+      if (pub.style.display === "none") {
+        pub.style.display = "block";
+        b1.style.display = "none";
+        b2.style.display = "none";
+        b3.style.display = "none";
+        b4.style.display = "block";
+        texto.style.display = "none";
+      }
+    }
+
+    function button2() {
+      var esc = document.getElementById("escala");
+      var b1 = document.getElementById("butao1");
+      var b2 = document.getElementById("butao2");
+      var b3 = document.getElementById("butao3");
+      var b4 = document.getElementById("butao4");
+      var texto = document.getElementById("title");
+
+      if (esc.style.display === "none") {
+        esc.style.display = "block";
+        b1.style.display = "none";
+        b2.style.display = "none";
+        b3.style.display = "none";
+        b4.style.display = "block";
+        texto.style.display = "none";
+      }
+    }
+
+    function button3() {
+      var rel = document.getElementById("rela");
+      var b1 = document.getElementById("butao1");
+      var b2 = document.getElementById("butao2");
+      var b3 = document.getElementById("butao3");
+      var b4 = document.getElementById("butao4");
+      var texto = document.getElementById("title");
+
+      if (rel.style.display === "none") {
+        rel.style.display = "block";
+        b1.style.display = "none";
+        b2.style.display = "none";
+        b3.style.display = "none";
+        b4.style.display = "block";
+        texto.style.display = "none";
+      }
+
+    }
+
+    function button4() {
+      var pub = document.getElementById("publico");
+      var esc = document.getElementById("escala");
+      var rel = document.getElementById("rela");
+      var b1 = document.getElementById("butao1");
+      var b2 = document.getElementById("butao2");
+      var b3 = document.getElementById("butao3");
+      var b4 = document.getElementById("butao4");
+      var texto = document.getElementById("title");
+
+      if (b4.style.display === "block") {
+        b4.style.display = "none";
+        b1.style.display = "block";
+        b2.style.display = "block";
+        b3.style.display = "block";
+        pub.style.display = "none";
+        esc.style.display = "none";
+        rel.style.display = "none";
+        texto.style.display = "block";
+      }
+
+    }
+
+  </script>
+
+
+
 </body>
 
 <style>
-    @import url(https://fonts.googleapis.com/css?family=Open+Sans);
-    @import url('https://fonts.googleapis.com/css?family=Libre+Caslon+Text:400,700&display=swap');
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("../static/isep.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
 
-    html {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-    }
 
-    body {
-        width: 100%;
-        height: 100%;
-        font-family: 'Open Sans', sans-serif;
-        background: #092756;
-        background: -moz-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -moz-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -moz-linear-gradient(-45deg, #670d10 0%, #092756 100%);
-        background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -webkit-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -webkit-linear-gradient(-45deg, #670d10 0%, #092756 100%);
-        background: -o-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -o-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -o-linear-gradient(-45deg, #670d10 0%, #092756 100%);
-        background: -ms-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), -ms-linear-gradient(top, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), -ms-linear-gradient(-45deg, #670d10 0%, #092756 100%);
-        background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104, 128, 138, .4) 10%, rgba(138, 114, 76, 0) 40%), linear-gradient(to bottom, rgba(57, 173, 219, .25) 0%, rgba(42, 60, 87, .4) 100%), linear-gradient(135deg, #670d10 0%, #092756 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3E1D6D', endColorstr='#092756', GradientType=1);
-    }
+  .topnav {
+    overflow: hidden;
+    background-color: rgb(117, 115, 115);
 
-    a.button {
-        -webkit-appearance: button;
-        -moz-appearance: button;
-        appearance: button;
 
-        text-decoration: none;
-        color: red;
-    }
+  }
+
+  .topnav a {
+    float: right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .topnav a.active {
+    padding: 28px 16px;
+    color: white;
+  }
+
+
+
+  .publico {
+    width: 90%;
+    max-width: 340px;
+    margin: 10vh auto;
+
+  }
+
+  .publico__header {
+    text-align: center;
+    opacity: 0;
+    transform: translate3d(0, 500px, 0);
+    animation: arrive 500ms ease-in-out 0.7s forwards;
+
+  }
+
+  .publico__title {
+
+
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    ;
+    margin-bottom: -10px;
+    font-weight: 500;
+    color: white;
+  }
+
+  .menu {
+    margin-top: 40px;
+    border-radius: 6px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translate3d(0, 500px, 0);
+    animation: arrive 500ms ease-in-out 0.9s forwards;
+  }
+
+  .menu__btn {
+    display: block;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-appearance: none;
+    outline: 0;
+    border: 0;
+    color: $color-primary;
+    background: $color-primary;
+    transition: 0.3s;
+    width: 90%;
+    max-width: 340px;
+    margin: 5vh auto;
+    border-radius: 6px;
+
+  }
+
+  .home {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -150px;
+    width: 300px;
+    height: 300px;
+  }
+
+  #isep_logo {
+    float: left;
+    padding: 14px 16px;
+  }
 </style>
 
 </html>
