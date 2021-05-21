@@ -3,5 +3,5 @@ uuid
 psycopg2
 configparser
 gunicorn
-dotenv
+python-dotenv
 werkzeug.utils
