@@ -4,12 +4,14 @@ import os
 import json
 import psycopg2
 import configparser
+from dotenv import load_dotenv
 
 # Parses file
-config = configparser.ConfigParser()
-config.read('db/database_info.ini', encoding='utf-8')
+# config = configparser.ConfigParser()
+# config.read('db/database_info.ini', encoding='utf-8')
 
-# Importing SQL files
+load_dotenv()
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 
 def connection_db(data_for_db, *args, **kwargs):
@@ -18,11 +20,7 @@ def connection_db(data_for_db, *args, **kwargs):
     ######################
     # Connection details
     ######################
-    connection = psycopg2.connect(user=config['db']['user'],
-                                  password=config['db']['password'],
-                                  host=config['db']['host'],
-                                  port=config['db']['port'],
-                                  database=config['db']['database'])
+    connection = psycopg2.connect(DATABASE_URL, sslmode='require')
 
     try:
         cursor = connection.cursor()
@@ -41,7 +39,7 @@ def connection_db(data_for_db, *args, **kwargs):
             # Could also be "IF EXISTS(SELECT mec_aluno FROM alunos_modsi WHERE mec_aluno=%s) THEN
             #  raise notice 'yes'
             # END IF"
-            search_query = "SELECT EXISTS(SELECT mec_aluno FROM alunos_modsi WHERE mec_aluno=%s);"
+            search_query = "SELECT EXISTS(SELECT mec_aluno FROM alunos_modsi WHERE mec_aluno=%s)"
             cursor.execute(search_query, [data_for_db[0]])
 
         elif(query == "update"):
