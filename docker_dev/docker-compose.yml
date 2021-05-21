@@ -1,8 +1,8 @@
 version: "3.0"
 services:
-  db:
+  database:
     image: postgres:11
-    container_name: postgres_db
+    container_name: modsi_postgres
     env_file: 
       - .env
     environment:
@@ -12,19 +12,19 @@ services:
     ports:
       - 5432:5432
     networks:
-      - db_net
+      - db_modsi
     volumes:
-      - ./db-data:/var/lib/postgresql/data/
+      - ./modsi_data:/var/lib/postgresql/data/
 
-  gitlab_app:
+  modsi_app:
     build: ../
     ports:
-      - 5000:5000
+      - 5001:5000
     networks: 
-      - db_net
+      - db_modsi
     depends_on: 
-      - db
+      - database
 
 networks:
-  db_net:
+  db_modsi:
     driver: bridge
