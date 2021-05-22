@@ -6,11 +6,8 @@ import psycopg2
 import configparser
 from dotenv import load_dotenv
 
-# Parses file
-# config = configparser.ConfigParser()
-# config.read('db/database_info.ini', encoding='utf-8')
 
-# load_dotenv()
+load_dotenv()
 DATABASE_URL = os.environ['DATABASE_URL']
 hello = [1, 2, 3]
 
@@ -47,7 +44,7 @@ def connection_db(data_for_db, *args, **kwargs):
         #     update_query = "UPDATE alunos_modsi SET pass=%s WHERE username=%s"
         #     cursor.execute(update_query, data_for_db[1], data_for_db[0])
 
-        test = cursor.execute("SELECT * FROM alunos_modsi")
+        test = cursor.execute("SELECT * FROM public.alunos_modsi")
         print(test)
         #####################
         # Data commit
