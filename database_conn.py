@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 DATABASE_URL = os.environ['DATABASE_URL']
+hello = [1, 2, 3]
 
 
 def connection_db(data_for_db, *args, **kwargs):
@@ -30,7 +31,7 @@ def connection_db(data_for_db, *args, **kwargs):
             insert_query = "INSERT INTO alunos_modsi (mec_aluno, pass, mail) VALUES %s"
             assert len(data_for_db) != 0, "No data to insert"
             cursor.execute(
-                insert_query, [(data_for_db[0], data_for_db[1]), data_for_db[2]])
+                insert_query, [(data_for_db[0], data_for_db[1], data_for_db[2])])
 
         elif(query == "search"):
             # Could also be "IF EXISTS(SELECT mec_aluno FROM alunos_modsi WHERE mec_aluno=%s) THEN
@@ -41,16 +42,29 @@ def connection_db(data_for_db, *args, **kwargs):
 
         elif(query == "update"):
             update_query = "UPDATE alunos_modsi SET pass=%s WHERE username=%s"
-            cursor.execute(update_query, data_for_db[1], data_for_db[0])
+            cursor.execute(update_query, [(data_for_db[1], data_for_db[0])])
+
+        ################
+        # TEST
+        ################
+
+        # insert = "INSERT INTO alunos_modsi (mec_aluno, pass, mail) VALUES %s"
+        # cursor.execute(insert, [(117050, "Hello", "1170500@isep.ipp.pt")])
+
+        # response = cursor.fetchall()
+        # print(response)
 
         #####################
         # Data commit
         #####################
         connection.commit()
-        print("Query sucessful")
+        cursor.close()
+        #print("Query sucessful")
 
     except (Exception, psycopg2.Error) as error:
         print("Error while connecting to PostgreSQL", error)
-        connection.close()
 
-    print("Closing...")
+    finally:
+        if connection is not None:
+            connection.close()
+            print('Database connection closed.')
