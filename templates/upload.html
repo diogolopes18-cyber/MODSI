@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Submeter Projeto</title>
+</head>
+
+<body>
+    <div class="topnav">
+        <img src="../static/Isep-logo.png" id="isep_logo" width="180" height="48">
+        <a class="active" href="/">Home</a>
+        <a class="active" href="register">Registo</a>
+        <a class="active" href="login">Login</a>
+    </div>
+
+    <div class="pagina">
+
+        <h1 class="aluno__title" id="title">Projetos Académicos</h1>
+
+        <form method=post enctype=multipart/form-data>
+            <p><input type=file name=file>
+                <input type=submit value=Upload>
+            </p>
+        </form>
+    </div>
+</body>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-image: url("../static/isep.jpg");
+        background-size: 100% 100vh;
+        background-repeat: no-repeat;
+    }
+
+    .pagina {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -150px 0 0 -150px;
+        width: 300px;
+        height: 300px;
+    }
+
+    .aluno__header {
+        text-align: center;
+        opacity: 0;
+        transform: translate3d(0, 500px, 0);
+        animation: arrive 500ms ease-in-out 0.7s forwards;
+    }
+
+    .aluno__title {
+        text-align: center;
+        font-size: $font-size;
+        margin-bottom: -10px;
+        font-weight: 500;
+        color: white;
+    }
+
+    .menu {
+        margin-top: 40px;
+        border-radius: 6px;
+        overflow: hidden;
+        opacity: 0;
+        transform: translate3d(0, 500px, 0);
+        animation: arrive 500ms ease-in-out 0.9s forwards;
+    }
+
+    .form--no {
+        animation: NO 1s ease-in-out;
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+
+    .form__input {
+        display: block;
+        width: 100%;
+        padding: 20px;
+        font-family: $font-family;
+        -webkit-appearance: none;
+        border: 0;
+        outline: 0;
+        transition: 0.3s;
+
+        &:focus {
+            background: darken(#fff, 3%);
+        }
+    }
+
+    .menu__btn {
+        display: block;
+        width: 100%;
+        padding: 20px;
+        font-family: $font-family;
+        -webkit-appearance: none;
+        outline: 0;
+        border: 0;
+        color: $color-primary;
+        background: $color-primary;
+        transition: 0.3s;
+        border-radius: 6px;
+        margin: 5vh auto;
+
+    }
+
+    .topnav {
+        overflow: hidden;
+        background-color: rgb(117, 115, 115);
+    }
+
+    .topnav a {
+        float: right;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    .topnav a.active {
+        padding: 28px 16px;
+        color: white;
+    }
+
+    #isep_logo {
+        float: left;
+        padding: 14px 20px;
+    }
+</style>
+
+
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Página Pessoal - Público</title>
+</head>
+
+<body>
+
+    <div class="topnav">
+        <img src="../static/Isep-logo.png" id="isep_logo" width="180" height="48">
+        <a class="active" href="home.html">Home</a>
+        <a class="active" href="registo.html">Registo</a>
+        <a class="active" href="login.html">Login</a>
+    </div>
+
+    <div class="publico">
+        <header class="publico__header">
+
+            <h1 class="publico__title" id="title">Projetos académicos</h1>
+        </header>
+
+        <form class="menu">
+            <h1 class="publico__title" id="publico" style="display: none;">Projetos públicos</h1>
+            <button class="menu__btn" type="button" id="butao1" onclick="button1()">Projetos públicos</button>
+            <h1 class="publico__title" id="escala" style="display: none;">Escalonamento</h1>
+            <button class="menu__btn" type="button" id="butao2" onclick="button2()">Escalonamento</button>
+            <h1 class="publico__title" id="rela" style="display: none;">Relatórios</h1>
+            <button class="menu__btn" type="button" id="butao3" onclick="button3()">Relatórios</button>
+            <button class="menu__btn" type="button" id="butao4" onclick="button4()" style="display: none;">Voltar a Menu
+                Principal</button>
+
+        </form>
+    </div>
+
+    <script>
+        function button1() {
+            var pub = document.getElementById("publico");
+            var b1 = document.getElementById("butao1");
+            var b2 = document.getElementById("butao2");
+            var b3 = document.getElementById("butao3");
+            var b4 = document.getElementById("butao4");
+            var texto = document.getElementById("title");
+
+            if (pub.style.display === "none") {
+                pub.style.display = "block";
+                b1.style.display = "none";
+                b2.style.display = "none";
+                b3.style.display = "none";
+                b4.style.display = "block";
+                texto.style.display = "none";
+            }
+        }
+
+        function button2() {
+            var esc = document.getElementById("escala");
+            var b1 = document.getElementById("butao1");
+            var b2 = document.getElementById("butao2");
+            var b3 = document.getElementById("butao3");
+            var b4 = document.getElementById("butao4");
+            var texto = document.getElementById("title");
+
+            if (esc.style.display === "none") {
+                esc.style.display = "block";
+                b1.style.display = "none";
+                b2.style.display = "none";
+                b3.style.display = "none";
+                b4.style.display = "block";
+                texto.style.display = "none";
+            }
+        }
+
+        function button3() {
+            var rel = document.getElementById("rela");
+            var b1 = document.getElementById("butao1");
+            var b2 = document.getElementById("butao2");
+            var b3 = document.getElementById("butao3");
+            var b4 = document.getElementById("butao4");
+            var texto = document.getElementById("title");
+
+            if (rel.style.display === "none") {
+                rel.style.display = "block";
+                b1.style.display = "none";
+                b2.style.display = "none";
+                b3.style.display = "none";
+                b4.style.display = "block";
+                texto.style.display = "none";
+            }
+
+        }
+
+        function button4() {
+            var pub = document.getElementById("publico");
+            var esc = document.getElementById("escala");
+            var rel = document.getElementById("rela");
+            var b1 = document.getElementById("butao1");
+            var b2 = document.getElementById("butao2");
+            var b3 = document.getElementById("butao3");
+            var b4 = document.getElementById("butao4");
+            var texto = document.getElementById("title");
+
+            if (b4.style.display === "block") {
+                b4.style.display = "none";
+                b1.style.display = "block";
+                b2.style.display = "block";
+                b3.style.display = "block";
+                pub.style.display = "none";
+                esc.style.display = "none";
+                rel.style.display = "none";
+                texto.style.display = "block";
+            }
+
+        }
+
+    </script>
+
+
+</body>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-image: url(./isep.jpg);
+        background-size: 100% 100vh;
+        background-repeat: no-repeat;
+    }
+
+    .publico {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -150px 0 0 -150px;
+        width: 300px;
+        height: 300px;
+    }
+
+    .publico__header {
+        text-align: center;
+        opacity: 0;
+        transform: translate3d(0, 500px, 0);
+        animation: arrive 500ms ease-in-out 0.7s forwards;
+    }
+
+    .publico__title {
+        text-align: center;
+        font-size: $font-size;
+        margin-bottom: -10px;
+        font-weight: 500;
+        color: white;
+    }
+
+    .menu {
+        margin-top: 40px;
+        border-radius: 6px;
+        overflow: hidden;
+        opacity: 0;
+        transform: translate3d(0, 500px, 0);
+        animation: arrive 500ms ease-in-out 0.9s forwards;
+    }
+
+    .form--no {
+        animation: NO 1s ease-in-out;
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+
+    .form__input {
+        display: block;
+        width: 100%;
+        padding: 20px;
+        font-family: $font-family;
+        -webkit-appearance: none;
+        border: 0;
+        outline: 0;
+        transition: 0.3s;
+
+        &:focus {
+            background: darken(#fff, 3%);
+        }
+    }
+
+    .menu__btn {
+        display: block;
+        width: 100%;
+        padding: 20px;
+        font-family: $font-family;
+        -webkit-appearance: none;
+        outline: 0;
+        border: 0;
+        color: $color-primary;
+        background: $color-primary;
+        transition: 0.3s;
+
+        &:hover {
+            background: darken($color-primary, 5%);
+        }
+    }
+
+    .topnav {
+        overflow: hidden;
+        background-color: rgb(117, 115, 115);
+    }
+
+    .topnav a {
+        float: right;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    .topnav a.active {
+        padding: 28px 16px;
+        color: white;
+    }
+
+    #isep_logo {
+        float: left;
+        padding: 14px 16px;
+    }
+
+
+    @keyframes NO {
+
+        from,
+        to {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+
+        10%,
+        30%,
+        50%,
+        70%,
+        90% {
+            -webkit-transform: translate3d(-10px, 0, 0);
+            transform: translate3d(-10px, 0, 0);
+        }
+
+        20%,
+        40%,
+        60%,
+        80% {
+            -webkit-transform: translate3d(10px, 0, 0);
+            transform: translate3d(10px, 0, 0);
+        }
+    }
+
+    @keyframes arrive {
+        0% {
+            opacity: 0;
+            transform: translate3d(0, 50px, 0);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    @keyframes move {
+        0% {
+            background-position: 0 0
+        }
+
+        50% {
+            background-position: 100% 0
+        }
+
+        100% {
+            background-position: 0 0
+        }
+    }
+
+    div.menu-pane {
+        background-color: #000;
+        position: absolute;
+        transform: translateX(-105vw);
+        transform-origin: (0, 0);
+        width: 50vw;
+        height: 100%;
+        transition: 0.6s ease-in-out;
+    }
+
+    .menu-pane p {
+        color: black;
+        font-size: 0.6em;
+    }
+
+    .menu-pane nav {
+        padding: 20%;
+    }
+
+    .menu-links li,
+    a,
+    span {
+        transition: 0.5s ease-in-out;
+    }
+
+    .menu-pane ul {
+        padding: 10%;
+        display: inline-block;
+    }
+
+    .menu-pane li {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin-left: 10px;
+        font-size: 1em;
+    }
+
+
+    .menu-pane li:first-child {
+        font-size: 1.3em;
+        margin-left: -10px;
+    }
+
+
+    .menu-links li a {
+        color: white;
+        text-decoration: none;
+    }
+
+
+    .menu-links li:hover a {
+        color: #FFAB91;
+    }
+
+    .menu-links li:first-child:hover a {
+        color: black;
+        background-color: #FFAB91;
+    }
+
+    #QC-info {
+        background-color: #FFAB91;
+        border: 2px solid;
+        border-color: #FFAB91;
+        display: block;
+        opacity: 0;
+
+    }
+
+    .menu-links li:first-child:hover #QC-info {
+        opacity: 1;
+    }
+
+    .menu-links li:first-child:hover #DC-info {
+        opacity: 1;
+    }
+
+    #DC-info {
+        background-color: #FFAB91;
+        border: 2px solid;
+        border-color: #FFAB91;
+        display: block;
+        opacity: 0;
+    }
+
+
+    .menu-links li:first-child a {
+        padding: 5px;
+    }
+
+
+
+    input.hamburger-checkbox {
+        position: absolute;
+        z-index: 3;
+        top: 5vh;
+        left: 5vw;
+        width: 10vw;
+        opacity: 0;
+        height: 6vh;
+    }
+</style>
+
+<script>
+    const button = document.querySelector('.menu__btn')
+    const form = document.querySelector('.menu')
+
+    button.addEventListener('click', function () {
+        form.classList.add('form--no')
+    });
+</script>
+
+</style>
+
+</html>
