@@ -9,7 +9,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 DATABASE_URL = os.environ['DATABASE_URL']
-hello = [1, 2, 3]
 
 
 def connection_db(data_for_db, *args, **kwargs):
