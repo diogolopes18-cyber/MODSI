@@ -2,11 +2,11 @@
 
 import os
 import json
-from flask import Flask, render_template, flash, request, redirect, url_for, send_from_directory
+from flask import Flask, render_template, flash, request, redirect, url_for, send_from_directory, session, abort
+import flask
 import database_conn as db
 from uuid import uuid4
 from werkzeug.utils import secure_filename
-#from student import student
 
 
 ###############################
@@ -27,7 +27,9 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['DOWNLOAD_FOLDER'] = DOWNLOAD_FOLDER
 # limit upload size upto 20MB
 app.config['MAX_CONTENT_LENGTH'] = 20 * 1024 * 1024
+app.config['SECRET_KEY'] = str(uuid4())
 
+secure_session = str(uuid4())
 
 error = None
 authorize = 0
@@ -41,6 +43,11 @@ def allowed_file(filename):
 
 @app.route('/')
 def homepage():
+    if(request.form['username'] in session):
+        session_var = session[secure_session]
+    else:
+        abort(500)
+
     return render_template("home.html")
 
 
@@ -53,6 +60,7 @@ def login():
         if(request.form['username'] == "" or request.form['password'] == ""):
             error = 'Invalid Credentials. Please try again.'
         else:
+            session[request.form['username']] = secure_session
             db.connection_db(random_list, query="search")
             return redirect(url_for('student'))
 
