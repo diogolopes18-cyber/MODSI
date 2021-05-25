@@ -9,10 +9,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 DATABASE_URL = os.environ['DATABASE_URL']
+authorize = None
 
 
 def connection_db(data_for_db, *args, **kwargs):
 
+    global authorize
     query = kwargs.get('query', None)
     ######################
     # Connection details
@@ -37,7 +39,12 @@ def connection_db(data_for_db, *args, **kwargs):
             #  raise notice 'yes'
             # END IF"
             search_query = "SELECT EXISTS(SELECT mec_aluno FROM alunos_modsi WHERE mec_aluno=%s)"
-            cursor.execute(search_query, [data_for_db[0]])
+            cursor.execute(search_query, [(data_for_db)])
+            result = cursor.fetchone()
+            if(str(result) == "(False,)"):
+                authorize = 0
+            else:
+                authorize = 1
 
         elif(query == "update"):
             update_query = "UPDATE alunos_modsi SET pass=%s WHERE username=%s"
@@ -57,3 +64,5 @@ def connection_db(data_for_db, *args, **kwargs):
         if connection is not None:
             connection.close()
             print('Database connection closed.')
+
+    return authorize
