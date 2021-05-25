@@ -43,16 +43,6 @@ def connection_db(data_for_db, *args, **kwargs):
             update_query = "UPDATE alunos_modsi SET pass=%s WHERE username=%s"
             cursor.execute(update_query, [(data_for_db[1], data_for_db[0])])
 
-        ################
-        # TEST
-        ################
-
-        # insert = "INSERT INTO alunos_modsi (mec_aluno, pass, mail) VALUES %s"
-        # cursor.execute(insert, [(117050, "Hello", "1170500@isep.ipp.pt")])
-
-        # response = cursor.fetchall()
-        # print(response)
-
         #####################
         # Data commit
         #####################
