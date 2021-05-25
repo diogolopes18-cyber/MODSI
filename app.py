@@ -51,7 +51,7 @@ def login():
         if(request.form['username'] == "" or request.form['password'] == ""):
             error = 'Invalid Credentials. Please try again.'
         else:
-            db.connection_db(random_list, query="search")
+            db.connection_db(request.form['username'], query="search")
             return redirect(url_for('student'))
 
     return render_template("login.html", error=error)
