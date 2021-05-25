@@ -13,8 +13,10 @@ from werkzeug.utils import secure_filename
 ## FILE UPLOAD AND DOWNLOAD  ##
 ###############################
 
-UPLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__)) + '/uploads/'
-DOWNLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__)) + '/uploads/'
+# os.path.dirname(os.path.abspath(__file__)) + '/uploads/'
+UPLOAD_FOLDER = 'https://modsi-paper-platform.herokuapp.com/uploads'
+# os.path.dirname(os.path.abspath(__file__)) + '/uploads/'
+DOWNLOAD_FOLDER = 'https://modsi-paper-platform.herokuapp.com/uploads'
 ALLOWED_EXTENSIONS = {'pdf', 'txt', 'png'}
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 
@@ -27,14 +29,9 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['DOWNLOAD_FOLDER'] = DOWNLOAD_FOLDER
 # limit upload size upto 20MB
 app.config['MAX_CONTENT_LENGTH'] = 20 * 1024 * 1024
-app.config['SECRET_KEY'] = str(uuid4())
 
-secure_session = str(uuid4())
 
 error = None
-authorize = 0
-
-random_list = [1170654, 'Carolina']
 
 
 def allowed_file(filename):
@@ -43,11 +40,6 @@ def allowed_file(filename):
 
 @app.route('/')
 def homepage():
-    if(request.form['username'] in session):
-        session_var = session[secure_session]
-    else:
-        abort(500)
-
     return render_template("home.html")
 
 
@@ -55,12 +47,10 @@ def homepage():
 def login():
     global error
     if(request.method == 'POST'):
-
         # Check for empty inputs
         if(request.form['username'] == "" or request.form['password'] == ""):
             error = 'Invalid Credentials. Please try again.'
         else:
-            session[request.form['username']] = secure_session
             db.connection_db(random_list, query="search")
             return redirect(url_for('student'))
 
