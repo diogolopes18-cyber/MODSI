@@ -49,10 +49,15 @@ def login():
     if(request.method == 'POST'):
         # Check for empty inputs
         if(request.form['username'] == "" or request.form['password'] == ""):
-            error = 'Invalid Credentials. Please try again.'
+            error = 'No credentials provided. Please try again.'
         else:
-            db.connection_db(request.form['username'], query="search")
-            return redirect(url_for('student'))
+            authorization = db.connection_db(request.form['username'], query="search")
+
+            if(authorization == 1):
+                return redirect(url_for('student'))
+            elif(authorization == 0):
+                error = 'Invalid Credentials. Please try again.'
+                return render_template("login.html", error=error)
 
     return render_template("login.html", error=error)
 
