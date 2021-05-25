@@ -111,22 +111,22 @@ def index():
 
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(UPLOAD_FOLDER, filename))
-            # process_file(os.path.join(app.config['UPLOAD_FOLDER'], filename), filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            #process_file(os.path.join(app.config['UPLOAD_FOLDER'], filename), filename)
             return redirect(url_for('uploaded_file', filename=filename))
     return render_template('upload.html')
 
 
-@ app.route('/uploads/<filename>', methods = ['GET'])
+@app.route('/uploads/<filename>', methods=['GET'])
 def uploaded_file(filename):
 
-    return send_from_directory(app.config['DOWNLOAD_FOLDER'], filename, as_attachment = True)
+    return send_from_directory(app.config['DOWNLOAD_FOLDER'], filename, as_attachment=True)
 
 
-@ app.route('/aluno', methods = ['GET', 'POST'])
+@app.route('/aluno', methods=['GET', 'POST'])
 def student():
     return render_template("aluno.html")
 
 
 if __name__ == "__main__":
-    app.run(debug = True, port = 33507)
+    app.run(debug=True, port=33507)
