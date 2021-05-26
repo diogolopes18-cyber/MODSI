@@ -6,3 +6,4 @@ uploads/
 .env
 db/database_info.ini
 database.dump
+nginx/
