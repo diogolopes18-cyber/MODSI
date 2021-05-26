@@ -4,11 +4,12 @@ import os
 import json
 import psycopg2
 import configparser
-from dotenv import load_dotenv
 
 
-load_dotenv()
-DATABASE_URL = os.environ['DATABASE_URL']
+# Parses file
+config = configparser.ConfigParser()
+config.read('db/database_info.ini', encoding='utf-8')
+
 authorize = None
 
 
@@ -19,8 +20,11 @@ def connection_db(data_for_db, *args, **kwargs):
     ######################
     # Connection details
     ######################
-    connection = psycopg2.connect(DATABASE_URL, sslmode='require')
-
+    connection = psycopg2.connect(user=config['db']['user'],
+                                  password=config['db']['password'],
+                                  host=config['db']['host'],
+                                  port=config['db']['port'],
+                                  database=config['db']['database'])
     try:
         cursor = connection.cursor()
         print(connection.get_dsn_parameters(), "\n")
@@ -29,7 +33,7 @@ def connection_db(data_for_db, *args, **kwargs):
         # Data insertion
         #####################
         if(query == "insert"):
-            insert_query = "INSERT INTO alunos_modsi (mec_aluno, pass, mail) VALUES %s"
+            insert_query = "INSERT INTO alunos_modsi (mec_aluno, pass, email) VALUES %s ON CONFLICT DO NOTHING;"
             assert len(data_for_db) != 0, "No data to insert"
             cursor.execute(
                 insert_query, [(data_for_db[0], data_for_db[1], data_for_db[2])])
