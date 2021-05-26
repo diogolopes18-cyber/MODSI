@@ -3,20 +3,18 @@
 import os
 import json
 from flask import Flask, render_template, flash, request, redirect, url_for, send_from_directory, session, abort
-import flask
 import database_conn as db
-from uuid import uuid4
 from werkzeug.utils import secure_filename
+import webbrowser as web
+from threading import Timer
 
 
 ###############################
 ## FILE UPLOAD AND DOWNLOAD  ##
 ###############################
 
-# os.path.dirname(os.path.abspath(__file__)) + '/uploads/'
-UPLOAD_FOLDER = 'https://modsi-paper-platform.herokuapp.com/uploads'
-# os.path.dirname(os.path.abspath(__file__)) + '/uploads/'
-DOWNLOAD_FOLDER = 'https://modsi-paper-platform.herokuapp.com/uploads'
+UPLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__)) + '/uploads/'
+DOWNLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__)) + '/uploads/'
 ALLOWED_EXTENSIONS = {'pdf', 'txt', 'png'}
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 
@@ -24,7 +22,7 @@ DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 ##  APP CONTEXTS  ##
 ####################
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['DOWNLOAD_FOLDER'] = DOWNLOAD_FOLDER
 # limit upload size upto 20MB
@@ -32,6 +30,10 @@ app.config['MAX_CONTENT_LENGTH'] = 20 * 1024 * 1024
 
 
 error = None
+
+
+def open_browser():
+    web.open_new('http://127.0.0.1:65200')
 
 
 def allowed_file(filename):
@@ -129,4 +131,6 @@ def student():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=33507)
+    # Starts thread
+    #Timer(1, open_browser).start()
+    app.run(debug=True, host='0.0.0.0', port=65200)
