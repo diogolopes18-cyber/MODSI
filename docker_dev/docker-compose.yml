@@ -1,0 +1,32 @@
+version: "3.0"
+services:    
+  database:
+    image: postgres:11
+    container_name: modsi_postgres
+    env_file: 
+      - .env
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    ports:
+      - 5432:5432
+    networks:
+      - db_modsi
+    volumes:
+      - ./modsi_data:/var/lib/postgresql/data/
+      - ../db/create_db.sql:/home/modsi/create_db.sql
+      - ../db/automate_db_creation.sh:/home/modsi/automate_db_creation.sh
+
+  modsi_app:
+    build: ../
+    ports:
+      - 65200:65200
+    networks: 
+      - db_modsi
+    depends_on: 
+      - database
+
+networks:
+  db_modsi:
+    driver: bridge
