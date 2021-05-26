@@ -63,6 +63,11 @@ def login():
 
     return render_template("login.html", error=error)
 
+@app.route('/logout',methods=['GET','POST'])
+def logout():
+    global error
+    return render_template("home.html",error=error)
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def sign_in():
