@@ -7,7 +7,7 @@ import database_conn as db
 from werkzeug.utils import secure_filename
 import webbrowser as web
 from threading import Timer
-
+from diretor.diretor_page import diretor
 
 ###############################
 ## FILE UPLOAD AND DOWNLOAD  ##
@@ -27,6 +27,12 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['DOWNLOAD_FOLDER'] = DOWNLOAD_FOLDER
 # limit upload size upto 20MB
 app.config['MAX_CONTENT_LENGTH'] = 20 * 1024 * 1024
+
+##################
+##  BLUEPRINTS  ##
+##################
+
+app.register_blueprint(diretor)
 
 
 error = None
@@ -61,12 +67,22 @@ def login():
                 error = 'Invalid Credentials. Please try again.'
                 return render_template("login.html", error=error)
 
+        if(type(request.form['username'] == str)):
+            authorization = db.connection_db(request.form['username'], query="search", tablename="diretor")
+
+            if(authorization == 1):
+                return redirect(url_for('diretor.professor_page'))
+            elif(authorization == 0):
+                error = 'Invalid Credentials. Please try again.'
+                return render_template("login.html", error=error)
+
     return render_template("login.html", error=error)
 
-@app.route('/logout',methods=['GET','POST'])
+
+@app.route('/logout', methods=['GET', 'POST'])
 def logout():
     global error
-    return render_template("home.html",error=error)
+    return render_template("home.html", error=error)
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -76,11 +92,21 @@ def sign_in():
         if(request.form['username'] == "" or request.form['password'] == "" or request.form['email'] == ""):
             error = 'Please provide some sign up information'
         else:
-            params_to_insert = [
-                request.form['username'], request.form['password'], request.form['email']
-            ]
-            db.connection_db(params_to_insert, query="insert")
-            return redirect(url_for('login'))
+            # Professor
+            if(request.form['username'].isnumeric() == False):
+                params_to_insert = [
+                    request.form['username'], request.form['password'], request.form['email']
+                ]
+                db.connection_db(params_to_insert, query="insert", tablename="diretor")
+                return redirect(url_for('login'))
+
+            # Student
+            elif(request.form['username'].isnumeric()):
+                params_to_insert = [
+                    request.form['username'], request.form['password'], request.form['email']
+                ]
+                db.connection_db(params_to_insert, query="insert", tablename="student")
+                return redirect(url_for('login'))
 
     return render_template("registo.html", error=error)
 
@@ -119,7 +145,7 @@ def index():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            #process_file(os.path.join(app.config['UPLOAD_FOLDER'], filename), filename)
+            # process_file(os.path.join(app.config['UPLOAD_FOLDER'], filename), filename)
             return redirect(url_for('uploaded_file', filename=filename))
     return render_template('upload.html')
 
@@ -137,5 +163,5 @@ def student():
 
 if __name__ == "__main__":
     # Starts thread
-    #Timer(1, open_browser).start()
+    # Timer(1, open_browser).start()
     app.run(debug=True, host='0.0.0.0', port=65200)
