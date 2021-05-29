@@ -10,7 +10,9 @@ CREATE TABLE IF NOT EXISTS
 DIRETOR
 (
     sigla varchar(5) PRIMARY KEY UNIQUE NOT NULL,
-    nome_diretor varchar(50) UNIQUE NOT NULL
+    pass varchar(255) NOT NULL,
+    email varchar(255) NOT NULL
+    --nome_diretor varchar(50) UNIQUE NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS
