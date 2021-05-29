@@ -17,6 +17,7 @@ def connection_db(data_for_db, *args, **kwargs):
 
     global authorize
     query = kwargs.get('query', None)
+    tablename = kwargs.get('tablename', None)
     ######################
     # Connection details
     ######################
@@ -32,16 +33,22 @@ def connection_db(data_for_db, *args, **kwargs):
         #####################
         # Data insertion
         #####################
-        if(query == "insert"):
+        if(query == "insert" and tablename == "student"):
             insert_query = "INSERT INTO alunos_modsi (mec_aluno, pass, email) VALUES %s ON CONFLICT DO NOTHING;"
             assert len(data_for_db) != 0, "No data to insert"
             cursor.execute(
                 insert_query, [(data_for_db[0], data_for_db[1], data_for_db[2])])
 
-        elif(query == "search"):
-            # Could also be "IF EXISTS(SELECT mec_aluno FROM alunos_modsi WHERE mec_aluno=%s) THEN
-            #  raise notice 'yes'
-            # END IF"
+        if(query == "insert" and tablename == "diretor"):
+            insert_query = "INSERT INTO diretor (sigla, pass, email) VALUES %s ON CONFLICT DO NOTHING;"
+            assert len(data_for_db) != 0, "No data to insert"
+            cursor.execute(
+                insert_query, [(data_for_db[0], data_for_db[1], data_for_db[2])])
+
+        ###################
+        ##  Data Search  ##
+        ###################
+        if(query == "search" and tablename == "student"):
             search_query = "SELECT EXISTS(SELECT mec_aluno FROM alunos_modsi WHERE mec_aluno=%s)"
             cursor.execute(search_query, [(data_for_db)])
             result = cursor.fetchone()
@@ -50,7 +57,21 @@ def connection_db(data_for_db, *args, **kwargs):
             else:
                 authorize = 1
 
-        elif(query == "update"):
+        if(query == "search" and tablename == "diretor"):
+            search_professor_query = "SELECT EXISTS(SELECT sigla FROM diretor WHERE sigla=%s)"
+            cursor.execute(search_professor_query, [(data_for_db)])
+            result_professor = cursor.fetchone()
+
+            if(str(result) == "(False,)"):
+                authorize = 0
+            else:
+                authorize = 1
+
+        ###################
+        ##  Data Update  ##
+        ###################
+
+        if(query == "update"):
             update_query = "UPDATE alunos_modsi SET pass=%s WHERE username=%s"
             cursor.execute(update_query, [(data_for_db[1], data_for_db[0])])
 
