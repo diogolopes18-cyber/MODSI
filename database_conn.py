@@ -5,6 +5,8 @@ import json
 import psycopg2
 import configparser
 
+from werkzeug.wrappers import CommonRequestDescriptorsMixin
+
 
 # Parses file
 config = configparser.ConfigParser()
@@ -49,7 +51,7 @@ def connection_db(data_for_db, *args, **kwargs):
         ##  Data Search  ##
         ###################
         if(query == "search" and tablename == "student"):
-            search_query = "SELECT EXISTS(SELECT mec_aluno FROM alunos_modsi WHERE mec_aluno=%s)"
+            search_query = "SELECT EXISTS(SELECT mec_aluno FROM alunos_modsi WHERE mec_aluno=%s);"
             cursor.execute(search_query, [(data_for_db)])
             result = cursor.fetchone()
             if(str(result) == "(False,)"):
@@ -58,9 +60,10 @@ def connection_db(data_for_db, *args, **kwargs):
                 authorize = 1
 
         if(query == "search" and tablename == "diretor"):
-            search_professor_query = "SELECT EXISTS(SELECT sigla FROM diretor WHERE sigla=%s)"
+            search_professor_query = "SELECT EXISTS(SELECT sigla FROM diretor WHERE sigla=%s);"
             cursor.execute(search_professor_query, [(data_for_db)])
             result_professor = cursor.fetchone()
+            print(result_professor)
 
             if(str(result) == "(False,)"):
                 authorize = 0
@@ -71,9 +74,17 @@ def connection_db(data_for_db, *args, **kwargs):
         ##  Data Update  ##
         ###################
 
-        if(query == "update"):
-            update_query = "UPDATE alunos_modsi SET pass=%s WHERE username=%s"
-            cursor.execute(update_query, [(data_for_db[1], data_for_db[0])])
+        ################################
+        ##      UNDER DEVELOPMENT     ##
+        ################################
+        # if(query == "update"):
+        #     if(tablename == "student"):
+        #         update_query = "UPDATE alunos_modsi SET pass=%s WHERE username=%s"
+        #         cursor.execute(update_query, [(data_for_db[1], data_for_db[0])])
+
+        #     elif(tablename == "diretor"):
+        #         update_query = "INSERT INTO projetos (status_project) VALUES=%s;"
+        #         cursor.execute(update_query, [data_for_db])
 
         #####################
         # Data commit
