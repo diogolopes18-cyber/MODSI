@@ -59,22 +59,25 @@ def login():
         if(request.form['username'] == "" or request.form['password'] == ""):
             error = 'No credentials provided. Please try again.'
         else:
-            authorization = db.connection_db(request.form['username'], query="search")
+            if(request.form['username'].isnumeric()):
+                authorization = db.connection_db(
+                    request.form['username'], query="search", tablename="student")
 
-            if(authorization == 1):
-                return redirect(url_for('student'))
-            elif(authorization == 0):
-                error = 'Invalid Credentials. Please try again.'
-                return render_template("login.html", error=error)
+                if(authorization == 1):
+                    return redirect(url_for('student'))
+                elif(authorization == 0):
+                    error = 'Invalid Credentials. Please try again.'
+                    return render_template("login.html", error=error)
 
-        if(type(request.form['username'] == str)):
-            authorization = db.connection_db(request.form['username'], query="search", tablename="diretor")
+            if(request.form['username'].isnumeric() == False):
+                authorization = db.connection_db(
+                    request.form['username'], query="search", tablename="diretor")
 
-            if(authorization == 1):
-                return redirect(url_for('diretor.professor_page'))
-            elif(authorization == 0):
-                error = 'Invalid Credentials. Please try again.'
-                return render_template("login.html", error=error)
+                if(authorization == 1):
+                    return redirect(url_for('diretor.professor_page', _external=True, _scheme='http'))
+                elif(authorization == 0):
+                    error = 'Invalid Credentials. Please try again.'
+                    return render_template("login.html", error=error)
 
     return render_template("login.html", error=error)
 
@@ -146,14 +149,17 @@ def index():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             # process_file(os.path.join(app.config['UPLOAD_FOLDER'], filename), filename)
-            return redirect(url_for('uploaded_file', filename=filename))
+            # return redirect(url_for('uploaded_file', filename=filename))
     return render_template('upload.html')
+
+######################################################
+# Redirect to this function while accessing files
+######################################################
 
 
 @app.route('/uploads/<filename>', methods=['GET'])
 def uploaded_file(filename):
-
-    return send_from_directory(app.config['DOWNLOAD_FOLDER'], filename, as_attachment=True)
+    return send_from_directory(app.config['DOWNLOAD_FOLDER'], filename)
 
 
 @app.route('/aluno', methods=['GET', 'POST'])
