@@ -12,14 +12,13 @@ DIRETOR
     sigla varchar(5) PRIMARY KEY UNIQUE NOT NULL,
     pass varchar(255) NOT NULL,
     email varchar(255) NOT NULL
-    --nome_diretor varchar(50) UNIQUE NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS
 PROJETOS
 (
-    nome_projeto varchar(50) UNIQUE NOT NULL,
-    status_project varchar(50) NOT NULL
+    nome_projeto varchar(50) UNIQUE,
+    status_project varchar(50)
 );
 
 CREATE TABLE IF NOT EXISTS
