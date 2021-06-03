@@ -22,7 +22,8 @@
 
     <br />
     <h1 class="diretor__title" id="aprovar" style="display: none;">Projetos a aprovar</h1>
-    <button class="menu__btn" type="button" id="butao1" onclick="button1()">Projetos a aprovar</button>
+    <button class="menu__btn" type="button" href="/diretor/approve" onclick="{window.open('https://0.0.0.0:65200/diretor/approve');}">Projetos a aprovar</button>
+
     <h1 class="diretor__title" id="disponivel" style="display: none;">Projetos disponíveis</h1>
 
     <input type="button" id="mais" value="+" style="display: none;" onclick="adicionar()" />
@@ -32,11 +33,14 @@
     <textarea id="data" cols="30" rows="1" style="display: none;">Data apresentação</textarea>
     <input type="file" id="ficheiro" accept=".pdf" value="Escolher ficheiro" style="display: none;">
     <button class="menu__btn" type="button" id="butao2" onclick="button2()">Projetos disponíveis</button>
+
     <h1 class="diretor__title" id="submetidos" style="display: none;">Projetos submetidos</h1>
     <button class="menu__btn" type="button" id="butao3" onclick="button3()">Projetos submetidos</button>
-    <h1 class="diretor__title" id="escalo" style="display: none;">Escalonamento</h1>
-    <button class="menu__btn" type="button" id="butao4" onclick="button4()">Escalonamento</button>
-    <br /><button class="menu__btn" type="button" id="butao5" onclick="button5()" style="display: none;">Voltar a Menu
+
+    <!--<h1 class="diretor__title" id="escalo" style="display: none;">Escalonamento</h1>
+    <button class="menu__btn" type="button" id="butao4" onclick="button4()">Escalonamento</button>-->
+    <br />
+    <button class="menu__btn" type="button" id="butao5" onclick="button5()" style="display: none;">Voltar a Menu
       Principal</button>
 
   </div>
@@ -47,7 +51,7 @@
   <script>
 
     function button1() {
-      var x = document.getElementById("aprovar");
+      /*var x = document.getElementById("aprovar");
       var texto = document.getElementById("title");
       var b = document.getElementById("butao1");
       var c = document.getElementById("butao2");
@@ -188,7 +192,7 @@
       }
 
 
-    }
+    }*/
 
   </script>
 

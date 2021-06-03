@@ -166,6 +166,12 @@ def uploaded_file(filename):
 def student():
     return render_template("aluno.html")
 
+@app.route('/diretor/approve')
+def approvar():
+    rows = db.connection_db(query="search", tablename="projetos")
+    return render_template('approved.html',
+                            rows=rows)
+
 
 if __name__ == "__main__":
     # Starts thread
