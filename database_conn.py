@@ -70,25 +70,31 @@ def connection_db(data_for_db, *args, **kwargs):
             else:
                 authorize = 1
 
-        ###################
-        ##  Data Update  ##
-        ###################
+        if(query == "search" and tablename == "projetos"):
+            search_projetos_query = "SELECT EXISTS(SELECT status_project FROM projetos WHERE status_project=null);"
+            cursor.execute(search_projetos_query)
+            result = cursor.fetchall()
+            print("RESULT:", json.dumps(result, indent=2))
 
-        ################################
-        ##      UNDER DEVELOPMENT     ##
-        ################################
-        # if(query == "update"):
-        #     if(tablename == "student"):
-        #         update_query = "UPDATE alunos_modsi SET pass=%s WHERE username=%s"
-        #         cursor.execute(update_query, [(data_for_db[1], data_for_db[0])])
+            ###################
+            ##  Data Update  ##
+            ###################
 
-        #     elif(tablename == "diretor"):
-        #         update_query = "INSERT INTO projetos (status_project) VALUES=%s;"
-        #         cursor.execute(update_query, [data_for_db])
+            ################################
+            ##      UNDER DEVELOPMENT     ##
+            ################################
+            # if(query == "update"):
+            #     if(tablename == "student"):
+            #         update_query = "UPDATE alunos_modsi SET pass=%s WHERE username=%s"
+            #         cursor.execute(update_query, [(data_for_db[1], data_for_db[0])])
 
-        #####################
-        # Data commit
-        #####################
+            #     elif(tablename == "diretor"):
+            #         update_query = "INSERT INTO projetos (status_project) VALUES=%s;"
+            #         cursor.execute(update_query, [data_for_db])
+
+            #####################
+            # Data commit
+            #####################
         connection.commit()
         cursor.close()
         #print("Query sucessful")
