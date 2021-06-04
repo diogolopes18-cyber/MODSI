@@ -2,12 +2,15 @@
 
 import os
 import json
+import user
 from flask import Flask, render_template, flash, request, redirect, url_for, send_from_directory, session, abort
 import database_conn as db
 from werkzeug.utils import secure_filename
 import webbrowser as web
 from threading import Timer
-from diretor.diretor_page import diretor
+from user.orientador_page import orientador
+from user.student_page import aluno
+
 
 ###############################
 ## FILE UPLOAD AND DOWNLOAD  ##
@@ -32,7 +35,8 @@ app.config['MAX_CONTENT_LENGTH'] = 20 * 1024 * 1024
 ##  BLUEPRINTS  ##
 ##################
 
-app.register_blueprint(diretor)
+app.register_blueprint(orientador)
+app.register_blueprint(aluno)
 
 
 error = None
@@ -51,6 +55,12 @@ def homepage():
     return render_template("home.html")
 
 
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():
+    global error
+    return render_template("home.html", error=error)
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     global error
@@ -61,31 +71,25 @@ def login():
         else:
             if(request.form['username'].isnumeric()):
                 authorization = db.connection_db(
-                    request.form['username'], query="search", tablename="student")
+                    data=request.form['username'], query="search", tablename="student")
 
                 if(authorization == 1):
-                    return redirect(url_for('student'))
+                    return redirect(url_for('aluno.personal_page'))
                 elif(authorization == 0):
                     error = 'Invalid Credentials. Please try again.'
                     return render_template("login.html", error=error)
 
             if(request.form['username'].isnumeric() == False):
                 authorization = db.connection_db(
-                    request.form['username'], query="search", tablename="diretor")
+                    data=request.form['username'], query="search", tablename="orientador")
 
                 if(authorization == 1):
-                    return redirect(url_for('diretor.professor_page', _external=True, _scheme='http'))
+                    return redirect(url_for('orientador.orientador_page'))
                 elif(authorization == 0):
                     error = 'Invalid Credentials. Please try again.'
                     return render_template("login.html", error=error)
 
     return render_template("login.html", error=error)
-
-
-@app.route('/logout', methods=['GET', 'POST'])
-def logout():
-    global error
-    return render_template("home.html", error=error)
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -100,7 +104,7 @@ def sign_in():
                 params_to_insert = [
                     request.form['username'], request.form['password'], request.form['email']
                 ]
-                db.connection_db(params_to_insert, query="insert", tablename="diretor")
+                db.connection_db(data=params_to_insert, query="insert", tablename="orientador")
                 return redirect(url_for('login'))
 
             # Student
@@ -108,7 +112,7 @@ def sign_in():
                 params_to_insert = [
                     request.form['username'], request.form['password'], request.form['email']
                 ]
-                db.connection_db(params_to_insert, query="insert", tablename="student")
+                db.connection_db(data=params_to_insert, query="insert", tablename="student")
                 return redirect(url_for('login'))
 
     return render_template("registo.html", error=error)
@@ -127,7 +131,7 @@ def forgot_password():
             ]
             print(update)
             # Updates password on database
-            db.connection_db(update, query="update")
+            db.connection_db(data=update, query="update")
             return redirect(url_for('login'))
 
     return render_template("forgot_password.html", error=error)
@@ -150,7 +154,7 @@ def index():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             # process_file(os.path.join(app.config['UPLOAD_FOLDER'], filename), filename)
             # return redirect(url_for('uploaded_file', filename=filename))
-    return render_template('upload.html')
+    return render_template("upload.html")
 
 ######################################################
 # Redirect to this function while accessing files
@@ -162,12 +166,5 @@ def uploaded_file(filename):
     return send_from_directory(app.config['DOWNLOAD_FOLDER'], filename)
 
 
-@app.route('/aluno', methods=['GET', 'POST'])
-def student():
-    return render_template("aluno.html")
-
-
 if __name__ == "__main__":
-    # Starts thread
-    # Timer(1, open_browser).start()
     app.run(debug=True, host='0.0.0.0', port=65200)
