@@ -166,5 +166,19 @@ def uploaded_file(filename):
     return send_from_directory(app.config['DOWNLOAD_FOLDER'], filename)
 
 
+<<<<<<< HEAD
+=======
+@app.route('/aluno', methods=['GET', 'POST'])
+def student():
+    return render_template("aluno.html")
+
+@app.route('/diretor/approve')
+def approvar():
+    rows = db.connection_db(query="search", tablename="projetos")
+    return render_template('approved.html',
+                            rows=rows)
+
+
+>>>>>>> 6410a1abe807fec89ab1c54e802ce946b3c432dc
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=65200)
