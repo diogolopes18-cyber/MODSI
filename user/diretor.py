@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
 
 
-from os import abort
+import os
 from flask import Flask, render_template, flash, request, redirect, url_for, Blueprint
 import database_conn as db
+from dotenv import load_dotenv
 import json
 
+# ENV variables
+load_dotenv()
+diretor_username = os.getenv('DIRETOR_USERNAME')
+diretor_password = os.getenv('DIRETOR_PASSWORD')
 
 diretor = Blueprint('diretor', __name__)
 
@@ -15,15 +20,12 @@ def login_diretor():
     if(request.method == 'POST'):
         assert len(request.form['username']) > 0, "Empty value"
 
-        # Checks for the username and password on DB
-        authorization = db.connection_db(
-            data=request.form['username'], query="search", tablename="diretor")
+        if(request.form['username'] == diretor_username and request.form['password'] == diretor_password):
+            return render_template("diretor.html")
+        else:
+            return redirect(url_for('app.login'))
 
-        if(authorization == 1):
-            return redirect(url_for('diretor_page'))
-        elif(authorization == 0):
-            error = 'Invalid Credentials. Please try again.'
-            return render_template("login.html", error=error)
+    # return render_template("login.html")
 
 
 @diretor.route('/diretor/workspace', methods=['GET', 'POST'])
@@ -32,5 +34,5 @@ def diretor_page():
         data = db.connection_db(query="select", tablename="projetos")
         data_json = json.dumps(data)
 
-        # Present to page
-        return render_template("diretor.html", data=data_json)
+    # Present to page
+    return render_template("diretor.html", data=data_json)
