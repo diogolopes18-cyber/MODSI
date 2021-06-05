@@ -17,11 +17,27 @@ def personal_page():
 
 
 @aluno.route('/aluno/submissions', methods=['GET', 'POST'])
-def submit_paper():
+def submited_papers():
     # Show submited files
     if(request.method == 'GET'):
-        projects = db.connection_db(query="select", tablename="orientador")
-        # projects_json = json.dumps(projects)
-        # print("TEST\n", projects_json)
+        projects = db.connection_db(query="select", tablename="projetos")
 
     return render_template("submited_projects.html", data=projects)
+
+
+# @aluno.route('/aluno/submit', methods=['GET', 'POST'])
+# def submit_paper():
+#     if(request.method == 'POST'):
+
+#         data = [
+#             {
+#                 'title': request.form['titulo'],
+#                 'theme': request.form['tema'],
+#                 'orientador': request.form['orientador']
+#             }
+#         ]
+
+#         # Insert dictionary into DB
+#         db.connection_db(data=data, query="insert", tablename="projetos")
+
+#     return render_template("upload.html")
