@@ -57,13 +57,27 @@ def connection_db(*args, **kwargs):
                 cursor.execute(
                     insert_query, [(data[0], data[1], data[2])])
 
+            if(tablename == "projetos"):
+                insert_query = "INSERT INTO projetos (nome_projeto, status_project, student_id, sigla_orientador) VALUES %s ON CONFLICT DO NOTHING;"
+                assert len(data) != 0, "No data to insert"
+
+                # Inserts project information
+                for i in range(len(data) - 1):
+                    cursor.execute(insert_query,
+                                   [(
+                                       data[i]['title'],
+                                       data[i]['theme'],
+                                       data[i]['orientador']
+                                   )]
+                                   )
+
         ###################
         ##  Data Search  ##
         ###################
         if(query == "search"):
             if(tablename == "student"):
-                search_query = "SELECT EXISTS(SELECT mec_aluno FROM alunos_modsi WHERE mec_aluno=%s);"
-                cursor.execute(search_query, [(data)])
+                search_query = "SELECT EXISTS(SELECT (mec_aluno,pass) FROM alunos_modsi WHERE (mec_aluno,pass)=%s);"
+                cursor.execute(search_query, [(data[0], data[1])])
                 result = cursor.fetchone()
                 if(str(result) == "(False,)"):
                     authorize = 0
@@ -71,8 +85,8 @@ def connection_db(*args, **kwargs):
                     authorize = 1
 
             if(tablename == "orientador"):
-                search_orientador_query = "SELECT EXISTS(SELECT sigla FROM orientador WHERE sigla=%s);"
-                cursor.execute(search_orientador_query, [(data)])
+                search_orientador_query = "SELECT EXISTS(SELECT (sigla,pass) FROM orientador WHERE (sigla,pass)=%s);"
+                cursor.execute(search_orientador_query, [(data[0], data[1])])
                 result_orientador = cursor.fetchone()
 
                 if(str(result) == "(False,)"):
