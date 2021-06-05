@@ -41,117 +41,13 @@
 
     </div>
 
-    <script>
-        function button1() {
-            var add = document.getElementById("adicionar");
-            var b1 = document.getElementById("butao1");
-            var b2 = document.getElementById("butao2");
-            var b3 = document.getElementById("butao3");
-            var b4 = document.getElementById("butao4");
-            var texto = document.getElementById("title");
-            var plus = document.getElementById("mais");
-
-            if (add.style.display === "none") {
-                add.style.display = "block";
-                b1.style.display = "none";
-                b2.style.display = "none";
-                b3.style.display = "none";
-                b4.style.display = "block";
-                texto.style.display = "none";
-                plus.style.display = "block";
-            }
-
-        }
-
-        function button2() {
-            var date = document.getElementById("data");
-            var b1 = document.getElementById("butao1");
-            var b2 = document.getElementById("butao2");
-            var b3 = document.getElementById("butao3");
-            var b4 = document.getElementById("butao4");
-            var texto = document.getElementById("title");
-
-
-            if (date.style.display === "none") {
-                date.style.display = "block";
-                b1.style.display = "none";
-                b2.style.display = "none";
-                b3.style.display = "none";
-                b4.style.display = "block";
-                texto.style.display = "none";
-
-            }
-
-        }
-
-        function button3() {
-            var submit = document.getElementById("submeter");
-            var b1 = document.getElementById("butao1");
-            var b2 = document.getElementById("butao2");
-            var b3 = document.getElementById("butao3");
-            var b4 = document.getElementById("butao4");
-            var texto = document.getElementById("title");
-
-            if (submit.style.display === "none") {
-                submit.style.display = "block";
-                b1.style.display = "none";
-                b2.style.display = "none";
-                b3.style.display = "none";
-                b4.style.display = "block";
-                texto.style.display = "none";
-            }
-
-        }
-
-        function button4() {
-            var add = document.getElementById("adicionar");
-            var date = document.getElementById("data");
-            var submit = document.getElementById("submeter");
-            var texto = document.getElementById("title");
-            var b1 = document.getElementById("butao1");
-            var b2 = document.getElementById("butao2");
-            var b3 = document.getElementById("butao3");
-            var b4 = document.getElementById("butao4");
-            var plus = document.getElementById("mais");
-            var box = document.getElementById("descricao");
-            var file = document.getElementById("ficheiro");
-
-            if (b4.style.display === "block") {
-                b4.style.display = "none";
-                b1.style.display = "block";
-                b2.style.display = "block";
-                b3.style.display = "block";
-                add.style.display = "none";
-                date.style.display = "none";
-                submit.style.display = "none";
-                texto.style.display = "block";
-                plus.style.display = "none";
-                box.style.display = "none";
-                file.style.display = "none";
-            }
-
-        }
-
-        function adicionar() {
-            var plus = document.getElementById("mais");
-            var box = document.getElementById("descricao");
-            var file = document.getElementById("ficheiro");
-
-            if (box.style.display === "none") {
-                box.style.display = "block";
-                file.style.display = "block";
-                plus.style.display = "none";
-            }
-        }
-
-    </script>
 
 </body>
 <style>
     body {
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
-        background-image: url('/static/isep.jpg');
+        background-image: url('../static/isep.jpg');
         background-size: 100% 100vh;
         background-repeat: no-repeat;
     }
@@ -221,7 +117,8 @@
         color: $color-primary;
         background: $color-primary;
         transition: 0.3s;
-
+        border-radius: 6px;
+        margin: 5vh auto;
         &:hover {
             background: darken($color-primary, 5%);
         }
