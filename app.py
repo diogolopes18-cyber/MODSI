@@ -12,23 +12,13 @@ from user.orientador_page import orientador
 from user.student_page import aluno
 
 
-###############################
-## FILE UPLOAD AND DOWNLOAD  ##
-###############################
-
-WORKDIR = '/home/modsi'
-UPLOAD_FOLDER = os.path.join(WORKDIR, '/uploads')
-DOWNLOAD_FOLDER = os.path.join(WORKDIR, '/uploads')
-ALLOWED_EXTENSIONS = {'pdf', 'txt', 'png', 'docx', 'ppt', 'xlsx'}
-DIR_PATH = os.path.dirname(os.path.realpath(__file__))
-
 ####################
 ##  APP CONTEXTS  ##
 ####################
 
 app = Flask(__name__, template_folder='templates')
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['DOWNLOAD_FOLDER'] = DOWNLOAD_FOLDER
+app.config['UPLOAD_PATH'] = 'uploads'
+app.config['UPLOAD_EXTENSIONS'] = ['.pdf', '.txt', '.png', '.docx', '.ppt', '.xlsx']
 # limit upload size upto 20MB
 app.config['MAX_CONTENT_LENGTH'] = 20 * 1024 * 1024
 
@@ -39,10 +29,6 @@ app.config['MAX_CONTENT_LENGTH'] = 20 * 1024 * 1024
 app.register_blueprint(orientador)
 app.register_blueprint(aluno)
 error = None
-
-
-def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 @app.route('/')
@@ -143,21 +129,30 @@ def forgot_password():
 
 @app.route('/file_upload', methods=['GET', 'POST'])
 def index():
-    if request.method == 'POST':
-        if 'file' not in request.files:
-            print('No file attached in request')
-            return redirect(request.url)
-        file = request.files['file']
+    if(request.method == 'POST'):
 
-        if file.filename == '':
-            print('No file selected')
-            return redirect(request.url)
+        # Retrieve data from form
+        data = [
+            {
+                'title': request.form['title'],
+                'student': request.form['student'],
+                'orientador': request.form['orientador']
+            }
+        ]
 
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            # process_file(os.path.join(app.config['UPLOAD_FOLDER'], filename), filename)
-            # return redirect(url_for('uploaded_file', filename=filename))
+        uploaded_file = request.files['file']
+        filename = secure_filename(uploaded_file.filename)
+
+        if(filename != ""):
+            file_ext = os.path.splitext(filename)[1]
+            if(file_ext not in app.config['UPLOAD_EXTENSIONS']):
+                return "Invalid image", 400
+
+            uploaded_file.save(os.path.join(app.config['UPLOAD_PATH'], filename))
+            db.connection_db(data=data, query="insert", tablename="projetos")
+
+            return redirect(url_for('aluno.personal_page'))
+
     return render_template("upload.html")
 
 ######################################################
@@ -167,7 +162,7 @@ def index():
 
 @app.route('/uploads/<filename>', methods=['GET'])
 def uploaded_file(filename):
-    return send_from_directory(app.config['DOWNLOAD_FOLDER'], filename)
+    return send_from_directory(app.config['UPLOAD_PATH'], filename)
 
 
 if __name__ == "__main__":
