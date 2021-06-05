@@ -58,15 +58,15 @@ def connection_db(*args, **kwargs):
                     insert_query, [(data[0], data[1], data[2])])
 
             if(tablename == "projetos"):
-                insert_query = "INSERT INTO projetos (nome_projeto, status_project, student_id, sigla_orientador) VALUES %s ON CONFLICT DO NOTHING;"
+                insert_query = "INSERT INTO projetos (nome_projeto, student_id, sigla_orientador) VALUES %s ON CONFLICT DO NOTHING;"
                 assert len(data) != 0, "No data to insert"
 
                 # Inserts project information
-                for i in range(len(data) - 1):
+                for i in range(len(data)):
                     cursor.execute(insert_query,
                                    [(
                                        data[i]['title'],
-                                       data[i]['theme'],
+                                       data[i]['student'],
                                        data[i]['orientador']
                                    )]
                                    )
