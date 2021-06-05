@@ -16,9 +16,10 @@ from user.student_page import aluno
 ## FILE UPLOAD AND DOWNLOAD  ##
 ###############################
 
-UPLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__)) + '/uploads/'
-DOWNLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__)) + '/uploads/'
-ALLOWED_EXTENSIONS = {'pdf', 'txt', 'png'}
+WORKDIR = '/home/modsi'
+UPLOAD_FOLDER = os.path.join(WORKDIR, '/uploads')
+DOWNLOAD_FOLDER = os.path.join(WORKDIR, '/uploads')
+ALLOWED_EXTENSIONS = {'pdf', 'txt', 'png', 'docx', 'ppt', 'xlsx'}
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 
 ####################
@@ -37,13 +38,7 @@ app.config['MAX_CONTENT_LENGTH'] = 20 * 1024 * 1024
 
 app.register_blueprint(orientador)
 app.register_blueprint(aluno)
-
-
 error = None
-
-
-def open_browser():
-    web.open_new('http://127.0.0.1:65200')
 
 
 def allowed_file(filename):
@@ -71,7 +66,12 @@ def login():
         else:
             if(request.form['username'].isnumeric()):
                 authorization = db.connection_db(
-                    data=request.form['username'], query="search", tablename="student")
+                    data=[
+                        request.form['username'],
+                        request.form['password']
+                    ],
+                    query="search",
+                    tablename="student")
 
                 if(authorization == 1):
                     return redirect(url_for('aluno.personal_page'))
@@ -81,7 +81,11 @@ def login():
 
             if(request.form['username'].isnumeric() == False):
                 authorization = db.connection_db(
-                    data=request.form['username'], query="search", tablename="orientador")
+                    data=[
+                        request.form['username'],
+                        request.form['password']
+                    ],
+                    query="search", tablename="orientador")
 
                 if(authorization == 1):
                     return redirect(url_for('orientador.orientador_page'))
@@ -166,19 +170,5 @@ def uploaded_file(filename):
     return send_from_directory(app.config['DOWNLOAD_FOLDER'], filename)
 
 
-<<<<<<< HEAD
-=======
-@app.route('/aluno', methods=['GET', 'POST'])
-def student():
-    return render_template("aluno.html")
-
-@app.route('/diretor/approve')
-def approvar():
-    rows = db.connection_db(query="search", tablename="projetos")
-    return render_template('approved.html',
-                            rows=rows)
-
-
->>>>>>> 6410a1abe807fec89ab1c54e802ce946b3c432dc
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=65200)
