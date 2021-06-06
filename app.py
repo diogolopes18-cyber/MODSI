@@ -1,15 +1,21 @@
 #!/usr/bin/env python3
 
 import os
-import json
-import user
 from flask import Flask, render_template, flash, request, redirect, url_for, send_from_directory, session, abort
 import database_conn as db
 from werkzeug.utils import secure_filename
-import webbrowser as web
-from threading import Timer
+from dotenv import load_dotenv
 from user.orientador_page import orientador
 from user.student_page import aluno
+from user.diretor import diretor
+
+
+#####################
+##  ENV VARIABLES  ##
+#####################
+diretor_username = os.environ.get('DIRETOR_USERNAME')
+diretor_password = os.environ.get('DIRETOR_PASSWORD')
+print(diretor_password)
 
 
 ####################
@@ -28,6 +34,7 @@ app.config['MAX_CONTENT_LENGTH'] = 20 * 1024 * 1024
 
 app.register_blueprint(orientador)
 app.register_blueprint(aluno)
+app.register_blueprint(diretor)
 error = None
 
 
@@ -50,6 +57,7 @@ def login():
         if(request.form['username'] == "" or request.form['password'] == ""):
             error = 'No credentials provided. Please try again.'
         else:
+            # Student login
             if(request.form['username'].isnumeric()):
                 authorization = db.connection_db(
                     data=[
@@ -65,19 +73,27 @@ def login():
                     error = 'Invalid Credentials. Please try again.'
                     return render_template("login.html", error=error)
 
+            # Conselour login
             if(request.form['username'].isnumeric() == False):
-                authorization = db.connection_db(
-                    data=[
-                        request.form['username'],
-                        request.form['password']
-                    ],
-                    query="search", tablename="orientador")
+                if(request.form['username'] != diretor_username):
+                    authorization = db.connection_db(
+                        data=[
+                            request.form['username'],
+                            request.form['password']
+                        ],
+                        query="search", tablename="orientador")
 
-                if(authorization == 1):
-                    return redirect(url_for('orientador.orientador_page'))
-                elif(authorization == 0):
-                    error = 'Invalid Credentials. Please try again.'
-                    return render_template("login.html", error=error)
+                    if(authorization == 1):
+                        return redirect(url_for('orientador.orientador_page'))
+                    elif(authorization == 0):
+                        error = 'Invalid Credentials. Please try again.'
+                        return render_template("login.html", error=error)
+
+                # Administrator login
+                elif(request.form['username'] == diretor_username and request.form['password'] == diretor_password):
+                    return redirect(url_for('diretor.diretor_page'))
+                else:
+                    return redirect(url_for('app.login'))
 
     return render_template("login.html", error=error)
 
