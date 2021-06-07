@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 from user.orientador_page import orientador
 from user.student_page import aluno
 from user.diretor import diretor
+from user.public_projects import public
 
 
 #####################
@@ -35,6 +36,7 @@ app.config['MAX_CONTENT_LENGTH'] = 20 * 1024 * 1024
 app.register_blueprint(orientador)
 app.register_blueprint(aluno)
 app.register_blueprint(diretor)
+app.register_blueprint(public)
 error = None
 
 
