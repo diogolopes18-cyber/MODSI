@@ -14,6 +14,20 @@
         <a class="active" href="login">Login</a>
         <a class="active" href="logout">LogOut</a>
     </div>
+
+    <div class="pagina">
+
+        <h1 class="aluno__title" id="title">Projetos Submetidos</h1>
+        <main>
+            {% for row in data %}
+            <ol class="aluno__body">
+                <li>{{row[0]}}</li>
+                <li>{{row[1]}}</li>
+                <li>{{row[2]}}</li>
+            </ol>
+            {% endfor %}
+        </main>
+    </div>
     <!--<div class="container">
         <table border=1 frame=void rules=rows>
             <thead>
@@ -38,20 +52,6 @@
         </table>
     </div>-->
 
-    {% for row in rows %}
-    <tr>
-        <td>{{ row.student_id }}</a></td>
-        <td>{{ row.nome_projeto }}</td>
-        <!--<td bgcolor="{{ row.stat_colour }}">{{ row.unit_status }}</td>-->
-    </tr>
-    {% endfor %}
-
-    
-
-    <script>
-        
-    </script>
-
 
 </body>
 
@@ -63,7 +63,7 @@
         background-size: 100% 100vh;
         background-repeat: no-repeat;
     }
-    
+
     .pagina {
         position: absolute;
         top: 50%;
@@ -162,6 +162,7 @@
         float: left;
         padding: 14px 20px;
     }
+
     .container {
         max-width: 940px;
         margin: 0 auto;
@@ -169,7 +170,6 @@
         text-align: center;
         color: white;
     }
-
 </style>
 
 </html>

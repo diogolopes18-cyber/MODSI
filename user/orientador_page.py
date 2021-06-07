@@ -2,8 +2,10 @@
 
 import os
 import json
+from dotenv.main import load_dotenv
 from flask import Flask, render_template, flash, request, redirect, url_for, send_from_directory, session, abort, Blueprint
 import database_conn as db
+
 
 # App context
 orientador = Blueprint('orientador', __name__)

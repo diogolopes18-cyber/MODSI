@@ -89,7 +89,7 @@ def connection_db(*args, **kwargs):
                 cursor.execute(search_orientador_query, [(data[0], data[1])])
                 result_orientador = cursor.fetchone()
 
-                if(str(result) == "(False,)"):
+                if(str(result_orientador) == "(False,)"):
                     authorize = 0
                 else:
                     authorize = 1
@@ -99,7 +99,7 @@ def connection_db(*args, **kwargs):
                 cursor.execute(search_professor_query, [(data)])
                 result_professor = cursor.fetchone()
 
-                if(str(result) == "(False,)"):
+                if(str(result_professor) == "(False,)"):
                     authorize = 0
                 else:
                     authorize = 1
@@ -110,17 +110,20 @@ def connection_db(*args, **kwargs):
         ##  Check for not approved projects  ##
         #######################################
         if(query == "search" and tablename == "projetos"):
-            search_projetos_query = "SELECT EXISTS(SELECT status_project FROM projetos WHERE status_project=null);"
+            search_projetos_query = "SELECT nome_projeto FROM projetos WHERE status_project IS NULL;"
             cursor.execute(search_projetos_query)
             result = cursor.fetchall()
             print("RESULT:", json.dumps(result, indent=2))
+
+            return result
 
         ###################
         ##  SELECT DATA  ##
         ###################
         if(query == "select"):
             if(tablename == "projetos"):
-                select_projetos_query = "SELECT nome_projeto FROM projetos;"
+                # Selects approved projects
+                select_projetos_query = "SELECT nome_projeto FROM projetos WHERE status_project IS NOT NULL;"
                 cursor.execute(select_projetos_query)
                 result_projetos = cursor.fetchall()
 
