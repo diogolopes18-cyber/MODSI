@@ -29,6 +29,7 @@ PROJETOS
     status_project varchar(50),
     student_id int UNIQUE NOT NULL,
     sigla_orientador varchar(5) UNIQUE NOT NULL,
+    nota int, 
     FOREIGN KEY (student_id) REFERENCES ALUNOS_MODSI (mec_aluno),
     FOREIGN KEY (sigla_orientador) REFERENCES ORIENTADOR (sigla)
 );
