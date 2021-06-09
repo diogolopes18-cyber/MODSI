@@ -17,6 +17,23 @@ def orientador_page():
     return render_template("orientador.html")
 
 
+@orientador.route('/orientador/projects', methods=['GET', 'POST'])
+def new_projects():
+    # Submit new project proposals
+    if(request.method == 'POST'):
+
+        suggestions = [
+            {
+                "sigla": request.form['sigla'],
+                "nome_projeto": request.form['name'],
+                "description": request.form['description']
+            }
+        ]
+
+        db.connection_db(data=suggestions, query="insert", tablename="orientador_suggestions")
+
+    return render_template("project_suggestion.html")
+
 #############################
 # 1. Route para approve
 #############################
