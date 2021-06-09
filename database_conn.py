@@ -147,21 +147,29 @@ def connection_db(*args, **kwargs):
 
                 return result_orientador
 
-        ################################
-        ##      UNDER DEVELOPMENT     ##
-        ################################
-        # if(query == "update"):
-        #     if(tablename == "student"):
-        #         update_query = "UPDATE alunos_modsi SET pass=%s WHERE username=%s"
-        #         cursor.execute(update_query, [(data_for_db[1], data_for_db[0])])
+            if(tablename == "orientador_suggestions"):
+                # Selects available projects
+                select_available_projects = "SELECT nome_projetos FROM orientador_suggestions;"
+                cursor.execute(select_available_projects)
+                result_available_projects = cursor.fetchall()
 
-        #     elif(tablename == "diretor"):
-        #         update_query = "INSERT INTO projetos (status_project) VALUES=%s;"
-        #         cursor.execute(update_query, [data_for_db])
+                return result_available_projects
 
-        #####################
-        # Data commit
-        #####################
+                ################################
+                ##      UNDER DEVELOPMENT     ##
+                ################################
+                # if(query == "update"):
+                #     if(tablename == "student"):
+                #         update_query = "UPDATE alunos_modsi SET pass=%s WHERE username=%s"
+                #         cursor.execute(update_query, [(data_for_db[1], data_for_db[0])])
+
+                #     elif(tablename == "diretor"):
+                #         update_query = "INSERT INTO projetos (status_project) VALUES=%s;"
+                #         cursor.execute(update_query, [data_for_db])
+
+                #####################
+                # Data commit
+                #####################
         connection.commit()
         cursor.close()
 
