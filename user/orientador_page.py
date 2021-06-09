@@ -34,16 +34,26 @@ def new_projects():
 
     return render_template("project_suggestion.html")
 
+
+@orientador.route('/orientador/projects/available', methods=['GET', 'POST'])
+def available_projects():
+
+    if(request.method == 'GET'):
+
+        available = db.connection_db(query="select", tablename="orientador_suggestions")
+        #assert len(available) > 0, "Empty data"
+
+    return render_template("available_projects.html", data=available)
+
+
 #############################
 # 1. Route para approve
 #############################
-
 # @diretor.route('/diretor/approve', methods=['GET', 'POST'])
 # def approved_projects(prof_name):
 #     if(request.method == 'GET'):
 #         assert len(prof_name) > 0, "No name provided"
 #         prof_exist = db.connection_db(prof_name, query="search", tablename="diretor")
-
 #         if(prof_exist == 1):
 #             if(request.form['approve_button'] == 'approve'):
 #                 # Update column status_project of table projetos with approved
@@ -51,20 +61,15 @@ def new_projects():
 #                 db.connection_db(status, query="update", tablename="diretor")
 #         else:
 #             pass
-
 #     return render_template("professor_aprove.html")
-
-
 # @diretor.route('/diretor/proposals', methods=['GET', 'POST'])
 # def proposals():
 #     # Presents proposed projects by professor
-
 #     if(request.method == 'POST'):
 #         if(request.form['propose_project'] == "true"):
 #             # Insert text box
 #         else:
 #             pass
-
 #     elif(request.method == 'GET'):
 #         # Fetch from DB and present to HTML page
 #         projects_from_professor = db.connection_db()
