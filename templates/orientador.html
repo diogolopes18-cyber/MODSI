@@ -23,7 +23,8 @@
         <br />
         <h1 class="orientador__title" id="adicionar" style="display: none;">Adicionar Projetos</h1>
 
-        <button class="menu__btn" type="button" id="butao1" onclick="button1()">Adicionar Projetos</button>
+        <button class="menu__btn" type="button" id="butao1"
+            onclick="{window.open('http://0.0.0.0:65200/orientador/projects');}">Adicionar Projetos</button>
 
         <input type="button" id="mais" value="+" style="display: none;" onclick="adicionar()" />
         <textarea id="descricao" cols="80" rows="10" style="display: none;">
@@ -31,7 +32,7 @@
         </textarea>
         <input type="file" id="ficheiro" accept=".pdf" value="Escolher ficheiro" style="display: none;">
 
-        
+
         <h1 class="orientador__title" id="submeter" style="display: none;">Submeter nota final</h1>
         <button class="menu__btn" type="button" id="butao3" onclick="button3()">Submeter nota final</button>
         <button class="menu__btn" type="button" id="butao4" onclick="button4()" style="display: none;">Voltar a Menu
@@ -118,6 +119,7 @@
         transition: 0.3s;
         border-radius: 6px;
         margin: 5vh auto;
+
         &:hover {
             background: darken($color-primary, 5%);
         }
