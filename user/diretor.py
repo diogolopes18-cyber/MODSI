@@ -12,10 +12,20 @@ def diretor_page():
     return render_template("diretor.html")
 
 
-@diretor.route('/diretor/approval', methods=['GET', 'POST'])
+@diretor.route('/diretor/for_approval', methods=['GET', 'POST'])
 def approve_papers():
     if(request.method == 'GET'):
         # Search for projects with null status on DB
         result = db.connection_db(query="search", tablename="projetos")
 
-    return render_template("approved.html", data=result)
+    return render_template("for_approval.html", data=result)
+
+
+@diretor.route('/diretor/approved', methods=['GET', 'POST'])
+def papers_already_approved():
+
+    if(request.method == 'POST'):
+        # Search for approved projects
+        approved_projects = db.connection_db(query="select", tablename="projetos")
+
+    return render_template("approved.html", data=approved_projects)
