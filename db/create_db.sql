@@ -28,8 +28,7 @@ PROJETOS
     nome_projeto varchar(50) UNIQUE PRIMARY KEY,
     status_project varchar(50),
     student_id int UNIQUE NOT NULL,
-    sigla_orientador varchar(5) UNIQUE NOT NULL,
-    nota int, 
+    sigla_orientador varchar(5) UNIQUE NOT NULL, 
     FOREIGN KEY (student_id) REFERENCES ALUNOS_MODSI (mec_aluno),
     FOREIGN KEY (sigla_orientador) REFERENCES ORIENTADOR (sigla)
 );
@@ -51,4 +50,5 @@ GRADES
     project varchar(50) UNIQUE,
     FOREIGN KEY (student) REFERENCES ALUNOS_MODSI (mec_aluno),
     FOREIGN KEY (project) REFERENCES PROJETOS (nome_projeto)
-)
+);
+
