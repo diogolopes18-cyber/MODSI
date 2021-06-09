@@ -16,7 +16,6 @@ from user.public_projects import public
 #####################
 diretor_username = os.environ.get('DIRETOR_USERNAME')
 diretor_password = os.environ.get('DIRETOR_PASSWORD')
-print(diretor_password)
 
 
 ####################
