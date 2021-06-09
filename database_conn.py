@@ -39,27 +39,25 @@ def connection_db(*args, **kwargs):
         # Data insertion
         #####################
         if(query == "insert"):
+            assert len(data) != 0, "No data to insert"
+
             if(tablename == "student"):
                 insert_query = "INSERT INTO alunos_modsi (mec_aluno, pass, email) VALUES %s ON CONFLICT DO NOTHING;"
-                assert len(data) != 0, "No data to insert"
                 cursor.execute(
                     insert_query, [(data[0], data[1], data[2])])
 
             if(tablename == "orientador"):
                 insert_query = "INSERT INTO orientador (sigla, pass, email) VALUES %s ON CONFLICT DO NOTHING;"
-                assert len(data) != 0, "No data to insert"
                 cursor.execute(
                     insert_query, [(data[0], data[1], data[2])])
 
             if(tablename == "diretor"):
                 insert_query = "INSERT INTO diretor (sigla, pass, email) VALUES %s ON CONFLICT DO NOTHING;"
-                assert len(data) != 0, "No data to insert"
                 cursor.execute(
                     insert_query, [(data[0], data[1], data[2])])
 
             if(tablename == "projetos"):
                 insert_query = "INSERT INTO projetos (nome_projeto, student_id, sigla_orientador) VALUES %s ON CONFLICT DO NOTHING;"
-                assert len(data) != 0, "No data to insert"
 
                 # Inserts project information
                 for i in range(len(data)):
@@ -68,13 +66,26 @@ def connection_db(*args, **kwargs):
                                        data[i]['title'],
                                        data[i]['student'],
                                        data[i]['orientador']
-                                   )]
-                                   )
+                                   )])
+
+            if(tablename == "orientador_suggestions"):
+                insert_query = "INSERT INTO orientador_suggestions (nome_projeto, id_orientador, description_project) VALUES %s ON CONFLICT DO NOTHING;"
+
+                # Inserts suggestion for a new project
+                for j in range(len(data)):
+                    cursor.execute(insert_query,
+                                   [(
+                                       data[j]['sigla'],
+                                       data[j]['nome_projeto'],
+                                       data[j]['description']
+                                   )])
 
         ###################
         ##  Data Search  ##
         ###################
         if(query == "search"):
+            assert len(data) != 0, "No data to insert"
+
             if(tablename == "student"):
                 search_query = "SELECT EXISTS(SELECT (mec_aluno,pass) FROM alunos_modsi WHERE (mec_aluno,pass)=%s);"
                 cursor.execute(search_query, [(data[0], data[1])])
@@ -153,7 +164,6 @@ def connection_db(*args, **kwargs):
         #####################
         connection.commit()
         cursor.close()
-        #print("Query sucessful")
 
     except (Exception, psycopg2.Error) as error:
         print("Error while connecting to PostgreSQL", error)
