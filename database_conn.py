@@ -22,6 +22,8 @@ def connection_db(*args, **kwargs):
     data = kwargs.get('data', None)
     query = kwargs.get('query', None)
     tablename = kwargs.get('tablename', None)
+    for_approval = kwargs.get('for_approval', None)
+
     ######################
     # Connection details
     ######################
@@ -120,13 +122,6 @@ def connection_db(*args, **kwargs):
         #######################################
         ##  Check for not approved projects  ##
         #######################################
-        if(query == "search" and tablename == "projetos"):
-            search_projetos_query = "SELECT nome_projeto FROM projetos WHERE status_project IS NULL;"
-            cursor.execute(search_projetos_query)
-            result = cursor.fetchall()
-            print("RESULT:", json.dumps(result, indent=2))
-
-            return result
 
         ###################
         ##  SELECT DATA  ##
@@ -139,6 +134,13 @@ def connection_db(*args, **kwargs):
                 result_projetos = cursor.fetchall()
 
                 return result_projetos
+
+            if(tablename == "projetos" and for_approval == "true"):
+                search_projetos_query = "SELECT nome_projeto FROM projetos WHERE status_project IS NULL;"
+                cursor.execute(search_projetos_query)
+                result = cursor.fetchall()
+
+                return result
 
             if(tablename == "orientador"):
                 select_orientador_query = "SELECT sigla FROM orientador;"
