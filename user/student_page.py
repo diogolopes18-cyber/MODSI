@@ -23,3 +23,21 @@ def submited_papers():
         projects = db.connection_db(query="select", tablename="projetos")
 
     return render_template("submited_projects.html", data=projects)
+
+@aluno.route('/aluno/submit_tema', methods=['GET', 'POST'])
+def submit_theme():
+    if(request.method == 'POST'):
+
+        # Retrieve data from form
+        data = [
+            {
+                'title': request.form['title'],
+                'status': 'to approve',
+                'student': request.form['student'],
+                'orientador': request.form['orientador']
+            }
+        ]
+
+        db.connection_db(data=data, query="insert", tablename="projetos")
+
+    return render_template("submit_tema.html", data=projects)
