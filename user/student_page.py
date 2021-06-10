@@ -40,4 +40,4 @@ def submit_theme():
 
         db.connection_db(data=data, query="insert", tablename="projetos")
 
-    return render_template("submit_tema.html", data=projects)
+    return render_template("submit_tema.html")
