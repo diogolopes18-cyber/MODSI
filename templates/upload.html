@@ -15,23 +15,26 @@
         <a class="active" href="logout">Logout</a>
     </div>
 
-    <div class="pagina">
+    <div class="user">
 
-        <h1 class="aluno__title" id="title">Projetos Académicos</h1>
+        <header class="user__header">
+            <h1 class="user__title">Submeter projeto</h1>
+        </header>
 
-        <form method="post" enctype=multipart/form-data>
-            <h2 class="aluno__body" id="orientador"> Orientador
-                <input type="text" name="orientador" value="{{request.form.orientador}}">
-            </h2>
-            <h2 class="aluno__body" id="student"> Estudante
-                <input type="text" name="student" value="{{request.form.student}}">
-            </h2>
-            <h2 class="aluno__body" id="title"> Título
-                <input type="text" name="title" value="{{request.form.title}}">
-            </h2>
-            </p>
-            <input type=file name=file>
-            <input type=submit value=Upload>
+        <form method="post" enctype=multipart/form-data class='form'>
+            <div class='form__group'>
+                <input type="text" placeholder="Orientador" class="form__input" id="orientador" name="orientador"
+                    value="{{request.form.orientador}}" />
+
+                <input type="text" placeholder="Nº mecanográfico" class="form__input" id="student" name="student"
+                    value="{{request.form.student}}" />
+                <input type="text" placeholder="Título" class="form__input" id="title" name="title"
+                    value="{{request.form.title}}" />
+            
+                </p>
+                <input type=file name=file class="ficheiro">
+                <input type=submit value=Upload class='upload'>
+            </div>
         </form>
     </div>
 </body>
@@ -45,39 +48,48 @@
         background-repeat: no-repeat;
     }
 
-    .pagina {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin: -150px 0 0 -150px;
-        width: 300px;
-        height: 300px;
+    .ficheiro {
+        width: 100%;
+        transition: 0.3s;
+    }
+    .upload{
+        display: block;
+        width: 50%;
+        padding: 20px;
+        font-family: $font-family;
+        -webkit-appearance: none;
+        outline: 0;
+        border: 0;
+        color: $color-primary;
+        background: $color-primary;
+        transition: 0.3s;
+
+        &:hover {
+            background: darken($color-primary, 5%);
+        }
     }
 
-    .aluno__header {
+    .user {
+        width: 90%;
+        max-width: 340px;
+        margin: 10vh auto;
+    }
+
+    .user__header {
         text-align: center;
         opacity: 0;
         transform: translate3d(0, 500px, 0);
         animation: arrive 500ms ease-in-out 0.7s forwards;
     }
 
-    .aluno__title {
-        text-align: center;
+    .user__title {
         font-size: $font-size;
         margin-bottom: -10px;
         font-weight: 500;
         color: white;
     }
 
-    .aluno__body {
-        text-align: left;
-        font-size: 20px;
-        margin-bottom: -10px;
-        font-weight: 500;
-        color: white;
-    }
-
-    .menu {
+    .form {
         margin-top: 40px;
         border-radius: 6px;
         overflow: hidden;
@@ -107,7 +119,7 @@
         }
     }
 
-    .menu__btn {
+    .btn {
         display: block;
         width: 100%;
         padding: 20px;
@@ -118,9 +130,62 @@
         color: $color-primary;
         background: $color-primary;
         transition: 0.3s;
-        border-radius: 6px;
-        margin: 5vh auto;
 
+        &:hover {
+            background: darken($color-primary, 5%);
+        }
+    }
+
+    @keyframes NO {
+
+        from,
+        to {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+
+        10%,
+        30%,
+        50%,
+        70%,
+        90% {
+            -webkit-transform: translate3d(-10px, 0, 0);
+            transform: translate3d(-10px, 0, 0);
+        }
+
+        20%,
+        40%,
+        60%,
+        80% {
+            -webkit-transform: translate3d(10px, 0, 0);
+            transform: translate3d(10px, 0, 0);
+        }
+    }
+
+    @keyframes arrive {
+        0% {
+            opacity: 0;
+            transform: translate3d(0, 50px, 0);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    @keyframes move {
+        0% {
+            background-position: 0 0
+        }
+
+        50% {
+            background-position: 100% 0
+        }
+
+        100% {
+            background-position: 0 0
+        }
     }
 
     .topnav {
@@ -149,7 +214,7 @@
 
     #isep_logo {
         float: left;
-        padding: 14px 20px;
+        padding: 14px 16px;
     }
 </style>
 

@@ -21,13 +21,13 @@
             <h1 class="user__title">Insira tema do projeto</h1>
         </header>
 
-        <form class="form" method="POST">
+        <form class="form" method="POST" enctype=multipart/form-data>
             <div class="form__group">
-                <input type="text" placeholder="Título" class="form__input" id="title" name="titulo"
+                <input type="text" placeholder="Título" class="form__input" id="title" name="title"
                     value="{{request.form.title}}" />
 
-                <input type="text" placeholder="Tema" class="form__input" id="tema" name="tema"
-                    value="{{request.form.tema}}" />
+                <input type="text" placeholder="Nº mecanográfico" class="form__input" id="student" name="student"
+                    value="{{request.form.student}}" />
 
                 <input type="text" placeholder="Orientador" class="form__input" id="orientador" name="orientador"
                     value="{{request.form.orientador}}" />
