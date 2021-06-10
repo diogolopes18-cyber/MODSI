@@ -138,7 +138,7 @@ def connection_db(*args, **kwargs):
         if(query == "select"):
             if(tablename == "projetos"):
                 # Selects approved projects
-                select_projetos_query = "SELECT nome_projeto FROM projetos WHERE status_project IS NOT NULL;"
+                select_projetos_query = "SELECT nome_projeto FROM projetos WHERE status_project='submitted';"
                 cursor.execute(select_projetos_query)
                 result_projetos = cursor.fetchall()
 
