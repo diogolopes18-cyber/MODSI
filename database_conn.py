@@ -82,6 +82,17 @@ def connection_db(*args, **kwargs):
                                        data[j]['description']
                                    )])
 
+            if(tablename == "grades"):
+
+                insert_query = "INSERT INTO grades (nota, student, project) VALUES %s ON CONFLICT DO NOTHING;"
+                cursor.execute(
+                    [(
+                        data['grade'],
+                        data['student'],
+                        data['project_name']
+                    )]
+                )
+
         ###################
         ##  Data Search  ##
         ###################
