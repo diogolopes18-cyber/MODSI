@@ -16,7 +16,7 @@ def diretor_page():
 def approve_papers():
     if(request.method == 'GET'):
         # Search for projects with null status on DB
-        result = db.connection_db(query="search", tablename="projetos")
+        result = db.connection_db(query="search", tablename="projetos", for_approval="true")
 
     return render_template("for_approval.html", data=result)
 
