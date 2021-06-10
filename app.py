@@ -152,6 +152,7 @@ def index():
         data = [
             {
                 'title': request.form['title'],
+                'status': 'submitted',
                 'student': request.form['student'],
                 'orientador': request.form['orientador']
             }
