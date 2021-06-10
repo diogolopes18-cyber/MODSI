@@ -52,3 +52,13 @@ GRADES
     FOREIGN KEY (project) REFERENCES PROJETOS (nome_projeto)
 );
 
+--#####INSERT RANDOM VALUES FOR TESTING PURPOSES####--
+INSERT INTO ORIENTADOR (sigla, pass, email) VALUES ('mjs', 'hello123', 'mjs@isep.ipp.pt') ON CONFLICT DO NOTHING;
+
+INSERT INTO PROJETOS (nome_projeto, student_id, sigla_orientador) 
+    VALUES ('A new approach to real time systems', 1180900, 'crc') 
+    ON CONFLICT DO NOTHING;
+
+INSERT INTO ORIENTADOR_SUGGESTIONS (nome_projeto, id_orientador, description_project) 
+    VALUES ('Robotic arm', 'crc', 'Develop a robotic arm with 6 DOF using a STM32 microcontroller')
+    ON CONFLICT DO NOTHING;
