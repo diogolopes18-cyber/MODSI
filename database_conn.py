@@ -157,21 +157,19 @@ def connection_db(*args, **kwargs):
 
                 return result_available_projects
 
-                ################################
-                ##      UNDER DEVELOPMENT     ##
-                ################################
-                # if(query == "update"):
-                #     if(tablename == "student"):
-                #         update_query = "UPDATE alunos_modsi SET pass=%s WHERE username=%s"
-                #         cursor.execute(update_query, [(data_for_db[1], data_for_db[0])])
+        ################################
+        ##      UNDER DEVELOPMENT     ##
+        ################################
+        if(query == "update"):
+            if(tablename == "student"):
+                update_query = "UPDATE alunos_modsi SET pass=%s WHERE mec_aluno=%s;"
+                cursor.execute(update_query, (data['new_pass'], data['new_user']))
 
-                #     elif(tablename == "diretor"):
-                #         update_query = "INSERT INTO projetos (status_project) VALUES=%s;"
-                #         cursor.execute(update_query, [data_for_db])
+            elif(tablename == "orientador"):
+                update_query = "UPDATE orientador SET pass=%s WHERE sigla=%s;"
+                cursor.execute(update_query, (data['new_pass'], data['new_user']))
 
-                #####################
-                # Data commit
-                #####################
+        # Data commit
         connection.commit()
         cursor.close()
 
