@@ -130,15 +130,24 @@ def forgot_password():
     global error
     # Resets password
     if(request.method == 'POST'):
-        if(request.form['new_username'] == "" or request.form['new_password']):
-            error = 'Provide new data'
-        else:
-            update = [
-                request.form['new_username'], request.form['new_password']
-            ]
-            print(update)
+        if(request.form['new_username'].isnumeric()):
+            update = {
+                "new_user": request.form['new_username'],
+                "new_pass": request.form['new_password']
+            }
+
             # Updates password on database
-            db.connection_db(data=update, query="update")
+            db.connection_db(data=update, query="update", tablename="student")
+            return redirect(url_for('login'))
+
+        elif(request.form['new_username'].isnumeric() == False):
+            update = {
+                "new_user": request.form['new_username'],
+                "new_pass": request.form['new_password']
+            }
+
+            # Updates password on database
+            db.connection_db(data=update, query="update", tablename="orientador")
             return redirect(url_for('login'))
 
     return render_template("forgot_password.html", error=error)
@@ -152,7 +161,7 @@ def index():
         data = [
             {
                 'title': request.form['title'],
-                'status': 'submitted',
+                'status': "submitted",
                 'student': request.form['student'],
                 'orientador': request.form['orientador']
             }
