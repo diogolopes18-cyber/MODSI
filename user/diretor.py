@@ -16,7 +16,7 @@ def diretor_page():
 def approve_papers():
     if(request.method == 'GET'):
         # Search for projects with null status on DB
-        result = db.connection_db(query="search", tablename="projetos", for_approval="true")
+        result = db.connection_db(query="select", tablename="projetos", for_approval="true")
 
     return render_template("for_approval.html", data=result)
 
@@ -29,3 +29,11 @@ def papers_already_approved():
         approved_projects = db.connection_db(query="select", tablename="projetos")
 
     return render_template("approved.html", data=approved_projects)
+
+@diretor.route('diretor/submitted', methods=['GET', 'POST'])
+def submited_papers():
+    # Show submited files
+    if(request.method == 'GET'):
+        projects = db.connection_db(query="select", tablename="projetos")
+
+    return render_template("submited_projects.html", data=projects)
