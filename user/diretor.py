@@ -30,7 +30,8 @@ def papers_already_approved():
 
     return render_template("approved.html", data=approved_projects)
 
-@diretor.route('diretor/submitted', methods=['GET', 'POST'])
+
+@diretor.route('/diretor/submitted', methods=['GET', 'POST'])
 def submited_papers():
     # Show submited files
     if(request.method == 'GET'):
