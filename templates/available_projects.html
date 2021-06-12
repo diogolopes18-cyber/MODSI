@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
     <title>Projetos Disponíveis</title>
 </head>
 
 <body>
     <div class="topnav">
-        <img src="../static/Isep-logo.png" id="isep_logo" width="180" height="48">
+        <img src="/static/Isep-logo.png" id="isep_logo" width="180" height="48">
         <a class="active" href="/">Home</a>
         <a class="active" href="register">Registo</a>
         <a class="active" href="login">Login</a>
@@ -23,7 +21,6 @@
             <ol class="aluno__body">
                 <li>{{row[0]}}</li>
                 <li>{{row[1]}}</li>
-                <li>{{row[2]}}</li>
             </ol>
             {% endfor %}
         </main>
@@ -31,10 +28,13 @@
 </body>
 
 <style>
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+    @import url('https://fonts.googleapis.com/css?family=Libre+Caslon+Text:400,700&display=swap');
+
     body {
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
-        background-image: url("../static/isep.jpg");
+        background-image: url("/static/isep.jpg");
         background-size: 100% 100vh;
         background-repeat: no-repeat;
     }
