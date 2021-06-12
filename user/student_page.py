@@ -24,6 +24,7 @@ def submited_papers():
 
     return render_template("submited_projects.html", data=projects)
 
+
 @aluno.route('/aluno/submit_tema', methods=['GET', 'POST'])
 def submit_theme():
     if(request.method == 'POST'):
@@ -32,7 +33,7 @@ def submit_theme():
         data = [
             {
                 'title': request.form['title'],
-                'status': 'to approve',
+                'status': 'submitted',
                 'student': request.form['student'],
                 'orientador': request.form['orientador']
             }
