@@ -36,12 +36,8 @@ def new_projects():
 @orientador.route('/orientador/projects/available', methods=['GET', 'POST'])
 def available_projects():
 
-    if(request.method == 'GET'):
-
-        available = db.connection_db(query="select", tablename="orientador_suggestions")
-        #assert len(available) > 0, "Empty data"
-
-    return render_template("available_projects.html", data=available)
+    projects = db.connection_db(query="select", tablename="orientador_suggestions")
+    return render_template("available_projects.html", data=projects)
 
 
 @orientador.route('/orientador/submit_grade', methods=['GET', 'POST'])
@@ -57,6 +53,6 @@ def submit_grade():
         }
 
         # Insert data into DB
-        db.connection_db(query="insert", tablename="grades")
+        db.connection_db(data=grade, query="insert", tablename="grades")
 
     return render_template("final_grade.html")
