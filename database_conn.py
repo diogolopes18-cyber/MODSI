@@ -57,28 +57,28 @@ def connection_db(*args, **kwargs):
                     insert_query, [(data[0], data[1], data[2])])
 
             if(tablename == "projetos"):
-                insert_query = "INSERT INTO projetos (nome_projeto, student_id, sigla_orientador) VALUES %s ON CONFLICT DO NOTHING;"
+                insert_query = "INSERT INTO projetos (nome_projeto, status_project, student_id, sigla_orientador) VALUES %s ON CONFLICT DO NOTHING;"
 
                 # Inserts project information
-                for i in range(len(data)):
-                    cursor.execute(insert_query,
-                                   [(
-                                       data[i]['title'],
-                                       data[i]['student'],
-                                       data[i]['orientador']
-                                   )])
+
+                cursor.execute(insert_query,
+                               [(
+                                   data[0]['title'],
+                                   data[0]['status'],
+                                   data[0]['student'],
+                                   data[0]['orientador']
+                               )])
 
             if(tablename == "orientador_suggestions"):
                 insert_query = "INSERT INTO orientador_suggestions (nome_projeto, id_orientador, description_project) VALUES %s ON CONFLICT DO NOTHING;"
 
                 # Inserts suggestion for a new project
-                for j in range(len(data)):
-                    cursor.execute(insert_query,
-                                   [(
-                                       data[j]['sigla'],
-                                       data[j]['nome_projeto'],
-                                       data[j]['description']
-                                   )])
+                cursor.execute(insert_query,
+                               [(
+                                   data[0]['nome_projeto'],
+                                   data[0]['sigla'],
+                                   data[0]['description']
+                               )])
 
             if(tablename == "grades"):
 
@@ -144,12 +144,12 @@ def connection_db(*args, **kwargs):
 
                 return result_projetos
 
-            if(tablename == "projetos" and for_approval == "true"):
-                search_projetos_query = "SELECT nome_projeto FROM projetos WHERE status_project IS NULL;"
-                cursor.execute(search_projetos_query)
-                result = cursor.fetchall()
+            # if(tablename == "projetos" and for_approval == "true"):
+            #     search_projetos_query = "SELECT nome_projeto FROM projetos WHERE status_project IS NULL;"
+            #     cursor.execute(search_projetos_query)
+            #     result = cursor.fetchall()
 
-                return result
+            #     return result
 
             if(tablename == "orientador"):
                 select_orientador_query = "SELECT sigla FROM orientador;"
@@ -160,7 +160,7 @@ def connection_db(*args, **kwargs):
 
             if(tablename == "orientador_suggestions"):
                 # Selects available projects
-                select_available_projects = "SELECT nome_projetos FROM orientador_suggestions;"
+                select_available_projects = "SELECT nome_projeto FROM orientador_suggestions;"
                 cursor.execute(select_available_projects)
                 result_available_projects = cursor.fetchall()
 
