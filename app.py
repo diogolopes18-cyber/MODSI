@@ -157,28 +157,54 @@ def forgot_password():
 def index():
     if(request.method == 'POST'):
 
-        # Retrieve data from form
-        data = [
-            {
-                'title': request.form['title'],
-                'status': "submitted",
-                'student': request.form['student'],
-                'orientador': request.form['orientador']
-            }
-        ]
+        if(request.form.get('project') is None):
+            # When the project is submitted its status is changed to submitted
+            data = [
+                {
+                    'title': request.form['title'],
+                    'status': "submitted",
+                    'student': request.form['student'],
+                    'orientador': request.form['orientador'],
+                    'public': "no"
+                }
+            ]
 
-        uploaded_file = request.files['file']
-        filename = secure_filename(uploaded_file.filename)
+            uploaded_file = request.files['file']
+            filename = secure_filename(uploaded_file.filename)
 
-        if(filename != ""):
-            file_ext = os.path.splitext(filename)[1]
-            if(file_ext not in app.config['UPLOAD_EXTENSIONS']):
-                return "Invalid image", 400
+            if(filename != ""):
+                file_ext = os.path.splitext(filename)[1]
+                if(file_ext not in app.config['UPLOAD_EXTENSIONS']):
+                    return "Invalid image", 400
 
-            uploaded_file.save(os.path.join(app.config['UPLOAD_PATH'], filename))
-            db.connection_db(data=data, query="insert", tablename="projetos")
+                uploaded_file.save(os.path.join(app.config['UPLOAD_PATH'], filename))
+                db.connection_db(data=data, query="insert", tablename="projetos", public="false")
 
-            return redirect(url_for('aluno.personal_page'))
+                return redirect(url_for('aluno.personal_page'))
+
+        elif(request.form.get('project') is not None):
+            data = [
+                {
+                    'title': request.form['title'],
+                    'status': "submitted",
+                    'student': request.form['student'],
+                    'orientador': request.form['orientador'],
+                    'public': "yes"
+                }
+            ]
+
+            uploaded_file = request.files['file']
+            filename = secure_filename(uploaded_file.filename)
+
+            if(filename != ""):
+                file_ext = os.path.splitext(filename)[1]
+                if(file_ext not in app.config['UPLOAD_EXTENSIONS']):
+                    return "Invalid image", 400
+
+                uploaded_file.save(os.path.join(app.config['UPLOAD_PATH'], filename))
+                db.connection_db(data=data, query="insert", tablename="projetos", public="true")
+
+                return redirect(url_for('aluno.personal_page'))
 
     return render_template("upload.html")
 
