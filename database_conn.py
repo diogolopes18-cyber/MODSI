@@ -20,7 +20,7 @@ def connection_db(*args, **kwargs):
     data = kwargs.get('data', None)
     query = kwargs.get('query', None)
     tablename = kwargs.get('tablename', None)
-    for_approval = kwargs.get('for_approval', None)
+    public = kwargs.get('public', None)
 
     ######################
     # Connection details
@@ -57,17 +57,35 @@ def connection_db(*args, **kwargs):
                     insert_query, [(data[0], data[1], data[2])])
 
             if(tablename == "projetos"):
-                insert_query = "INSERT INTO projetos (nome_projeto, status_project, student_id, sigla_orientador) VALUES %s ON CONFLICT DO NOTHING;"
+                # If the project is not inteded to be public
+                if(public == "false"):
+                    insert_query = "INSERT INTO projetos (nome_projeto, status_project, student_id, sigla_orientador, make_public) VALUES %s ON CONFLICT DO NOTHING;"
 
-                # Inserts project information
+                    # Inserts project information
 
-                cursor.execute(insert_query,
-                               [(
-                                   data[0]['title'],
-                                   data[0]['status'],
-                                   data[0]['student'],
-                                   data[0]['orientador']
-                               )])
+                    cursor.execute(insert_query,
+                                   [(
+                                    data[0]['title'],
+                                    data[0]['status'],
+                                    data[0]['student'],
+                                    data[0]['orientador'],
+                                    data[0]['public']
+                                    )])
+
+                # If the project is inteded to be public
+                if(public == "true"):
+                    insert_query = "INSERT INTO projetos (nome_projeto, status_project, student_id, sigla_orientador, make_public) VALUES %s ON CONFLICT DO NOTHING;"
+
+                    # Inserts project information
+
+                    cursor.execute(insert_query,
+                                   [(
+                                    data[0]['title'],
+                                    data[0]['status'],
+                                    data[0]['student'],
+                                    data[0]['orientador'],
+                                    data[0]['public']
+                                    )])
 
             if(tablename == "orientador_suggestions"):
                 insert_query = "INSERT INTO orientador_suggestions (nome_projeto, id_orientador, description_project) VALUES %s ON CONFLICT DO NOTHING;"
@@ -136,7 +154,7 @@ def connection_db(*args, **kwargs):
         ##  SELECT DATA  ##
         ###################
         if(query == "select"):
-            if(tablename == "projetos"):
+            if(tablename == "projetos" and public == "false"):
                 # Selects approved projects
                 select_projetos_query = "SELECT nome_projeto FROM projetos WHERE status_project='submitted';"
                 cursor.execute(select_projetos_query)
@@ -144,12 +162,12 @@ def connection_db(*args, **kwargs):
 
                 return result_projetos
 
-            # if(tablename == "projetos" and for_approval == "true"):
-            #     search_projetos_query = "SELECT nome_projeto FROM projetos WHERE status_project IS NULL;"
-            #     cursor.execute(search_projetos_query)
-            #     result = cursor.fetchall()
+            if(tablename == "projetos" and public == "true"):
+                search_projetos_public_query = "SELECT nome_projeto FROM projetos WHERE make_public='yes';"
+                cursor.execute(search_projetos_public_query)
+                result_public = cursor.fetchall()
 
-            #     return result
+                return result_public
 
             if(tablename == "orientador"):
                 select_orientador_query = "SELECT sigla FROM orientador;"
