@@ -1,11 +1,7 @@
 #!/usr/bin/env python3
 
-import json
 from flask import Flask, render_template, flash, request, redirect, url_for, Blueprint
 import database_conn as db
-from uuid import uuid4
-from werkzeug.utils import secure_filename
-import os
 
 
 aluno = Blueprint('aluno', __name__)
@@ -20,7 +16,7 @@ def personal_page():
 def submited_papers():
     # Show submited files
     if(request.method == 'GET'):
-        projects = db.connection_db(query="select", tablename="projetos")
+        projects = db.connection_db(query="select", tablename="projetos", public="false")
 
     return render_template("submited_projects.html", data=projects)
 
@@ -29,11 +25,11 @@ def submited_papers():
 def submit_theme():
     if(request.method == 'POST'):
 
-        # Retrieve data from form
+        # Submits a theme and the status becomes to_approve
         data = [
             {
                 'title': request.form['title'],
-                'status': 'submitted',
+                'status': 'to_approve',
                 'student': request.form['student'],
                 'orientador': request.form['orientador']
             }
