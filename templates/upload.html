@@ -30,7 +30,8 @@
                     value="{{request.form.student}}" />
                 <input type="text" placeholder="Título" class="form__input" id="title" name="title"
                     value="{{request.form.title}}" />
-            
+
+                Tornar projeto público?<input type="checkbox" placeholder="Public project" id="public" name="project" />
                 </p>
                 <input type=file name=file class="ficheiro">
                 <input type=submit value=Upload class='upload'>
@@ -52,8 +53,8 @@
         width: 100%;
         transition: 0.3s;
     }
-    
-    .upload{
+
+    .upload {
         display: block;
         width: 50%;
         padding: 20px;
