@@ -1,0 +1,7 @@
+Flask
+uuid
+psycopg2-binary
+configparser
+gunicorn
+python-dotenv
+Werkzeug

@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+app/__pycache__/database_conn.cpython-38.pyc
+.vscode/settings.json
+uploads/
+.env
+db/database_info.ini
+database.dump
+nginx/
+docker_dev/modsi_data

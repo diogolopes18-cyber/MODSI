@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Homepage</title>
+</head>
+
+<body>
+
+  <div class="topnav">
+    <img src="../static/Isep-logo.png" id="isep_logo" width="180" height="48">
+    <a class="active" href="/" onclick="{window.location.href(" http://0.0.0.0:65200/");}">Home</a>
+    <a class=" active" href="register" onclick="{window.location.href(" http://0.0.0.0:65200/register");}">Registo</a>
+    <a class=" active" href="login" onclick="{window.location.href(" http://0.0.0.0:65200/login");}">Login</a>
+  </div>
+
+  <div class=" home">
+    <h1 class="publico__title" id="title">Projetos académicos</h1>
+
+    <h1 class="aluno__title" id="aprovar" style="display: none;">Projetos Públicos</h1>
+    <button class="menu__btn" type="button" id="butao1" onclick="{window.open('http://0.0.0.0:65200/public');}">Projetos
+      Públicos</button>
+
+    <!-- <h1 class="publico__title" id="rela" style="display: none;">Relatórios</h1>
+    <button class="menu__btn" type="button" id="butao3" onclick="button3()">Relatórios</button> -->
+
+  </div>
+
+</body>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("../static/isep.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+
+  .topnav {
+    overflow: hidden;
+    background-color: rgb(117, 115, 115);
+
+
+  }
+
+  .topnav a {
+    float: right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .topnav a.active {
+    padding: 28px 16px;
+    color: white;
+  }
+
+
+
+  .publico {
+    width: 90%;
+    max-width: 340px;
+    margin: 10vh auto;
+
+  }
+
+  .publico__header {
+    text-align: center;
+    opacity: 0;
+    transform: translate3d(0, 500px, 0);
+    animation: arrive 500ms ease-in-out 0.7s forwards;
+
+  }
+
+  .publico__title {
+
+
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    ;
+    margin-bottom: -10px;
+    font-weight: 500;
+    color: white;
+  }
+
+  .menu {
+    margin-top: 40px;
+    border-radius: 6px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translate3d(0, 500px, 0);
+    animation: arrive 500ms ease-in-out 0.9s forwards;
+  }
+
+  .menu__btn {
+    display: block;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-appearance: none;
+    outline: 0;
+    border: 0;
+    color: $color-primary;
+    background: $color-primary;
+    transition: 0.3s;
+    width: 90%;
+    max-width: 340px;
+    margin: 5vh auto;
+    border-radius: 6px;
+
+  }
+
+  .home {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -150px;
+    width: 300px;
+    height: 300px;
+  }
+
+  #isep_logo {
+    float: left;
+    padding: 14px 16px;
+  }
+</style>
+
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Nota Final</title>
+</head>
+
+<body>
+
+    <div class="topnav">
+        <img src="../static/Isep-logo.png" id="isep_logo" width="180" height="48">
+        <a class="active" href="/">Home</a>
+        <a class="active" href="register">Registo</a>
+        <a class="active" href="login">Login</a>
+        
+    </div>
+
+    <div class="user">
+
+        <header class="user__header">
+            <h1 class="user__title">Nota final do projeto</h1>
+        </header>
+
+        <form class="form" method="POST" enctype=multipart/form-data>
+            <div class="form__group">
+                <input type="text" placeholder="Numero do aluno" class="form__input" id="student" name="student"
+                    value="{{request.form.student}}" />
+                <input type="text" placeholder="Projeto" class="form__input" id="project" name="project"
+                    value="{{request.form.project}}" />
+                <input type="text" placeholder="Nota final" class="form__input" id="note" name="note"
+                    value="{{request.form.note}}" />
+
+            </div>
+            <button class="btn" type="submit">Submeter</button>
+        </form>
+    </div>
+
+</body>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-image: url("../static/isep.jpg");
+        background-size: 100% 100vh;
+        background-repeat: no-repeat;
+    }
+
+    .user {
+        width: 90%;
+        max-width: 340px;
+        margin: 10vh auto;
+    }
+
+    .user__header {
+        text-align: center;
+        opacity: 0;
+        transform: translate3d(0, 500px, 0);
+        animation: arrive 500ms ease-in-out 0.7s forwards;
+    }
+
+    .user__title {
+        font-size: $font-size;
+        margin-bottom: -10px;
+        font-weight: 500;
+        color: white;
+    }
+
+    .form {
+        margin-top: 40px;
+        border-radius: 6px;
+        overflow: hidden;
+        opacity: 0;
+        transform: translate3d(0, 500px, 0);
+        animation: arrive 500ms ease-in-out 0.9s forwards;
+    }
+
+    .form--no {
+        animation: NO 1s ease-in-out;
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+
+    .form__input {
+        display: block;
+        width: 100%;
+        padding: 20px;
+        font-family: $font-family;
+        -webkit-appearance: none;
+        border: 0;
+        outline: 0;
+        transition: 0.3s;
+
+        &:focus {
+            background: darken(#fff, 3%);
+        }
+    }
+
+    .btn {
+        display: block;
+        width: 100%;
+        padding: 20px;
+        font-family: $font-family;
+        -webkit-appearance: none;
+        outline: 0;
+        border: 0;
+        color: $color-primary;
+        background: $color-primary;
+        transition: 0.3s;
+
+        &:hover {
+            background: darken($color-primary, 5%);
+        }
+    }
+
+    @keyframes NO {
+
+        from,
+        to {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+
+        10%,
+        30%,
+        50%,
+        70%,
+        90% {
+            -webkit-transform: translate3d(-10px, 0, 0);
+            transform: translate3d(-10px, 0, 0);
+        }
+
+        20%,
+        40%,
+        60%,
+        80% {
+            -webkit-transform: translate3d(10px, 0, 0);
+            transform: translate3d(10px, 0, 0);
+        }
+    }
+
+    @keyframes arrive {
+        0% {
+            opacity: 0;
+            transform: translate3d(0, 50px, 0);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    @keyframes move {
+        0% {
+            background-position: 0 0
+        }
+
+        50% {
+            background-position: 100% 0
+        }
+
+        100% {
+            background-position: 0 0
+        }
+    }
+
+    .topnav {
+        overflow: hidden;
+        background-color: rgb(117, 115, 115);
+    }
+
+    .topnav a {
+        float: right;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    .topnav a.active {
+        padding: 28px 16px;
+        color: white;
+    }
+
+    #isep_logo {
+        float: left;
+        padding: 14px 16px;
+    }
+</style>
+
+</html>
